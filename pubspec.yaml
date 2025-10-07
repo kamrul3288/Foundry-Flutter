@@ -2,6 +2,7 @@ name: foundry_flutter
 
 workspace:
   - app/
+  - foundry_packages/flutter_secure_storagex/
 
 
 environment:
@@ -17,16 +18,10 @@ melos:
         sdk: ^3.9.2
 
       dependencies:
-        code_analyzer: ^0.0.1
-        common: ^0.0.1
-        domain: ^0.0.1
-        designsystem: ^0.0.1
-        navigation: ^0.0.1
-        entity: ^0.0.1
-        data: ^0.0.1
-        ui: ^0.0.1
-
+        flutter_secure_storage: ^9.2.4
         flutter_bloc: ^9.1.1
+        flutter_riverpod: ^3.0.1
+        riverpod_annotation: ^3.0.1
         get_it: ^8.0.3
         cupertino_icons: ^1.0.8
         shared_preferences: ^2.5.3
