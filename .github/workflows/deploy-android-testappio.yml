@@ -31,7 +31,7 @@ jobs:
         run: |
           curl -Ls https://github.com/testappio/cli/releases/latest/download/install | bash
           echo "$HOME/.local/bin" >> $GITHUB_PATH
-          ta-cli --version
+          ta-cli version
 
       - name: Build Android release APK
         working-directory: app
@@ -44,13 +44,13 @@ jobs:
       - name: 🧩 Publish to TestApp.io
         working-directory: app
         env:
-          TESTAPPIO_API_TOKEN: ${{ secrets.TA_API_TOKEN }}
-          TESTAPPIO_APP_ID: ${{ secrets.TA_APP_ID }}
+          TA_API_TOKEN: ${{ secrets.TA_API_TOKEN }}
+          TA_APP_ID: ${{ secrets.TA_APP_ID }}
         run: |
           ta-cli publish \
             --config=.ta-cli.json \
-            --api_token="$TESTAPPIO_API_TOKEN" \
-            --app_id="$TESTAPPIO_APP_ID" \
+            --api_token="$TA_API_TOKEN" \
+            --app_id="$TA_APP_ID" \
             --release=android \
             --notify=true \
             --git_release_notes=true \
