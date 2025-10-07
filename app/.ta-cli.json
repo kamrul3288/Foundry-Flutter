@@ -1,0 +1,8 @@
+{
+  "app_id": "",
+  "release": "android",
+  "apk": "build/app/outputs/flutter-apk/app-release.apk",
+  "notify": true,
+  "git_release_notes": true,
+  "git_commit_id": true
+}

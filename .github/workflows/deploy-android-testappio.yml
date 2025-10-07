@@ -41,18 +41,20 @@ jobs:
           flutter pub get
           flutter build apk --release
           ls -lh build/app/outputs/flutter-apk/
-      
+
       - name: 🧩 Publish to TestApp.io
         working-directory: app
         env:
           TA_API_TOKEN: ${{ secrets.TESTAPPIO_API_TOKEN }}
           TA_APP_ID: ${{ secrets.TESTAPPIO_APP_ID }}
         run: |
+          ls -lh build/app/outputs/flutter-apk/
           ta-cli publish \
             --config=.ta-cli.json \
             --api_token="$TA_API_TOKEN" \
             --app_id="$TA_APP_ID" \
             --release=android \
+            --apk=build/app/outputs/flutter-apk/app-release.apk \
             --notify=true \
             --git_release_notes=true \
             --git_commit_id=true
