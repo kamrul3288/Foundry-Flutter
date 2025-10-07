@@ -69,3 +69,21 @@ melos:
     clean_and_get:
       run: melos exec -- flutter clean && melos bootstrap
       description: Cleans and then fetches dependencies for all packages.
+
+    publish-android-app-ta:
+      description: Publish android app to TestApp.io
+      run: |
+        cd app
+        flutter clean
+        flutter pub get
+        flutter build apk --release
+        ta-cli publish --config=.ta-cli-android.json
+
+    publish-ios-app-ta:
+      description: Publish iOS app to TestApp.io
+      run: |
+        cd app
+        flutter clean
+        flutter pub get
+        flutter build ipa --release --export-options-plist=ios/TestAppIoAdHoc.plist
+        ta-cli publish --config=.ta-cli-ios.json

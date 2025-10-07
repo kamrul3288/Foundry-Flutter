@@ -1,0 +1,57 @@
+name: Android Build & Publish (TestApp.io)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.35.4'
+          channel: 'stable'
+          cache: true
+
+      - name: Checkout Melos
+        run: |
+          dart pub global activate melos
+          echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
+          melos bootstrap
+
+
+      - name: Install TA-CLI
+        run: |
+          curl -Ls https://github.com/testappio/cli/releases/latest/download/install | bash
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+          ta-cli --version
+
+      - name: Build Android release APK
+        working-directory: app
+        run: |
+          flutter clean
+          flutter pub get
+          flutter build apk --release
+          ls -lh build/app/outputs/flutter-apk/
+      
+      - name: 🧩 Publish to TestApp.io
+        working-directory: app
+        env:
+          TESTAPPIO_API_TOKEN: ${{ secrets.TA_API_TOKEN }}
+          TESTAPPIO_APP_ID: ${{ secrets.TA_APP_ID }}
+        run: |
+          ta-cli publish \
+            --config=.ta-cli.json \
+            --api_token="$TESTAPPIO_API_TOKEN" \
+            --app_id="$TESTAPPIO_APP_ID" \
+            --release=android \
+            --notify=true \
+            --git_release_notes=true \
+            --git_commit_id=true
