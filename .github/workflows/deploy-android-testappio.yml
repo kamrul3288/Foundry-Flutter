@@ -36,6 +36,7 @@ jobs:
       - name: Build Android release APK
         working-directory: app
         run: |
+          sudo yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "cmake;4.0.2"
           flutter clean
           flutter pub get
           flutter build apk --release
