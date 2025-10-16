@@ -12,6 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_secure_storagex:
+  auto_router_x:
   cupertino_icons: ^1.0.8
 
 dev_dependencies:
