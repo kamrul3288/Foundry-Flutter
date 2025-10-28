@@ -1,4 +1,3 @@
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_router_x/src/auth/auth_config.dart';
 import 'package:auto_router_x/src/auth/auth_cubit.dart';

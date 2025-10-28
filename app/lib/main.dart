@@ -1,5 +1,5 @@
+import 'package:file_uploader/file_uploader.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storagex/flutter_secure_storagex.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: SecureStorageEntryScreen(),
+      home: FileUploaderEntryScreen(),
     );
   }
 }

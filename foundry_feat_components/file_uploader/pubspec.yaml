@@ -1,0 +1,26 @@
+name: file_uploader
+description: This package i explore every things about file_uploader package.
+version: 0.0.1
+publish_to: "none"
+resolution: workspace
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  flutter_riverpod: ^3.0.3
+  image_picker: ^1.2.0
+  flutter_image_compress: ^2.4.0
+  path_provider: ^2.1.5
+  path: ^1.9.1
+  permission_handler: ^12.0.1
+
+dev_dependencies:
+    flutter_test:
+        sdk: flutter
+    riverpod_generator: ^3.0.3
+    build_runner: ^2.7.0
+

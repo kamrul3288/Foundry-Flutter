@@ -11,8 +11,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_secure_storagex:
-  auto_router_x:
+  flutter_secure_storagex: ^0.0.1
+  auto_router_x: ^0.0.1
+  file_uploader: ^0.0.1
   cupertino_icons: ^1.0.8
 
 dev_dependencies:

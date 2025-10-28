@@ -1,11 +1,5 @@
 name: foundry_flutter
 
-workspace:
-  - app/
-  - foundry_packages/flutter_secure_storagex/
-  - foundry_packages/auto_router_x/
-  - foundry_packages/go_router_x/
-
 
 environment:
   sdk: ^3.9.2
@@ -33,7 +27,7 @@ melos:
         http: ^1.5.0
         jiffy: ^6.4.3
         fluttertoast: ^8.2.12
-        image_picker: ^1.1.2
+        image_picker: ^1.2.0
         url_launcher: ^6.3.2
         webview_flutter: ^4.13.0
         json_annotation: ^4.9.0
@@ -55,6 +49,10 @@ melos:
         flutter_html: ^3.0.0
         google_maps_flutter: ^2.13.1
         auto_route: ^10.1.2
+        path_provider: ^2.1.5
+        path: ^1.9.1
+        flutter_image_compress: ^2.4.0
+        permission_handler: ^12.0.1
 
 
       dev_dependencies:
@@ -105,3 +103,12 @@ melos:
     build_runner_watch:
       description: Run build runner for generator riverpod & auto route in watch mode
       run: melos exec -- dart run build_runner watch --delete-conflicting-outputs
+
+
+
+workspace:
+  - app/
+  - foundry_packages/flutter_secure_storagex/
+  - foundry_packages/auto_router_x/
+  - foundry_packages/go_router_x/
+  - foundry_feat_components/file_uploader/
