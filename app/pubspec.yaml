@@ -1,6 +1,6 @@
 name: app
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 resolution: workspace
 
 version: 1.0.0+2
@@ -14,13 +14,13 @@ dependencies:
   flutter_secure_storagex: ^0.0.1
   auto_router_x: ^0.0.1
   file_uploader: ^0.0.1
+  dio_x: ^0.0.1
   cupertino_icons: ^1.0.8
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
-
 
 flutter:
   uses-material-design: true

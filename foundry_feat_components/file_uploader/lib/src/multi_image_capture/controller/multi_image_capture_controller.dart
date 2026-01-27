@@ -32,16 +32,11 @@ class MultiImageCaptureController extends Notifier<MultiImageCaptureState> {
     }
     state = state.copyWith(capturing: true);
     try {
-      final capturedImage = await _picker.pickImage(
-        source: ImageSource.camera,
-
-      );
-
+      final capturedImage = await _picker.pickImage(source: ImageSource.gallery);
       if (capturedImage == null) {
         _toast("Image capture cancelled.");
         return;
       }
-
       final capturedFile = File(capturedImage.path);
       final compressedFile = await _imageRepository.compressToUnder1MB(capturedFile);
       if (compressedFile == null) {

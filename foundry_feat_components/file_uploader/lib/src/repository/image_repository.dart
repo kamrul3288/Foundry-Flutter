@@ -10,20 +10,41 @@ final class ImageRepository{
   final Ref ref;
   ImageRepository(this.ref);
 
+
+
+  Future<Directory> _appImagesDir() async {
+    final cache = await getTemporaryDirectory();
+    final dir = Directory(path.join(cache.path, 'app_images'));
+    if (!await dir.exists()) await dir.create(recursive: true);
+    return dir;
+  }
+
+  Future<File> _moveOrCopy(File src, String destPath) async {
+    try {
+      return await src.rename(destPath); // fast path (same volume)
+    } catch (_) {
+      return await src.copy(destPath);   // fallback across volumes
+    }
+  }
+
   /// Compresses the given image file to ensure its size is under 1MB.
   /// Uses iterative compression by reducing quality and dimensions.
   /// Returns the compressed file if successful, or null if compression fails.
   Future<File?> compressToUnder1MB(File inputImageFile) async{
+
+    final dir = await _appImagesDir();
+    final outPath = path.join(dir.path, "img_${DateTime.now().microsecondsSinceEpoch}_${path.basename(inputImageFile.path)}");
+
     if (await _isImageBelow1MB(inputImageFile)) {
-      return inputImageFile;
+      final inputMovedFile = await _moveOrCopy(inputImageFile, outPath);
+      // Optionally delete original if it still exists and we copied:
+      if (inputImageFile.path != inputMovedFile.path) {
+        try { await inputImageFile.delete(); } catch (_) {}
+      }
+      return inputMovedFile;
     }
 
-    final tempDir = await getTemporaryDirectory();
-    final dir = Directory(path.join(tempDir.path, 'app_images'));
-    if (!await dir.exists()) await dir.create(recursive: true);
 
-
-    final outPath = path.join(dir.path, "c_${DateTime.now().microsecondsSinceEpoch}_${path.basename(inputImageFile.path)}");
 
     for (int attempt = 1; attempt < 8; attempt++) {
       final compressedXFile = await FlutterImageCompress.compressAndGetFile(
@@ -37,12 +58,17 @@ final class ImageRepository{
       );
 
       if (compressedXFile == null) {
+        try { await File(outPath).delete(); } catch (_) {}
         _toast("Compression failed on attempt $attempt.");
         return null;
       }
 
       final compressedFile = File(compressedXFile.path);
       if (await _isImageBelow1MB(compressedFile)) {
+        // Success: delete original temp if it still exists & differs
+        if (inputImageFile.path != compressedFile.path) {
+          try { await inputImageFile.delete(); } catch (_) {}
+        }
         return compressedFile;
       }
     }
