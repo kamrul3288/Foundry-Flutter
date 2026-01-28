@@ -22,3 +22,6 @@ linter:
   # producing the lint.
   rules:
     - always_use_package_imports
+
+formatter:
+  trailing_commas: preserve

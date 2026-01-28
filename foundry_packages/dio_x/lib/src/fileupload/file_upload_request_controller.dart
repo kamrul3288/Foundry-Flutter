@@ -3,8 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
-final class FileUploadRequestController
-    extends Notifier<FileUploadRequestState> {
+final class FileUploadRequestController extends Notifier<FileUploadRequestState> {
   final _picker = ImagePicker();
 
   @override
@@ -27,10 +26,7 @@ final class FileUploadRequestController
     });
     try {
       state = state.copyWith(isUploading: true);
-      final response = await dio.post(
-        'https://example.com/upload',
-        data: formData,
-      );
+      final response = await dio.post('https://example.com/upload', data: formData);
       if (response.statusCode == 200) {
         state = state.copyWith(uploadSuccess: true, isUploading: false);
       }
@@ -40,11 +36,9 @@ final class FileUploadRequestController
   }
 }
 
-final fileUplodControllerProvider =
-    NotifierProvider.autoDispose<
-      FileUploadRequestController,
-      FileUploadRequestState
-    >(() => FileUploadRequestController());
+final fileUplodControllerProvider = NotifierProvider.autoDispose<FileUploadRequestController, FileUploadRequestState>(
+  () => FileUploadRequestController(),
+);
 
 final class FileUploadRequestState {
   final File? imageFile;
@@ -59,12 +53,7 @@ final class FileUploadRequestState {
     this.uploadSuccess = false,
   });
 
-  FileUploadRequestState copyWith({
-    File? imageFile,
-    bool? isUploading,
-    String? errorMessage,
-    bool? uploadSuccess,
-  }) {
+  FileUploadRequestState copyWith({File? imageFile, bool? isUploading, String? errorMessage, bool? uploadSuccess}) {
     return FileUploadRequestState(
       imageFile: imageFile ?? this.imageFile,
       isUploading: isUploading ?? false,

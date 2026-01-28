@@ -7,16 +7,11 @@ class FileUploadRequestScreen extends ConsumerWidget {
   const FileUploadRequestScreen({super.key});
 
   void lisenImageUploaderResult(WidgetRef ref, BuildContext context) {
-    ref.listen(
-      fileUplodControllerProvider.select((state) => state.errorMessage),
-      (previous, current) {
-        if (current.isNotEmpty) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text(current)));
-        }
-      },
-    );
+    ref.listen(fileUplodControllerProvider.select((state) => state.uploadSuccess), (previous, current) {
+      if (current) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('File uploaded successfully')));
+      }
+    });
   }
 
   @override
@@ -46,9 +41,7 @@ class _ActionIcon extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final imageFile = ref.watch(
-      fileUplodControllerProvider.select((state) => state.imageFile),
-    );
+    final imageFile = ref.watch(fileUplodControllerProvider.select((state) => state.imageFile));
     if (imageFile == null) {
       return IconButton(
         icon: const Icon(Icons.add_a_photo),
@@ -64,9 +57,7 @@ class _ImageUploader extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isUploading = ref.watch(
-      fileUplodControllerProvider.select((state) => state.isUploading),
-    );
+    final isUploading = ref.watch(fileUplodControllerProvider.select((state) => state.isUploading));
     if (!isUploading) return _ImagePreview();
 
     return const Center(child: CircularProgressIndicator.adaptive());
@@ -78,9 +69,7 @@ class _ImagePreview extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final imageFile = ref.watch(
-      fileUplodControllerProvider.select((state) => state.imageFile),
-    );
+    final imageFile = ref.watch(fileUplodControllerProvider.select((state) => state.imageFile));
     if (imageFile == null) {
       return const Center(
         child: Text(

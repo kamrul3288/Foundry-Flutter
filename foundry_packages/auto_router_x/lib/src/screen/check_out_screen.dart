@@ -12,17 +12,19 @@ class CheckOutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Checkout"),),
+      appBar: AppBar(
+        title: Text("Checkout"),
+      ),
 
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Center(
           child: FilledButton(
-            onPressed: (){
+            onPressed: () {
               context.read<AuthCubit>().setAuthConfig(AuthConfig(fromRoute: CheckOutRoute.name));
               context.router.push(LoginRoute());
             },
-            child: Text("Send trip request")
+            child: Text("Send trip request"),
           ),
         ),
       ),
