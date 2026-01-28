@@ -7,6 +7,11 @@ class FileUploadRequestScreen extends ConsumerWidget {
   const FileUploadRequestScreen({super.key});
 
   void lisenImageUploaderResult(WidgetRef ref, BuildContext context) {
+    ref.listen(fileUplodControllerProvider.select((state) => state.errorMessage), (previous, current) {
+      if (current.isNotEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(current)));
+      }
+    });
     ref.listen(fileUplodControllerProvider.select((state) => state.uploadSuccess), (previous, current) {
       if (current) {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('File uploaded successfully')));

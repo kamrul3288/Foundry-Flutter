@@ -49,5 +49,10 @@
     <string>We need camera access to capture photos.</string>
     <key>NSPhotoLibraryAddUsageDescription</key>
     <string>We may save compressed photos temporarily.</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>	
 </dict>
 </plist>
