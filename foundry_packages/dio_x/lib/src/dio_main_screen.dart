@@ -1,6 +1,7 @@
 import 'package:dio_x/src/filedownload/file_download_screen.dart';
 import 'package:dio_x/src/fileupload/file_upload_request_screen.dart';
 import 'package:dio_x/src/get/get_request_screen.dart';
+import 'package:dio_x/src/interceptor/interceptor_screen.dart';
 import 'package:dio_x/src/post/post_request_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -45,6 +46,13 @@ class DioMainScreen extends StatelessWidget {
                   onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(builder: (_) => FileDownloadScreen()),
+                  ),
+                ),
+                _ActionButton(
+                  title: 'Interceptor',
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => InterceptorScreen()),
                   ),
                 ),
               ],
