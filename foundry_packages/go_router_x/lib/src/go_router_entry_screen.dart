@@ -9,14 +9,11 @@ class GoRouterEntryScreen extends StatelessWidget {
   }
 }
 
-
 class _App extends StatelessWidget {
-  const _App({super.key});
+  const _App();
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-
-    );
+    return MaterialApp();
   }
 }
