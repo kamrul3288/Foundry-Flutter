@@ -6,7 +6,7 @@ workspace:
   - foundry_packages/auto_router_x/
   - foundry_packages/go_router_x/
   - foundry_packages/dio_x/
-  - foundry_feat_components/file_uploader/
+  - foundry_feat_components/media_picker/
 
 environment:
   sdk: ^3.9.2

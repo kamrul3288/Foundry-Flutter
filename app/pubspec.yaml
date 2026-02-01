@@ -13,7 +13,7 @@ dependencies:
     sdk: flutter
   flutter_secure_storagex: ^0.0.1
   auto_router_x: ^0.0.1
-  file_uploader: ^0.0.1
+  media_picker: ^0.0.1
   dio_x: ^0.0.1
   cupertino_icons: ^1.0.8
 

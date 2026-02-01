@@ -1,5 +1,5 @@
-import 'package:dio_x/dio_x.dart';
 import 'package:flutter/material.dart';
+import 'package:media_picker/media_picker.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,6 +11,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return DioMainScreen();
+    return MediaPickerMainScreen();
   }
 }

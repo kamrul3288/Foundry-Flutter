@@ -1,5 +1,5 @@
-name: file_uploader
-description: This package i explore every things about file_uploader package.
+name: media_picker
+description: This package i explore every things about media_picker package.
 version: 0.0.1
 publish_to: "none"
 resolution: workspace
@@ -19,8 +19,7 @@ dependencies:
   permission_handler: ^12.0.1
 
 dev_dependencies:
-    flutter_test:
-        sdk: flutter
-    riverpod_generator: ^4.0.2
-    build_runner: ^2.10.5
-
+  flutter_test:
+    sdk: flutter
+  riverpod_generator: ^4.0.2
+  build_runner: ^2.10.5
