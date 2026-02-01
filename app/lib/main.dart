@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:media_picker/media_picker.dart';
+import 'package:flutter_design_system/flutter_designsystem.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,6 +11,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MediaPickerMainScreen();
+    return FlutterDsMainScreen();
   }
 }
