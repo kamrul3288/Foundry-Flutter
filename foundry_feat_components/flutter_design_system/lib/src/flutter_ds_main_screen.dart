@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_design_system/src/theme/extensions/app_button_theme.dart';
+import 'package:flutter_design_system/src/ui_showcase/buttons_screen.dart';
 
 class FlutterDsMainScreen extends StatelessWidget {
   const FlutterDsMainScreen({super.key});
@@ -7,6 +9,11 @@ class FlutterDsMainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Design System',
+      theme: ThemeData(
+        extensions: [
+          AppButtonTheme.light(),
+        ],
+      ),
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Flutter Design System'),
@@ -17,18 +24,34 @@ class FlutterDsMainScreen extends StatelessWidget {
   }
 }
 
-class _DesignSystemBody extends StatelessWidget {
+class _DesignSystemBody extends StatefulWidget {
   const _DesignSystemBody();
 
   @override
+  State<_DesignSystemBody> createState() => _DesignSystemBodyState();
+}
+
+class _DesignSystemBodyState extends State<_DesignSystemBody> {
+  var disable = false;
+  void changeState() {
+    setState(() {
+      disable = !disable;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        _ActionButton(
-          title: 'Buttons',
-          onTap: () {},
-        ),
-      ],
+    return SingleChildScrollView(
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _ActionButton(
+            title: "Buttons",
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ButtonsScreen())),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -40,11 +63,17 @@ class _ActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      dense: false,
-      visualDensity: VisualDensity(horizontal: 0, vertical: -4),
-      title: Text(title, style: TextStyle(color: Colors.blue)),
-      onTap: onTap,
+    return TextButton(
+      onPressed: onTap,
+      style: TextButton.styleFrom(
+        minimumSize: Size.zero,
+        padding: EdgeInsets.all(4),
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      ),
+      child: Text(
+        title,
+        style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w500, fontSize: 15),
+      ),
     );
   }
 }
