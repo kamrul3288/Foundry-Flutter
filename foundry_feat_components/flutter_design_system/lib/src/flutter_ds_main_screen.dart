@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_design_system/src/foundation/app_typography.dart';
+import 'package:flutter_design_system/src/theme/app_color_scheme.dart';
 import 'package:flutter_design_system/src/theme/extensions/app_button_theme.dart';
 import 'package:flutter_design_system/src/ui_showcase/buttons_screen.dart';
+import 'package:flutter_design_system/src/ui_showcase/texts_screen.dart';
 
 class FlutterDsMainScreen extends StatelessWidget {
   const FlutterDsMainScreen({super.key});
@@ -12,6 +15,8 @@ class FlutterDsMainScreen extends StatelessWidget {
       theme: ThemeData(
         extensions: [
           AppButtonTheme.light(),
+          AppColorScheme.light(),
+          AppTypography.textStyleTheme(AppColorScheme.light()),
         ],
       ),
       home: Scaffold(
@@ -49,6 +54,10 @@ class _DesignSystemBodyState extends State<_DesignSystemBody> {
           _ActionButton(
             title: "Buttons",
             onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ButtonsScreen())),
+          ),
+          _ActionButton(
+            title: "Texts",
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const TextsScreen())),
           ),
         ],
       ),
