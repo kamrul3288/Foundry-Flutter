@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/src/components/text/app_text_weight.dart';
-import 'package:flutter_design_system/src/foundation/app_typography.dart';
+import 'package:flutter_design_system/src/theme/extensions/app_typography_theme.dart';
 import 'package:flutter_design_system/src/foundation/app_typography_tokens.dart';
 
 class AppText extends StatelessWidget {
@@ -29,7 +29,7 @@ class AppText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final typography = Theme.of(context).extension<AppTypography>()!;
+    final typography = Theme.of(context).extension<AppTypographyTheme>()!;
     final baseStyle = typography.getVariant(variant);
 
     return Text(
