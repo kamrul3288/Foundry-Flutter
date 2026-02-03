@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_design_system/src/theme/extensions/app_input_theme.dart';
 import 'package:flutter_design_system/src/theme/extensions/app_typography_theme.dart';
 import 'package:flutter_design_system/src/theme/app_color_scheme.dart';
 import 'package:flutter_design_system/src/theme/extensions/app_button_theme.dart';
 import 'package:flutter_design_system/src/ui_showcase/buttons_screen.dart';
+import 'package:flutter_design_system/src/ui_showcase/textfiled_screen.dart';
 import 'package:flutter_design_system/src/ui_showcase/texts_screen.dart';
 
 class FlutterDsMainScreen extends StatelessWidget {
@@ -17,6 +19,7 @@ class FlutterDsMainScreen extends StatelessWidget {
           AppButtonTheme.light(),
           AppColorScheme.light(),
           AppTypographyTheme.textStyleTheme(AppColorScheme.light()),
+          AppInputTheme.light(),
         ],
       ),
       home: Scaffold(
@@ -58,6 +61,10 @@ class _DesignSystemBodyState extends State<_DesignSystemBody> {
           _ActionButton(
             title: "Texts",
             onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const TextsScreen())),
+          ),
+          _ActionButton(
+            title: "TextFiled",
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const TextFiledScreen())),
           ),
         ],
       ),
