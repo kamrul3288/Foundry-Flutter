@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_design_system/src/components/button/app_button_color.dart';
 import 'package:flutter_design_system/src/components/button/app_button_color_role.dart';
 import 'package:flutter_design_system/src/theme/extensions/app_button_theme.dart';
+import 'package:flutter_design_system/src/theme/extensions/app_typography_theme.dart';
 
 final class AppButton extends StatelessWidget {
   final Widget child;
@@ -14,7 +15,7 @@ final class AppButton extends StatelessWidget {
   final bool isFullWidth;
   final _ButtonVariant variant;
   final AppButtonShape shape;
-  final bool enableColorFilter;
+  final bool forceIconTheme;
   final EdgeInsetsGeometry? padding;
   final bool isWrapContent;
 
@@ -29,7 +30,7 @@ final class AppButton extends StatelessWidget {
     this.isFullWidth = true,
     required this.variant,
     this.shape = AppButtonShape.sharp,
-    this.enableColorFilter = false,
+    this.forceIconTheme = false,
     this.padding,
     this.isWrapContent = false,
   });
@@ -67,6 +68,7 @@ final class AppButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).extension<AppButtonTheme>()!;
+    final typography = Theme.of(context).extension<AppTypographyTheme>()!;
     final baseColors = theme.resolve(colorRole);
     final colors = _mapColorsToVariant(baseColors, variant);
 
@@ -84,9 +86,9 @@ final class AppButton extends StatelessWidget {
     };
 
     final TextStyle textStyle = switch (size) {
-      AppButtonSize.sm => const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-      AppButtonSize.md => const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
-      AppButtonSize.lg => const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+      AppButtonSize.sm => typography.bodySmall.copyWith(fontWeight: FontWeight.w500),
+      AppButtonSize.md => typography.bodyMedium.copyWith(fontWeight: FontWeight.w500),
+      AppButtonSize.lg => typography.bodyLarge.copyWith(fontWeight: FontWeight.w500),
     };
 
     return SizedBox(
@@ -131,23 +133,10 @@ final class AppButton extends StatelessWidget {
       ],
     );
 
-    final isEnabled = onPressed != null;
-    final effectiveColor = isEnabled ? color.foreground : color.foreground.withValues(alpha: 0.6);
-    if (enableColorFilter) {
-      return ColorFiltered(
-        colorFilter: ColorFilter.mode(effectiveColor, BlendMode.srcIn),
-        child: DefaultTextStyle(
-          style: textStyle.copyWith(color: effectiveColor),
-          child: content,
-        ),
-      );
-    }
-    return Opacity(
-      opacity: isEnabled ? 1 : 0.5,
-      child: DefaultTextStyle(
-        style: textStyle.copyWith(color: effectiveColor),
-        child: content,
-      ),
+    final effectiveColor = onPressed != null ? color.foreground : color.foreground.withValues(alpha: 0.6);
+    return DefaultTextStyle(
+      style: textStyle.copyWith(color: effectiveColor),
+      child: content,
     );
   }
 
@@ -174,7 +163,7 @@ final class AppButton extends StatelessWidget {
       isFullWidth: isFullWidth,
       size: size,
       shape: shape,
-      enableColorFilter: enableColorFilter,
+      forceIconTheme: enableColorFilter,
       padding: padding,
       child: child,
     );
@@ -203,7 +192,7 @@ final class AppButton extends StatelessWidget {
       isFullWidth: isFullWidth,
       size: size,
       shape: shape,
-      enableColorFilter: enableColorFilter,
+      forceIconTheme: enableColorFilter,
       padding: padding,
       child: child,
     );
@@ -246,7 +235,7 @@ final class AppButton extends StatelessWidget {
       colorRole: colorRole,
       size: size,
       shape: AppButtonShape.circle,
-      enableColorFilter: enableColorFilter,
+      forceIconTheme: enableColorFilter,
       isFullWidth: false,
       isWrapContent: true,
       padding: EdgeInsets.zero,
