@@ -14,18 +14,9 @@ class AppText extends StatelessWidget {
   final TextOverflow? overflow;
   final AppTypographyVariant variant;
   final AppTextWeight? textWeight;
+  final bool inheritColor;
 
-  const AppText._(
-    this.text, {
-    super.key,
-    required this.variant,
-    this.color,
-    this.textAlign,
-    this.maxLines,
-    this.softWrap,
-    this.overflow,
-    this.textWeight,
-  });
+  const AppText._(this.text, {super.key, required this.variant, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight, this.inheritColor = false});
 
   @override
   Widget build(BuildContext context) {
@@ -39,31 +30,31 @@ class AppText extends StatelessWidget {
       softWrap: softWrap,
       overflow: overflow,
       style: baseStyle.copyWith(
-        color: color ?? baseStyle.color,
+        color: color ?? (inheritColor ? DefaultTextStyle.of(context).style.color : baseStyle.color),
         fontWeight: textWeight?.fontWeight ?? baseStyle.fontWeight,
       ),
     );
   }
 
-  const AppText.h1(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight}) : variant = AppTypographyVariant.h1;
+  const AppText.h1(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight, this.inheritColor = false}) : variant = AppTypographyVariant.h1;
 
-  const AppText.h2(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight}) : variant = AppTypographyVariant.h2;
+  const AppText.h2(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight, this.inheritColor = false}) : variant = AppTypographyVariant.h2;
 
-  const AppText.h3(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight}) : variant = AppTypographyVariant.h3;
+  const AppText.h3(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight, this.inheritColor = false}) : variant = AppTypographyVariant.h3;
 
-  const AppText.titleLarge(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight}) : variant = AppTypographyVariant.titleLarge;
+  const AppText.titleLarge(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight, this.inheritColor = false}) : variant = AppTypographyVariant.titleLarge;
 
-  const AppText.titleMedium(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight}) : variant = AppTypographyVariant.titleMedium;
+  const AppText.titleMedium(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight, this.inheritColor = false}) : variant = AppTypographyVariant.titleMedium;
 
-  const AppText.titleSmall(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight}) : variant = AppTypographyVariant.titleSmall;
+  const AppText.titleSmall(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight, this.inheritColor = false}) : variant = AppTypographyVariant.titleSmall;
 
-  const AppText.bodyLarge(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight}) : variant = AppTypographyVariant.bodyLarge;
+  const AppText.bodyLarge(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight, this.inheritColor = false}) : variant = AppTypographyVariant.bodyLarge;
 
-  const AppText.bodyMedium(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight}) : variant = AppTypographyVariant.bodyMedium;
+  const AppText.bodyMedium(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight, this.inheritColor = false}) : variant = AppTypographyVariant.bodyMedium;
 
-  const AppText.bodySmall(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight}) : variant = AppTypographyVariant.bodySmall;
+  const AppText.bodySmall(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight, this.inheritColor = false}) : variant = AppTypographyVariant.bodySmall;
 
-  const AppText.caption(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight}) : variant = AppTypographyVariant.caption;
+  const AppText.caption(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight, this.inheritColor = false}) : variant = AppTypographyVariant.caption;
 
-  const AppText.captionSmall(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight}) : variant = AppTypographyVariant.captionSmall;
+  const AppText.captionSmall(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight, this.inheritColor = false}) : variant = AppTypographyVariant.captionSmall;
 }
