@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_design_system/src/theme/extensions/app_card_theme.dart';
 import 'package:flutter_design_system/src/theme/extensions/app_input_theme.dart';
 import 'package:flutter_design_system/src/theme/extensions/app_tag_theme.dart';
 import 'package:flutter_design_system/src/theme/extensions/app_typography_theme.dart';
 import 'package:flutter_design_system/src/theme/app_color_scheme.dart';
 import 'package:flutter_design_system/src/theme/extensions/app_button_theme.dart';
+import 'package:flutter_design_system/src/ui_showcase/app_cards_screen.dart';
 import 'package:flutter_design_system/src/ui_showcase/buttons_screen.dart';
 import 'package:flutter_design_system/src/ui_showcase/tags_screen.dart';
 import 'package:flutter_design_system/src/ui_showcase/textfiled_screen.dart';
@@ -23,6 +25,7 @@ class FlutterDsMainScreen extends StatelessWidget {
           AppTypographyTheme.textStyleTheme(AppColorScheme.light()),
           AppInputTheme.light(),
           AppTagTheme.light(),
+          AppCardTheme.light(),
         ],
       ),
       home: Scaffold(
@@ -72,6 +75,10 @@ class _DesignSystemBodyState extends State<_DesignSystemBody> {
           _ActionButton(
             title: "Tags",
             onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const TagsScreen())),
+          ),
+          _ActionButton(
+            title: "Cards",
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const AppCardsScreen())),
           ),
         ],
       ),

@@ -22,6 +22,7 @@ final class AppColorScheme extends ThemeExtension<AppColorScheme> {
   final Color onWarning;
 
   final Color background; // App's main background
+  final Color backgroundSubtle;
   final Color surface; //Cards, Sheets, Dialogs
 
   final Color textPrimary;
@@ -48,6 +49,7 @@ final class AppColorScheme extends ThemeExtension<AppColorScheme> {
     required this.warning,
     required this.onWarning,
     required this.background,
+    required this.backgroundSubtle,
     required this.surface,
     required this.textPrimary,
     required this.textSecondary,
@@ -80,6 +82,7 @@ final class AppColorScheme extends ThemeExtension<AppColorScheme> {
       warning: AppColors.yellow500,
       onWarning: Colors.white,
       background: Colors.white,
+      backgroundSubtle: AppColors.gray50,
       surface: Colors.white,
       textPrimary: Colors.black,
       textSecondary: AppColors.gray800,
@@ -107,6 +110,7 @@ final class AppColorScheme extends ThemeExtension<AppColorScheme> {
       warning: AppColors.yellow300,
       onWarning: AppColors.gray900,
       background: AppColors.gray900, // Absolute Dark
+      backgroundSubtle: AppColors.gray50,
       surface: AppColors.gray800, // Lighter than background (Elevation)
       textPrimary: AppColors.gray50, // Almost White
       textSecondary: AppColors.gray300, // Light Gray
