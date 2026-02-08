@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/src/theme/extensions/app_card_theme.dart';
 import 'package:flutter_design_system/src/theme/extensions/app_input_theme.dart';
+import 'package:flutter_design_system/src/theme/extensions/app_scaffold_theme.dart';
 import 'package:flutter_design_system/src/theme/extensions/app_tag_theme.dart';
 import 'package:flutter_design_system/src/theme/extensions/app_typography_theme.dart';
 import 'package:flutter_design_system/src/theme/app_color_scheme.dart';
 import 'package:flutter_design_system/src/theme/extensions/app_button_theme.dart';
 import 'package:flutter_design_system/src/ui_showcase/app_cards_screen.dart';
 import 'package:flutter_design_system/src/ui_showcase/buttons_screen.dart';
+import 'package:flutter_design_system/src/ui_showcase/app_scaffold_screen.dart';
 import 'package:flutter_design_system/src/ui_showcase/tags_screen.dart';
 import 'package:flutter_design_system/src/ui_showcase/textfiled_screen.dart';
 import 'package:flutter_design_system/src/ui_showcase/texts_screen.dart';
@@ -26,6 +28,7 @@ class FlutterDsMainScreen extends StatelessWidget {
           AppInputTheme.light(),
           AppTagTheme.light(),
           AppCardTheme.light(),
+          AppScaffoldTheme.light(),
         ],
       ),
       home: Scaffold(
@@ -79,6 +82,10 @@ class _DesignSystemBodyState extends State<_DesignSystemBody> {
           _ActionButton(
             title: "Cards",
             onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const AppCardsScreen())),
+          ),
+          _ActionButton(
+            title: "Scaffold & TopBar",
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => AppScaffoldScreen())),
           ),
         ],
       ),
