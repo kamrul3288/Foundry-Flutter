@@ -15,7 +15,7 @@ final class AppCardTheme extends ThemeExtension<AppCardTheme> {
   }
 
   AppCardColors resolve(AppCardColorRole role) => switch (role) {
-    AppCardColorRole.primary => surface,
+    AppCardColorRole.surface => surface,
   };
 
   @override
@@ -24,4 +24,4 @@ final class AppCardTheme extends ThemeExtension<AppCardTheme> {
   ThemeExtension<AppCardTheme> lerp(covariant ThemeExtension<AppCardTheme>? other, double t) => this;
 }
 
-enum AppCardColorRole { primary }
+enum AppCardColorRole { surface }
