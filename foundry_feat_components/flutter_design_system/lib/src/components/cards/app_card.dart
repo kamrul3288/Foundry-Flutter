@@ -12,7 +12,8 @@ class AppCard extends StatelessWidget {
   final bool isFullWidth;
   final double? height;
   final double? width;
-  final AppCardBorderRadius borderRadius;
+  final AppCardCornerRadius cornerRadius;
+  final AppCardCornerMode cornerMode;
 
   const AppCard._({
     required this.child,
@@ -22,7 +23,8 @@ class AppCard extends StatelessWidget {
     required this.shape,
     required this.padding,
     required this.isFullWidth,
-    this.borderRadius = AppCardBorderRadius.md,
+    this.cornerRadius = AppCardCornerRadius.md,
+    this.cornerMode = AppCardCornerMode.all,
     this.height,
     this.width,
   });
@@ -31,10 +33,10 @@ class AppCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context).extension<AppCardTheme>()!;
     final colors = _mapColorsToVariant(theme.resolve(colorRole));
-    final double radius = switch (borderRadius) {
-      AppCardBorderRadius.sm => 5,
-      AppCardBorderRadius.md => 8,
-      AppCardBorderRadius.lg => 16,
+    final double radius = switch (cornerRadius) {
+      AppCardCornerRadius.sm => 5,
+      AppCardCornerRadius.md => 8,
+      AppCardCornerRadius.lg => 16,
     };
 
     return Material(
@@ -62,9 +64,17 @@ class AppCard extends StatelessWidget {
 
   ShapeBorder _resolveShape(_AppCardShape shape, AppCardColors colors, double radius) => switch (shape) {
     _AppCardShape.pill => StadiumBorder(side: _getBorderSide(colors.outline)),
-    _AppCardShape.rounded => RoundedRectangleBorder(borderRadius: BorderRadius.circular(radius), side: _getBorderSide(colors.outline)),
+    _AppCardShape.rounded => RoundedRectangleBorder(borderRadius: _resolveCornerRadius(cornerMode, radius), side: _getBorderSide(colors.outline)),
     _AppCardShape.circle => CircleBorder(side: _getBorderSide(colors.outline)),
     _AppCardShape.sharp => RoundedRectangleBorder(borderRadius: BorderRadius.circular(0), side: _getBorderSide(colors.outline)),
+  };
+
+  BorderRadiusGeometry _resolveCornerRadius(AppCardCornerMode cornerMode, double radius) => switch (cornerMode) {
+    AppCardCornerMode.all => BorderRadius.circular(radius),
+    AppCardCornerMode.top => BorderRadius.vertical(top: Radius.circular(radius)),
+    AppCardCornerMode.bottom => BorderRadius.vertical(bottom: Radius.circular(radius)),
+    AppCardCornerMode.left => BorderRadius.horizontal(left: Radius.circular(radius)),
+    AppCardCornerMode.right => BorderRadius.horizontal(right: Radius.circular(radius)),
   };
 
   BorderSide _getBorderSide(Color? outline) => BorderSide(color: outline ?? Colors.transparent, width: 1);
@@ -72,9 +82,10 @@ class AppCard extends StatelessWidget {
   factory AppCard.rounded({
     required Widget child,
     double elevation = 0,
-    AppCardBorderRadius radius = AppCardBorderRadius.md,
+    AppCardCornerRadius cornerRadius = AppCardCornerRadius.md,
     AppCardColorRole colorRole = AppCardColorRole.surface,
     AppCardVariant variant = AppCardVariant.filled,
+    AppCardCornerMode cornerMode = AppCardCornerMode.all,
     EdgeInsetsGeometry padding = const EdgeInsets.all(8),
     bool isFullWidth = true,
     double? height,
@@ -85,7 +96,8 @@ class AppCard extends StatelessWidget {
       colorRole: colorRole,
       variant: variant,
       shape: _AppCardShape.rounded,
-      borderRadius: radius,
+      cornerRadius: cornerRadius,
+      cornerMode: cornerMode,
       padding: padding,
       isFullWidth: isFullWidth,
       height: height,
@@ -141,6 +153,8 @@ class AppCard extends StatelessWidget {
 
 enum AppCardVariant { filled, outline, filledOutline }
 
-enum AppCardBorderRadius { sm, md, lg }
+enum AppCardCornerMode { all, top, bottom, left, right }
+
+enum AppCardCornerRadius { sm, md, lg }
 
 enum _AppCardShape { rounded, pill, circle, sharp }

@@ -43,6 +43,13 @@ class AppCardsScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
             ),
+
+            AppCard.rounded(
+              cornerMode: AppCardCornerMode.bottom,
+              cornerRadius: AppCardCornerRadius.lg,
+              height: 150,
+              child: SizedBox.shrink(),
+            ),
           ],
         ),
       ),
