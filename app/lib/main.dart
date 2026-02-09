@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_design_system/flutter_designsystem.dart';
+import 'package:go_router_x/go_router_x.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,6 +11,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return FlutterDsMainScreen();
+    return GoRouterMainScreen();
   }
 }
