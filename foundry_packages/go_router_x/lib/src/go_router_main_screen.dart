@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router_x/src/async_redirection/async_redirection_main_screen.dart';
 import 'package:go_router_x/src/basic_flat_route/flat_route_main_screen.dart';
 import 'package:go_router_x/src/basic_nested_route/nested_route_main_screen.dart';
 import 'package:go_router_x/src/named_route/named_route_main_screen.dart';
@@ -46,6 +47,10 @@ class _App extends StatelessWidget {
         _ActionButton(
           title: 'Redirection',
           onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ProviderScope(child: RedirectionMainScreen()))),
+        ),
+        _ActionButton(
+          title: 'Async Redirection',
+          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ProviderScope(child: AsyncRedirectionMainScreen()))),
         ),
       ],
     );
