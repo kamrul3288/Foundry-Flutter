@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router_x/src/basic_flat_route/flat_route_main_screen.dart';
 import 'package:go_router_x/src/basic_nested_route/nested_route_main_screen.dart';
+import 'package:go_router_x/src/named_route/named_route_main_screen.dart';
 
 class GoRouterMainScreen extends StatelessWidget {
   const GoRouterMainScreen({super.key});
@@ -30,6 +31,10 @@ class _App extends StatelessWidget {
         _ActionButton(
           title: 'Basic Nested Route',
           onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const NestedRouteMainScreen())),
+        ),
+        _ActionButton(
+          title: 'Named Route',
+          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const NamedRouteMainScreen())),
         ),
       ],
     );

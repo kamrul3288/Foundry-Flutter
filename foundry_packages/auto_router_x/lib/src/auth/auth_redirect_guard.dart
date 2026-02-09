@@ -4,7 +4,7 @@ import 'package:auto_router_x/src/auth/auth_config.dart';
 import 'package:auto_router_x/src/auth/auth_cubit.dart';
 import 'package:auto_router_x/src/router/app_router.gr.dart';
 
-import '../router/app_router.dart';
+import 'package:auto_router_x/src/router/app_router.dart';
 
 final class AuthGuard extends AutoRouteGuard {
   final AuthCubit _authCubit;
@@ -16,7 +16,6 @@ final class AuthGuard extends AutoRouteGuard {
 
   AuthGuard(AuthCubit authCubit) : _authCubit = authCubit;
 
-
   // Central place to start the flow only once
   void _startAuthFlowIfNeeded(StackRouter router, NavigationResolver resolver) {
     _pendingResolver = resolver;
@@ -26,7 +25,6 @@ final class AuthGuard extends AutoRouteGuard {
 
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) {
-
     _ensureAuthSubscription(router);
 
     // 0) Let auth-flow routes pass through the global guard
@@ -53,9 +51,9 @@ final class AuthGuard extends AutoRouteGuard {
     _authSubscription = _authCubit.stream.listen((state) async {
       if (!state.isAuthed) return;
 
-      if(_authCubit.authConfig?.viaRedirect == true && _pendingResolver != null){
+      if (_authCubit.authConfig?.viaRedirect == true && _pendingResolver != null) {
         // Clean the whole auth flow stack (safe even if not present)
-        router.removeWhere((route) =>_authRoutes.contains(route.name));
+        router.removeWhere((route) => _authRoutes.contains(route.name));
         _authCubit.clearAuthConfig();
         _pendingResolver?.next();
       }
@@ -64,18 +62,16 @@ final class AuthGuard extends AutoRouteGuard {
         router.replaceAll([const NamedRoute(AppRoute.home)]);
       }
 
-      if(_authCubit.authConfig?.fromRoute != null){
+      if (_authCubit.authConfig?.fromRoute != null) {
         router.popUntil((route) => route.settings.name == _authCubit.authConfig?.fromRoute);
       }
 
       _pendingResolver = null;
       _authCubit.clearAuthConfig();
-       await _authSubscription?.cancel();
+      await _authSubscription?.cancel();
       _authSubscription = null;
-
     });
   }
-
 
   void dispose() {
     _authSubscription?.cancel();
