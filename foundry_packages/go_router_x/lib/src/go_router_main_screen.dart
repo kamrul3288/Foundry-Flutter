@@ -8,6 +8,7 @@ import 'package:go_router_x/src/onexit/on_exit_main_screen.dart';
 import 'package:go_router_x/src/path_query_params/path_query_params_main_screen.dart';
 import 'package:go_router_x/src/redirection/redirection_main_screen.dart';
 import 'package:go_router_x/src/shell_route/shell_route_main_screen.dart';
+import 'package:go_router_x/src/shell_route_keys/shell_route_keys_main_screen.dart';
 
 class GoRouterMainScreen extends StatelessWidget {
   const GoRouterMainScreen({super.key});
@@ -61,6 +62,10 @@ class _App extends StatelessWidget {
         _ActionButton(
           title: 'Shell Route',
           onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ProviderScope(child: ShellRouteMainScreen()))),
+        ),
+        _ActionButton(
+          title: 'Shell Route Keys',
+          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ProviderScope(child: ShellRouteKeysMainScreen()))),
         ),
       ],
     );
