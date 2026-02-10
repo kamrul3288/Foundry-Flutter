@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router_x/src/async_redirection/async_redirection_main_screen.dart';
 import 'package:go_router_x/src/basic_flat_route/flat_route_main_screen.dart';
 import 'package:go_router_x/src/basic_nested_route/nested_route_main_screen.dart';
+import 'package:go_router_x/src/dynamic_route/dynamic_route_main_screen.dart';
 import 'package:go_router_x/src/named_route/named_route_main_screen.dart';
 import 'package:go_router_x/src/onexit/on_exit_main_screen.dart';
 import 'package:go_router_x/src/path_query_params/path_query_params_main_screen.dart';
@@ -72,6 +73,10 @@ class _App extends StatelessWidget {
         _ActionButton(
           title: 'Statefull Shell Route',
           onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ProviderScope(child: StatefullShellRouteMainScreen()))),
+        ),
+        _ActionButton(
+          title: 'Dynamic Route',
+          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ProviderScope(child: DynamicRouteMainScreen()))),
         ),
       ],
     );
