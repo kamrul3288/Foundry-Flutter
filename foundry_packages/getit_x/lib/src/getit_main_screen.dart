@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:getit_x/src/async_object_registration_screen.dart';
 import 'package:getit_x/src/object_registration_screen.dart';
 
 class GetitMainScreen extends StatelessWidget {
@@ -14,6 +15,10 @@ class GetitMainScreen extends StatelessWidget {
               _ActionButton(
                 title: "Object Registration",
                 onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ObjectRegistrationScreen())),
+              ),
+              _ActionButton(
+                title: "Async Object Registration",
+                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => AsyncObjectRegistrationScreen())),
               ),
             ],
           ),
