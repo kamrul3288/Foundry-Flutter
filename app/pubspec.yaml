@@ -16,6 +16,7 @@ dependencies:
   media_picker: ^0.0.1
   dio_x: ^0.0.1
   go_router_x: ^0.0.1
+  getit_x: ^0.0.1
   flutter_design_system: ^0.0.1
   cupertino_icons: ^1.0.8
 
