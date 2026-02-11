@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:getit_x/src/async_object_registration_screen.dart';
-import 'package:getit_x/src/multiple_registration_screen.dart';
-import 'package:getit_x/src/object_registration_screen.dart';
+import 'package:getit_x/src/async_object_registration/async_object_registration_screen.dart';
+import 'package:getit_x/src/multiple_registration/multiple_registration_screen.dart';
+import 'package:getit_x/src/object_registration/object_registration_screen.dart';
+import 'package:getit_x/src/scoping/scopeing_screen.dart';
 
 class GetitMainScreen extends StatelessWidget {
   const GetitMainScreen({super.key});
@@ -24,6 +25,10 @@ class GetitMainScreen extends StatelessWidget {
               _ActionButton(
                 title: "Multiple Object Registration",
                 onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MultipleRegistrationScreen())),
+              ),
+              _ActionButton(
+                title: "Scoping",
+                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ScopingScreen())),
               ),
             ],
           ),
