@@ -9,6 +9,7 @@ workspace:
   - foundry_feat_components/media_picker/
   - foundry_feat_components/flutter_design_system/
   - foundry_packages/getit_x/
+  - foundry_features/go_router_navigation/
 
 environment:
   sdk: ^3.9.2
