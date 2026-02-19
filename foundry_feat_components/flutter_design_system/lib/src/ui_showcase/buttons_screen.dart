@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_design_system/src/components/button/app_button.dart';
+import 'package:flutter_design_system/src/components/button/app_button_types.dart';
+import 'package:flutter_design_system/src/components/button/app_filled_button.dart';
+import 'package:flutter_design_system/src/components/button/app_icon_button.dart';
+import 'package:flutter_design_system/src/components/button/app_outline_button.dart';
+import 'package:flutter_design_system/src/components/button/app_text_button.dart';
 
 class ButtonsScreen extends StatelessWidget {
   const ButtonsScreen({super.key});
@@ -14,63 +18,112 @@ class ButtonsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: 16,
           children: [
-            AppButton.filled(Text("Filled Rounded"), onPressed: () {}),
-            AppButton.outline(Text("Outline Rounded"), onPressed: () {}),
-
-            AppButton.filled(
-              Text("Filled Pilled"),
+            ///========================== App filled button ========================
+            AppFilledButton.text(
+              "Filled Rounded Button",
               onPressed: () {},
-              shape: AppButtonShape.pill,
-            ),
-
-            AppButton.outline(
-              Text("Filled Circle"),
-              onPressed: () {},
-              shape: AppButtonShape.pill,
-            ),
-
-            AppButton.filled(
-              Text("Filled Rounded"),
-              onPressed: () {},
-              isLoading: true,
             ),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                AppButton.filled(
+                AppFilledButton.icon(
                   Icon(Icons.add),
-                  onPressed: () {},
-                  isFullWidth: false,
-                  shape: AppButtonShape.circle,
-                ),
-                AppButton.outline(
-                  Icon(Icons.add),
-                  onPressed: () {},
-                  isFullWidth: false,
-                  shape: AppButtonShape.circle,
-                ),
-
-                AppButton.text(
-                  "Text Button",
                   onPressed: () {},
                 ),
 
-                AppButton.icon(
-                  Icon(
-                    Icons.check,
-                    size: 32,
-                  ),
+                AppFilledButton.icon(
+                  Icon(Icons.add),
                   onPressed: () {},
+                  style: AppFilledButtonStyle(shape: AppButtonShape.circle),
+                ),
+                AppFilledButton.icon(
+                  Icon(Icons.add),
+                  onPressed: () {},
+                  style: AppFilledButtonStyle(shape: AppButtonShape.pill),
                 ),
               ],
             ),
 
-            AppButton.filled(
-              Text("Filled Pilled"),
+            AppFilledButton.text(
+              "Filled Rounded Button",
               onPressed: () {},
-              shape: AppButtonShape.pill,
-              leading: Icon(Icons.check),
+              isLoading: true,
+            ),
+
+            ///========================== App outline button ========================
+            SizedBox(height: 24),
+            AppOutlineButton.text(
+              "Outline Rounded Button",
+              onPressed: () {},
+            ),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                AppOutlineButton.icon(
+                  Icon(Icons.add),
+                  onPressed: () {},
+                ),
+
+                AppOutlineButton.icon(
+                  Icon(Icons.add),
+                  onPressed: () {},
+                  style: AppOutlineButtonStyle(shape: AppButtonShape.circle),
+                ),
+                AppOutlineButton.icon(
+                  Icon(Icons.add),
+                  onPressed: () {},
+                  style: AppOutlineButtonStyle(shape: AppButtonShape.pill),
+                ),
+              ],
+            ),
+
+            AppOutlineButton.text(
+              "Outline Rounded Button",
+              onPressed: () {},
+              isLoading: true,
+            ),
+
+            ///========================== App text button ========================
+            SizedBox(height: 24),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                AppTextButton(
+                  "Text Button",
+                  onPressed: () {},
+                ),
+
+                AppTextButton(
+                  "Text Button",
+                  onPressed: () {},
+                  isLoading: true,
+                ),
+
+                AppTextButton(
+                  "Logout",
+                  onPressed: () {},
+                  style: AppTextButtonStyle(leading: Icon(Icons.logout)),
+                ),
+              ],
+            ),
+
+            ///========================== App icon button ========================
+            SizedBox(height: 24),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                AppIconButton(
+                  Icon(Icons.logout, size: 24),
+                  onPressed: () {},
+                ),
+
+                AppIconButton(
+                  Icon(Icons.login, size: 24),
+                  onPressed: () {},
+                ),
+              ],
             ),
           ],
         ),

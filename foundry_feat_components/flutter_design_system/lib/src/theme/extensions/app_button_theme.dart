@@ -9,12 +9,10 @@ final class AppButtonTheme extends ThemeExtension<AppButtonTheme> {
   const AppButtonTheme({required this.primary});
 
   factory AppButtonTheme.light() => AppButtonTheme(
-    primary: AppButtonColor.init(AppColors.purple500),
+    primary: AppButtonColor.create(AppColors.purple500),
   );
 
-  factory AppButtonTheme.dark() => AppButtonTheme(
-    primary: AppButtonColor.init(AppColors.purple500),
-  );
+  factory AppButtonTheme.dark() => AppButtonTheme.light();
 
   @override
   ThemeExtension<AppButtonTheme> copyWith() => this;

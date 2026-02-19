@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router_navigation/go_router_navigation.dart';
+import 'package:flutter_design_system/flutter_designsystem.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,6 +10,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GoRouterNavigationApp();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: FlutterDsMainScreen(),
+    );
   }
 }

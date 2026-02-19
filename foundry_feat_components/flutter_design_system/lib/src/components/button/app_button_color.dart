@@ -3,25 +3,25 @@ import 'package:flutter/material.dart';
 final class AppButtonColor {
   final Color background;
   final Color foreground;
-  final Color? outline;
+  final Color outline;
   final Color? outlineForeground;
 
   const AppButtonColor({
     required this.background,
     required this.foreground,
-    this.outline,
+    required this.outline,
     this.outlineForeground,
   });
 
-  factory AppButtonColor.init(
-    Color background, {
+  factory AppButtonColor.create(
+    Color primary, {
     Color foreground = Colors.white,
     Color? outline,
     Color? outlineForeground,
   }) => AppButtonColor(
-    background: background,
+    background: primary,
     foreground: foreground,
-    outline: outline,
+    outline: outline ?? primary,
     outlineForeground: outlineForeground,
   );
 }
