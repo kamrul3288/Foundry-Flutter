@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:clean_architecture_bloc/src/data/client/rest_client.dart';
 import 'package:clean_architecture_bloc/src/data/client/rest_client_executor.dart';
 import 'package:clean_architecture_bloc/src/data/dto/authentication_dto.dart';
@@ -8,6 +9,7 @@ import 'package:clean_architecture_bloc/src/domain/entity/authentication_entity.
 import 'package:clean_architecture_bloc/src/domain/entity/user_entity.dart';
 import 'package:clean_architecture_bloc/src/domain/repository/auth_repository.dart';
 import 'package:clean_architecture_bloc/src/domain/utils/result.dart';
+import 'package:flutter/services.dart';
 
 final class AuthRepoImpl extends AuthRepository with RestClientExecutor {
   final RestClient _restClient;
@@ -16,10 +18,9 @@ final class AuthRepoImpl extends AuthRepository with RestClientExecutor {
   @override
   Future<Result<AuthenticationEntity>> login(String phone, String password) {
     return execute(() async {
-      final response = await _restClient.post(
-        '/login',
-        data: {'phone': phone, 'password': password},
-      );
+      await Future.delayed(const Duration(seconds: 3));
+      final jsonString = await rootBundle.loadString('assets/mock/login.json');
+      final response = jsonDecode(jsonString);
       return AuthenticationDto.fromJson(response).toAuthenticationEntity;
     });
   }
@@ -27,7 +28,9 @@ final class AuthRepoImpl extends AuthRepository with RestClientExecutor {
   @override
   Future<Result<UserEntity>> getProfile() {
     return execute(() async {
-      final response = await _restClient.get('/profile');
+      await Future.delayed(const Duration(seconds: 3));
+      final jsonString = await rootBundle.loadString('assets/mock/profile.json');
+      final response = jsonDecode(jsonString);
       return UserDto.fromJson(response).toUserEntity;
     });
   }
