@@ -10,9 +10,10 @@ workspace:
   - foundry_feat_components/flutter_design_system/
   - foundry_packages/getit_x/
   - foundry_features/go_router_navigation/
+  - foundry_features/clean_architecture/
 
 environment:
-  sdk: ^3.9.2
+  sdk: ^3.11.0
 
 dev_dependencies:
   melos: ^7.4.0
@@ -24,13 +25,13 @@ melos:
   command:
     bootstrap:
       environment:
-        sdk: ^3.9.2
+        sdk: ^3.11.0
 
       dependencies:
         flutter_secure_storage: ^10.0.0
         flutter_bloc: ^9.1.1
-        flutter_riverpod: ^3.2.0
-        riverpod_annotation: ^4.0.1
+        flutter_riverpod: ^3.2.1
+        riverpod_annotation: ^4.0.2
         get_it: ^9.2.0
         cupertino_icons: ^1.0.8
         shared_preferences: ^2.5.4
@@ -44,24 +45,24 @@ melos:
         url_launcher: ^6.3.2
         webview_flutter: ^4.13.1
         json_annotation: ^4.10.0
-        envied: ^1.3.2
-        flutter_local_notifications: ^20.0.0
+        envied: ^1.3.3
+        flutter_local_notifications: ^20.1.0
         intl: ^0.20.2
         freezed_annotation: ^3.1.0
-        carousel_slider: ^5.1.1
+        carousel_slider: ^5.1.2
         flutter_screenutil: ^5.9.3
         lottie: ^3.3.2
         font_awesome_flutter: ^10.12.0
         flutter_widget_from_html: ^0.17.1
         logger: ^2.6.2
-        yaml_edit: ^2.2.3
+        yaml_edit: ^2.2.4
         dio: ^5.9.1
-        go_router: ^17.0.1
+        go_router: ^17.1.0
         flutter_inappwebview: ^6.1.5
         background_downloader: ^9.5.2
         rxdart: ^0.28.0
         flutter_html: ^3.0.0
-        google_maps_flutter: ^2.14.0
+        google_maps_flutter: ^2.14.2
         auto_route: ^11.1.0
         path_provider: ^2.1.5
         path: ^1.9.1
@@ -75,12 +76,12 @@ melos:
         dart_code_linter: ^3.2.1
         melos: ^7.4.0
         json_serializable: ^6.12.0
-        build_runner: ^2.10.5
-        envied_generator: ^1.3.2
-        intl_utils: ^2.8.13
+        build_runner: ^2.11.1
+        envied_generator: ^1.3.3
+        intl_utils: ^2.8.14
         flutter_launcher_icons: ^0.14.4
-        auto_route_generator: ^10.4.0
-        riverpod_generator: ^4.0.2
+        auto_route_generator: ^10.5.0
+        riverpod_generator: ^4.0.3
 
   scripts:
     clean_and_get:
@@ -119,7 +120,7 @@ melos:
 
     update_minor_deps:
       description: Update minor dependencies
-      run: dart run scripts/update_melos_deps.dart
+      run: dart run scripts/update_melos_minor_deps.dart
 
     update_major_deps:
       description: Update major dependencies
