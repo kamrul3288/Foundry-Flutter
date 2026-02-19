@@ -313,6 +313,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  envied:
+    dependency: transitive
+    description:
+      name: envied
+      sha256: "2ca9842c7f513ab527e4f35a58331d6f9a7f90f270b5ba501d73ff2d9fa449ff"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.3.3"
+  envied_generator:
+    dependency: transitive
+    description:
+      name: envied_generator
+      sha256: "4ed57d61dccb8e546a811b6a3dc5ebcef24bdfe60febbbd6fef31342ab15f9e5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.3.3"
+  equatable:
+    dependency: transitive
+    description:
+      name: equatable
+      sha256: "3e0141505477fd8ad55d6eb4e7776d3fe8430be8e497ccb1521370c3f21a3e2b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.8"
   fake_async:
     dependency: transitive
     description:
@@ -528,6 +552,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  fluttertoast:
+    dependency: transitive
+    description:
+      name: fluttertoast
+      sha256: "144ddd74d49c865eba47abe31cbc746c7b311c82d6c32e571fd73c4264b740e2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "9.0.0"
   freezed_annotation:
     dependency: transitive
     description:
@@ -704,6 +736,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.10.0"
+  json_schema:
+    dependency: transitive
+    description:
+      name: json_schema
+      sha256: f37d9c3fdfe8c9aae55fdfd5af815d24ce63c3a0f6a2c1f0982c30f43643fa1a
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.2.2"
+  json_serializable:
+    dependency: transitive
+    description:
+      name: json_serializable
+      sha256: "93fba3ad139dab2b1ce59ecc6fdce6da46a42cdb6c4399ecda30f1e7e725760d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.12.0"
   leak_tracker:
     dependency: transitive
     description:
@@ -1040,6 +1088,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.5.0"
+  quiver:
+    dependency: transitive
+    description:
+      name: quiver
+      sha256: ea0b925899e64ecdfbf9c7becb60d5b50e706ade44a85b2363be2a22d88117d2
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.2.2"
+  recase:
+    dependency: transitive
+    description:
+      name: recase
+      sha256: e4eb4ec2dcdee52dcf99cb4ceabaffc631d7424ee55e56f280bc039737f89213
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.1.0"
+  rfc_6901:
+    dependency: transitive
+    description:
+      name: rfc_6901
+      sha256: "6a43b1858dca2febaf93e15639aa6b0c49ccdfd7647775f15a499f872b018154"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.1"
   riverpod:
     dependency: transitive
     description:
@@ -1117,6 +1189,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.2.0"
+  source_helper:
+    dependency: transitive
+    description:
+      name: source_helper
+      sha256: "4a85e90b50694e652075cbe4575665539d253e6ec10e46e76b45368ab5e3caae"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.3.10"
   source_map_stack_trace:
     dependency: transitive
     description:
@@ -1221,6 +1301,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.0"
+  uri:
+    dependency: transitive
+    description:
+      name: uri
+      sha256: "889eea21e953187c6099802b7b4cf5219ba8f3518f604a1033064d45b1b8268a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   uuid:
     dependency: transitive
     description:

@@ -10,7 +10,7 @@ workspace:
   - foundry_feat_components/flutter_design_system/
   - foundry_packages/getit_x/
   - foundry_features/go_router_navigation/
-  - foundry_features/clean_architecture/
+  - foundry_features/clean_architecture_bloc/
 
 environment:
   sdk: ^3.11.0
