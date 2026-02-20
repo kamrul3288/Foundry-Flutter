@@ -1,3 +1,4 @@
+import 'package:clean_architecture_bloc/src/router/app_router.dart';
 import 'package:flutter/material.dart';
 
 class CleanArchitectureBlocApp extends StatelessWidget {
@@ -5,15 +6,13 @@ class CleanArchitectureBlocApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: _App());
-  }
-}
-
-class _App extends StatelessWidget {
-  const _App();
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
+    return MaterialApp.router(
+      title: 'Foundry Flutter',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      routerConfig: appRouter,
+    );
   }
 }

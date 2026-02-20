@@ -20,6 +20,7 @@ dependencies:
   flutter_design_system: ^0.0.1
   cupertino_icons: ^1.0.8
   go_router_navigation: ^1.0.0
+  clean_architecture_bloc: ^1.0.0
 
 dev_dependencies:
   flutter_test:
