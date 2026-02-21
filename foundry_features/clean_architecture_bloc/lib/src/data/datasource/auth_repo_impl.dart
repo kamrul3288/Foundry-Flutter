@@ -12,6 +12,7 @@ import 'package:clean_architecture_bloc/src/domain/utils/result.dart';
 import 'package:flutter/services.dart';
 
 final class AuthRepoImpl extends AuthRepository with RestClientExecutor {
+  // ignore: unused_field
   final RestClient _restClient;
   AuthRepoImpl(this._restClient);
 
