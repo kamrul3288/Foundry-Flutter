@@ -5,3 +5,4 @@ targets:
         options:
           build_extensions:
             "^lib/src/data/dto/{{}}.dart": "lib/src/data/generated/{{}}.g.dart"
+            "^lib/src/env/{{}}.dart": "lib/src/env/{{}}.g.dart"
