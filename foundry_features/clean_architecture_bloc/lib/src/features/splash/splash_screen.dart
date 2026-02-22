@@ -36,11 +36,12 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: BlocListener<SplashCubit, SplashState>(
         listener: (context, state) => _handleUiEventListener(context, state.uiEvent),
-        child: BlocSelector<SplashCubit, SplashState, SplashUiState>(
-          selector: (state) => state.uiState,
-          builder: (context, uiState) {
-            if (uiState == SplashUiState.error) {
+        child: BlocSelector<SplashCubit, SplashState, ({SplashUiState uiState, String? errorMessage})>(
+          selector: (state) => (uiState: state.uiState, errorMessage: state.errorMessage),
+          builder: (context, state) {
+            if (state.uiState == SplashUiState.error) {
               return NetworkErrorScreen(
+                message: state.errorMessage,
                 onRetry: () => context.read<SplashCubit>().checkUserAhrorization(),
               );
             } else {

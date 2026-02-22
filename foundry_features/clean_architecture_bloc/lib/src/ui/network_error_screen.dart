@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
 class NetworkErrorScreen extends StatefulWidget {
+  final String? title;
+  final String? message;
   final VoidCallback? onRetry;
 
-  const NetworkErrorScreen({
-    super.key,
-    this.onRetry,
-  });
+  const NetworkErrorScreen({super.key, this.title, this.message, this.onRetry});
 
   @override
   State<NetworkErrorScreen> createState() => _NetworkErrorScreenState();
@@ -19,14 +18,8 @@ class _NetworkErrorScreenState extends State<NetworkErrorScreen> with SingleTick
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 2),
-    )..repeat(reverse: true);
-
-    _floatAnimation = Tween<double>(begin: -10, end: 10).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOutSine),
-    );
+    _controller = AnimationController(vsync: this, duration: const Duration(seconds: 2))..repeat(reverse: true);
+    _floatAnimation = Tween<double>(begin: -10, end: 10).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutSine));
   }
 
   @override
@@ -49,146 +42,47 @@ class _NetworkErrorScreenState extends State<NetworkErrorScreen> with SingleTick
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const Spacer(flex: 2),
+              const Spacer(flex: 1),
 
-              // Animated Icon Hero
-              TweenAnimationBuilder<double>(
-                tween: Tween(begin: 0.0, end: 1.0),
-                duration: const Duration(milliseconds: 800),
-                curve: Curves.easeOutBack,
-                builder: (context, value, child) {
-                  return Transform.scale(
-                    scale: value,
-                    child: Opacity(
-                      opacity: value.clamp(0.0, 1.0),
-                      child: child,
-                    ),
-                  );
-                },
-                child: AnimatedBuilder(
-                  animation: _floatAnimation,
-                  builder: (context, child) {
-                    return Transform.translate(
-                      offset: Offset(0, _floatAnimation.value),
-                      child: child,
-                    );
-                  },
-                  child: Center(
-                    child: Container(
-                      height: 200,
-                      width: 200,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: colorScheme.errorContainer.withValues(alpha: 0.5),
-                        boxShadow: [
-                          BoxShadow(
-                            color: colorScheme.error.withValues(alpha: 0.2),
-                            blurRadius: 40,
-                            spreadRadius: 10,
-                          ),
-                        ],
-                      ),
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          Positioned(
-                            top: 50,
-                            right: 50,
-                            child: Icon(
-                              Icons.language_outlined,
-                              size: 30,
-                              color: colorScheme.error.withValues(alpha: 0.5),
-                            ),
-                          ),
-                          Positioned(
-                            bottom: 45,
-                            left: 45,
-                            child: Icon(
-                              Icons.signal_wifi_bad_rounded,
-                              size: 30,
-                              color: colorScheme.error.withValues(alpha: 0.3),
-                            ),
-                          ),
-                          Icon(
-                            Icons.cloud_off_rounded,
-                            size: 80,
-                            color: colorScheme.error,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              // ১. Animated Icon Hero
+              _AnimatedIconHero(floatAnimation: _floatAnimation),
 
-              const SizedBox(height: 56),
+              const Spacer(flex: 1),
 
-              // Error Title
-              TweenAnimationBuilder<double>(
-                tween: Tween(begin: 0.0, end: 1.0),
+              // ২. Error Title
+              StaggeredFadeSlide(
+                delay: 0.0,
                 duration: const Duration(milliseconds: 600),
-                curve: Curves.easeOutCubic,
-                builder: (context, value, child) {
-                  return Transform.translate(
-                    offset: Offset(0, 20 * (1 - value)),
-                    child: Opacity(
-                      opacity: value,
-                      child: child,
-                    ),
-                  );
-                },
                 child: Text(
-                  'Connection Lost',
+                  widget.title ?? 'Connection Error',
                   textAlign: TextAlign.center,
                   style: theme.textTheme.headlineLarge?.copyWith(
                     fontWeight: FontWeight.w800,
                     color: colorScheme.onSurface,
-                    letterSpacing: -0.5,
                   ),
                 ),
               ),
 
-              const SizedBox(height: 16),
-
-              // Error Message
-              TweenAnimationBuilder<double>(
-                tween: Tween(begin: 0.0, end: 1.0),
+              // ৩. Error Message (20% Delay)
+              StaggeredFadeSlide(
+                delay: 0.2,
                 duration: const Duration(milliseconds: 600),
-                curve: Curves.easeOutCubic,
-                builder: (context, value, child) {
-                  final adjustedValue = (value - 0.2).clamp(0.0, 1.0) * (1 / 0.8);
-                  return Transform.translate(
-                    offset: Offset(0, 20 * (1 - adjustedValue)),
-                    child: Opacity(
-                      opacity: adjustedValue,
-                      child: child,
-                    ),
-                  );
-                },
                 child: Text(
-                  'It seems we\'ve lost the signal. Please check your internet connection and try again.',
+                  widget.message ?? 'Something went wrong. Please try again.',
                   textAlign: TextAlign.center,
+                  style: theme.textTheme.bodyLarge?.copyWith(
+                    color: colorScheme.onSurface,
+                  ),
                 ),
               ),
 
               const Spacer(flex: 2),
 
-              // Retry Button
+              // ৪. Retry Button (40% Delay)
               if (widget.onRetry != null) ...[
-                TweenAnimationBuilder<double>(
-                  tween: Tween(begin: 0.0, end: 1.0),
+                StaggeredFadeSlide(
+                  delay: 0.4,
                   duration: const Duration(milliseconds: 800),
-                  curve: Curves.easeOutCubic,
-                  builder: (context, value, child) {
-                    final adjustedValue = (value - 0.4).clamp(0.0, 1.0) * (1 / 0.6);
-                    return Transform.translate(
-                      offset: Offset(0, 20 * (1 - adjustedValue)),
-                      child: Opacity(
-                        opacity: adjustedValue,
-                        child: child,
-                      ),
-                    );
-                  },
                   child: ElevatedButton(
                     onPressed: widget.onRetry,
                     style: ElevatedButton.styleFrom(
@@ -198,22 +92,134 @@ class _NetworkErrorScreenState extends State<NetworkErrorScreen> with SingleTick
                       elevation: 8,
                       shadowColor: colorScheme.primary.withValues(alpha: 0.5),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(10),
                       ),
                     ),
                     child: const Text(
                       'Try Again',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 0.5,
-                      ),
+                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
                 const SizedBox(height: 32),
               ],
             ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class StaggeredFadeSlide extends StatelessWidget {
+  final Widget child;
+  final double delay;
+  final Duration duration;
+
+  const StaggeredFadeSlide({
+    super.key,
+    required this.child,
+    required this.delay,
+    required this.duration,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final double remainingTime = 1.0 - delay;
+
+    return TweenAnimationBuilder<double>(
+      tween: Tween(begin: 0.0, end: 1.0),
+      duration: duration,
+      curve: Curves.easeOutCubic,
+      builder: (context, value, child) {
+        final adjustedValue = (value - delay).clamp(0.0, 1.0) * (1 / remainingTime);
+
+        return Transform.translate(
+          offset: Offset(0, 20 * (1 - adjustedValue)),
+          child: Opacity(
+            opacity: adjustedValue,
+            child: child,
+          ),
+        );
+      },
+      child: child,
+    );
+  }
+}
+
+class _AnimatedIconHero extends StatelessWidget {
+  final Animation<double> floatAnimation;
+
+  const _AnimatedIconHero({required this.floatAnimation});
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
+    return TweenAnimationBuilder<double>(
+      tween: Tween(begin: 0.0, end: 1.0),
+      duration: const Duration(milliseconds: 800),
+      curve: Curves.easeOutBack,
+      builder: (context, value, child) {
+        return Transform.scale(
+          scale: value,
+          child: Opacity(
+            opacity: value.clamp(0.0, 1.0),
+            child: child,
+          ),
+        );
+      },
+      child: AnimatedBuilder(
+        animation: floatAnimation,
+        builder: (context, child) {
+          return Transform.translate(
+            offset: Offset(0, floatAnimation.value),
+            child: child,
+          );
+        },
+        child: Center(
+          child: Container(
+            height: 200,
+            width: 200,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: colorScheme.errorContainer.withValues(alpha: 0.5),
+              boxShadow: [
+                BoxShadow(
+                  color: colorScheme.error.withValues(alpha: 0.2),
+                  blurRadius: 40,
+                  spreadRadius: 10,
+                ),
+              ],
+            ),
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Positioned(
+                  top: 50,
+                  right: 50,
+                  child: Icon(
+                    Icons.language_outlined,
+                    size: 30,
+                    color: colorScheme.error.withValues(alpha: 0.5),
+                  ),
+                ),
+                Positioned(
+                  bottom: 45,
+                  left: 45,
+                  child: Icon(
+                    Icons.signal_wifi_bad_rounded,
+                    size: 30,
+                    color: colorScheme.error.withValues(alpha: 0.3),
+                  ),
+                ),
+                Icon(
+                  Icons.cloud_off_rounded,
+                  size: 80,
+                  color: colorScheme.error,
+                ),
+              ],
+            ),
           ),
         ),
       ),

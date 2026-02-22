@@ -17,7 +17,7 @@ class SplashCubit extends Cubit<SplashState> {
       fetchUserProfile();
     } else {
       await Future.delayed(const Duration(seconds: 2));
-      emit(SplashState(uiEvent: SplashUiEvent.unauthorized));
+      emit(state.copyWith(uiEvent: SplashUiEvent.unauthorized));
     }
   }
 
