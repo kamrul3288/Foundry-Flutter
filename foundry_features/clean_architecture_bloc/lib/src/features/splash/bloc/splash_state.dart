@@ -20,7 +20,7 @@ final class SplashState extends Equatable {
     return SplashState(
       uiState: uiState ?? this.uiState,
       uiEvent: clearEvent ? null : (uiEvent ?? this.uiEvent),
-      errorMessage: errorMessage ?? this.errorMessage,
+      errorMessage: errorMessage,
     );
   }
 

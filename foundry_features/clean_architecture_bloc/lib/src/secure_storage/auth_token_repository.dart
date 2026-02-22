@@ -4,7 +4,7 @@ abstract class AuthTokenRepository {
   Future<void> saveToken({required String accessToken, required String refreshToken});
   Future<String?> get accessToken;
   Future<String?> get refreshToken;
-  Future<bool> isAuthenticated();
+  Future<bool> isUserAuthorized();
   Future<void> deleteAll();
 }
 
@@ -25,7 +25,7 @@ final class AuthTokenRepositoryImpl implements AuthTokenRepository {
   Future<String?> get refreshToken => _service.read('refresh_token');
 
   @override
-  Future<bool> isAuthenticated() async {
+  Future<bool> isUserAuthorized() async {
     return (await accessToken != null) && (await refreshToken != null);
   }
 

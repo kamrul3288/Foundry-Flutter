@@ -20,7 +20,7 @@ final class AuthRepoImpl extends AuthRepository with RestClientExecutor {
   Future<Result<AuthenticationEntity>> login(String phone, String password) {
     return execute(() async {
       await Future.delayed(const Duration(seconds: 3));
-      final jsonString = await rootBundle.loadString('assets/mock/login.json');
+      final jsonString = await rootBundle.loadString('packages/clean_architecture_bloc/assets/mock/login.json');
       final response = jsonDecode(jsonString);
       return AuthenticationDto.fromJson(response).toAuthenticationEntity;
     });
@@ -30,7 +30,7 @@ final class AuthRepoImpl extends AuthRepository with RestClientExecutor {
   Future<Result<UserEntity>> getProfile() {
     return execute(() async {
       await Future.delayed(const Duration(seconds: 3));
-      final jsonString = await rootBundle.loadString('assets/mock/profile.json');
+      final jsonString = await rootBundle.loadString('packages/clean_architecture_bloc/assets/mock/profile.json');
       final response = jsonDecode(jsonString);
       return UserDto.fromJson(response).toUserEntity;
     });

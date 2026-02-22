@@ -1,4 +1,9 @@
+import 'package:clean_architecture_bloc/src/features/splash/bloc/splash_cubit.dart';
+import 'package:clean_architecture_bloc/src/features/splash/splash_body.dart';
+import 'package:clean_architecture_bloc/src/router/app_route_name.dart';
+import 'package:clean_architecture_bloc/src/ui/network_error_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -12,56 +17,36 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    _checkAuth();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<SplashCubit>().checkUserAhrorization();
+    });
   }
 
-  Future<void> _checkAuth() async {
-    // Artificial delay to simulate initialization or token check
-    await Future.delayed(const Duration(seconds: 5));
-
-    if (!mounted) return;
-
-    // For now, redirect to login by default.
-    // Later, integrate AuthTokenRepository.
-    context.go('/login');
+  void _handleUiEventListener(BuildContext context, SplashUiEvent? uiEvent) {
+    if (uiEvent == null) return;
+    if (uiEvent == SplashUiEvent.authorized) {
+      context.goNamed(AppRouteName.posts);
+    } else if (uiEvent == SplashUiEvent.unauthorized) {
+      context.goNamed(AppRouteName.login);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Theme.of(context).colorScheme.primary,
-              Theme.of(context).colorScheme.secondary,
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(
-              Icons.account_tree_rounded,
-              size: 100,
-              color: Colors.white,
-            ),
-            const SizedBox(height: 24),
-            Text(
-              'Clean Architecture',
-              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 48),
-            const CircularProgressIndicator(
-              color: Colors.white,
-            ),
-          ],
+      body: BlocListener<SplashCubit, SplashState>(
+        listener: (context, state) => _handleUiEventListener(context, state.uiEvent),
+        child: BlocSelector<SplashCubit, SplashState, SplashUiState>(
+          selector: (state) => state.uiState,
+          builder: (context, uiState) {
+            if (uiState == SplashUiState.error) {
+              return NetworkErrorScreen(
+                onRetry: () => context.read<SplashCubit>().checkUserAhrorization(),
+              );
+            } else {
+              return const SplashBody();
+            }
+          },
         ),
       ),
     );
