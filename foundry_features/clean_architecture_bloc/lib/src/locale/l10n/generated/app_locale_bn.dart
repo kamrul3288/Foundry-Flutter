@@ -10,35 +10,35 @@ class AppLocaleBn extends AppLocale {
 
   @override
   String get message_no_internet =>
-      'Seems like you\'re offline, please check your connection and try again.';
+      'মনে হচ্ছে আপনি অফলাইনে আছেন, দয়া করে আপনার কানেকশন চেক করুন এবং আবার চেষ্টা করুন।';
 
   @override
   String get message_connection_timeout =>
-      'Connection timeout, please try again later.';
+      'কানেকশন টাইমআউট, দয়া করে পরে আবার চেষ্টা করুন।';
 
   @override
   String get message_unknown_error =>
-      'An unknown error occurred, please try again later.';
+      'একটি অজানা ত্রুটি ঘটেছে, দয়া করে পরে আবার চেষ্টা করুন।';
 
   @override
   String get message_something_went_wrong =>
-      'Something went wrong, please try again later.';
+      'কিছু একটা ভুল হয়েছে, দয়া করে পরে আবার চেষ্টা করুন।';
 
   @override
-  String get title_welcome_back => 'Welcome back';
+  String get title_welcome_back => 'স্বাগতম';
 
   @override
-  String get message_signin => 'Please sign in to continue';
+  String get message_signin => 'এগিয়ে যেতে দয়া করে সাইন ইন করুন';
 
   @override
-  String get hint_email => 'Email';
+  String get hint_email => 'ইমেইল';
 
   @override
-  String get hint_password => 'Password';
+  String get hint_password => 'পাসওয়ার্ড';
 
   @override
-  String get button_signin => 'Sign in';
+  String get button_signin => 'সাইন ইন';
 
   @override
-  String get button_forgot_password => 'Forgot password?';
+  String get button_forgot_password => 'পাসওয়ার্ড ভুলে গেছেন?';
 }

@@ -1,13 +1,13 @@
 {
     "@@locale": "bn",
-    "message_no_internet": "Seems like you're offline, please check your connection and try again.",
-    "message_connection_timeout": "Connection timeout, please try again later.",
-    "message_unknown_error": "An unknown error occurred, please try again later.",
-    "message_something_went_wrong": "Something went wrong, please try again later.",
-    "title_welcome_back": "Welcome back",
-    "message_signin": "Please sign in to continue",
-    "hint_email": "Email",
-    "hint_password": "Password",
-    "button_signin": "Sign in",
-    "button_forgot_password": "Forgot password?"
+    "message_no_internet": "মনে হচ্ছে আপনি অফলাইনে আছেন, দয়া করে আপনার কানেকশন চেক করুন এবং আবার চেষ্টা করুন।",
+    "message_connection_timeout": "কানেকশন টাইমআউট, দয়া করে পরে আবার চেষ্টা করুন।",
+    "message_unknown_error": "একটি অজানা ত্রুটি ঘটেছে, দয়া করে পরে আবার চেষ্টা করুন।",
+    "message_something_went_wrong": "কিছু একটা ভুল হয়েছে, দয়া করে পরে আবার চেষ্টা করুন।",
+    "title_welcome_back": "স্বাগতম",
+    "message_signin": "এগিয়ে যেতে দয়া করে সাইন ইন করুন",
+    "hint_email": "ইমেইল",
+    "hint_password": "পাসওয়ার্ড",
+    "button_signin": "সাইন ইন",
+    "button_forgot_password": "পাসওয়ার্ড ভুলে গেছেন?"
 }
