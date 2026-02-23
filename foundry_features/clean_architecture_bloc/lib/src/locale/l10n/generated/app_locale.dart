@@ -5,24 +5,24 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
-import 'app_localizations_bn.dart';
-import 'app_localizations_en.dart';
+import 'app_locale_bn.dart';
+import 'app_locale_en.dart';
 
 // ignore_for_file: type=lint
 
-/// Callers can lookup localized strings with an instance of AppLocalizations
-/// returned by `AppLocalizations.of(context)`.
+/// Callers can lookup localized strings with an instance of AppLocale
+/// returned by `AppLocale.of(context)`.
 ///
-/// Applications need to include `AppLocalizations.delegate()` in their app's
+/// Applications need to include `AppLocale.delegate()` in their app's
 /// `localizationDelegates` list, and the locales they support in the app's
 /// `supportedLocales` list. For example:
 ///
 /// ```dart
-/// import 'generated/app_localizations.dart';
+/// import 'generated/app_locale.dart';
 ///
 /// return MaterialApp(
-///   localizationsDelegates: AppLocalizations.localizationsDelegates,
-///   supportedLocales: AppLocalizations.supportedLocales,
+///   localizationsDelegates: AppLocale.localizationsDelegates,
+///   supportedLocales: AppLocale.supportedLocales,
 ///   home: MyApplicationHome(),
 /// );
 /// ```
@@ -59,20 +59,19 @@ import 'app_localizations_en.dart';
 /// Select and expand the newly-created Localizations item then, for each
 /// locale your application supports, add a new item and select the locale
 /// you wish to add from the pop-up menu in the Value field. This list should
-/// be consistent with the languages listed in the AppLocalizations.supportedLocales
+/// be consistent with the languages listed in the AppLocale.supportedLocales
 /// property.
-abstract class AppLocalizations {
-  AppLocalizations(String locale)
+abstract class AppLocale {
+  AppLocale(String locale)
     : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
-  static AppLocalizations? of(BuildContext context) {
-    return Localizations.of<AppLocalizations>(context, AppLocalizations);
+  static AppLocale? of(BuildContext context) {
+    return Localizations.of<AppLocale>(context, AppLocale);
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate =
-      _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocale> delegate = _AppLocaleDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -105,13 +104,12 @@ abstract class AppLocalizations {
   String get message_no_internet;
 }
 
-class _AppLocalizationsDelegate
-    extends LocalizationsDelegate<AppLocalizations> {
-  const _AppLocalizationsDelegate();
+class _AppLocaleDelegate extends LocalizationsDelegate<AppLocale> {
+  const _AppLocaleDelegate();
 
   @override
-  Future<AppLocalizations> load(Locale locale) {
-    return SynchronousFuture<AppLocalizations>(lookupAppLocalizations(locale));
+  Future<AppLocale> load(Locale locale) {
+    return SynchronousFuture<AppLocale>(lookupAppLocale(locale));
   }
 
   @override
@@ -119,20 +117,20 @@ class _AppLocalizationsDelegate
       <String>['bn', 'en'].contains(locale.languageCode);
 
   @override
-  bool shouldReload(_AppLocalizationsDelegate old) => false;
+  bool shouldReload(_AppLocaleDelegate old) => false;
 }
 
-AppLocalizations lookupAppLocalizations(Locale locale) {
+AppLocale lookupAppLocale(Locale locale) {
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
     case 'bn':
-      return AppLocalizationsBn();
+      return AppLocaleBn();
     case 'en':
-      return AppLocalizationsEn();
+      return AppLocaleEn();
   }
 
   throw FlutterError(
-    'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+    'AppLocale.delegate failed to load unsupported locale "$locale". This is likely '
     'an issue with the localizations generation tool. Please file an issue '
     'on GitHub with a reproducible sample app and the gen-l10n configuration '
     'that was used.',

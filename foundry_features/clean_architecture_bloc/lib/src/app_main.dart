@@ -1,6 +1,6 @@
 import 'package:clean_architecture_bloc/src/di/app_di_module.dart';
 import 'package:clean_architecture_bloc/src/locale/cubit/locale_cubit.dart';
-import 'package:clean_architecture_bloc/src/locale/l10n/generated/app_localizations.dart';
+import 'package:clean_architecture_bloc/src/locale/l10n/generated/app_locale.dart';
 import 'package:clean_architecture_bloc/src/router/app_router.dart';
 import 'package:clean_architecture_bloc/src/secure_storage/repository/app_data_repository.dart';
 import 'package:flutter/material.dart';
@@ -62,7 +62,7 @@ class _App extends StatelessWidget {
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
-            AppLocalizations.delegate,
+            AppLocale.delegate,
           ],
           supportedLocales: const [
             Locale('en', 'US'),

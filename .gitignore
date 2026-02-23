@@ -47,3 +47,4 @@ app.*.map.json
 /app/.ta-cli-ios.json
 /app/build/*
 /app/android/build/*
+foundry_features/clean_architecture_bloc/build/*
