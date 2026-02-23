@@ -102,6 +102,60 @@ abstract class AppLocale {
   /// In en, this message translates to:
   /// **'Seems like you\'re offline, please check your connection and try again.'**
   String get message_no_internet;
+
+  /// No description provided for @message_connection_timeout.
+  ///
+  /// In en, this message translates to:
+  /// **'Connection timeout, please try again later.'**
+  String get message_connection_timeout;
+
+  /// No description provided for @message_unknown_error.
+  ///
+  /// In en, this message translates to:
+  /// **'An unknown error occurred, please try again later.'**
+  String get message_unknown_error;
+
+  /// No description provided for @message_something_went_wrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong, please try again later.'**
+  String get message_something_went_wrong;
+
+  /// No description provided for @title_welcome_back.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome back'**
+  String get title_welcome_back;
+
+  /// No description provided for @message_signin.
+  ///
+  /// In en, this message translates to:
+  /// **'Please sign in to continue'**
+  String get message_signin;
+
+  /// No description provided for @hint_email.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get hint_email;
+
+  /// No description provided for @hint_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get hint_password;
+
+  /// No description provided for @button_signin.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in'**
+  String get button_signin;
+
+  /// No description provided for @button_forgot_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot password?'**
+  String get button_forgot_password;
 }
 
 class _AppLocaleDelegate extends LocalizationsDelegate<AppLocale> {
