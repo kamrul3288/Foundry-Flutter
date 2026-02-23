@@ -1,5 +1,5 @@
 import 'package:clean_architecture_bloc/src/domain/repository/auth_repository.dart';
-import 'package:clean_architecture_bloc/src/secure_storage/auth_token_repository.dart';
+import 'package:clean_architecture_bloc/src/secure_storage/repository/auth_token_repository.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

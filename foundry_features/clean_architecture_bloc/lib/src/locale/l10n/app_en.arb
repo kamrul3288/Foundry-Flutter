@@ -1,0 +1,7 @@
+{
+    "@@locale": "en",
+    "message_no_internet": "Seems like you're offline, please check your connection and try again.",
+    "@message_no_internet": {
+        "description": "Error message shown when the user has no active internet connection"
+    }
+}
