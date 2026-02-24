@@ -1,17 +1,25 @@
+import 'package:clean_architecture_bloc/src/features/login/bloc/login_cubit.dart';
 import 'package:clean_architecture_bloc/src/locale/cubit/locale_cubit.dart';
 import 'package:clean_architecture_bloc/src/locale/extensions/app_locale_extension.dart';
+import 'package:clean_architecture_bloc/src/locale/extensions/app_locale_key_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formz/formz.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => LoginCubit(),
+      child: const _LoginView(),
+    );
+  }
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  final _formKey = GlobalKey<FormState>();
+class _LoginView extends StatelessWidget {
+  const _LoginView();
 
   @override
   Widget build(BuildContext context) {
@@ -22,65 +30,38 @@ class _LoginScreenState extends State<LoginScreen> {
             Center(
               child: SingleChildScrollView(
                 padding: const EdgeInsets.all(24.0),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Icon(Icons.lock_person_rounded, size: 80, color: Theme.of(context).colorScheme.primary),
-                      const SizedBox(height: 32),
-                      Text(
-                        context.l10n.title_welcome_back,
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        context.l10n.message_signin,
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.grey.shade600),
-                      ),
-                      const SizedBox(height: 48),
-                      TextFormField(
-                        decoration: InputDecoration(
-                          labelText: context.l10n.hint_email,
-                          prefixIcon: const Icon(Icons.email_outlined),
-                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-                        ),
-                        keyboardType: TextInputType.emailAddress,
-                      ),
-                      const SizedBox(height: 20),
-                      TextFormField(
-                        decoration: InputDecoration(
-                          labelText: context.l10n.hint_password,
-                          prefixIcon: const Icon(Icons.lock_outline),
-                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-                        ),
-                        obscureText: true,
-                      ),
-                      const SizedBox(height: 12),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: TextButton(
-                          onPressed: () {},
-                          child: Text(context.l10n.button_forgot_password),
-                        ),
-                      ),
-                      const SizedBox(height: 24),
-                      FilledButton(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Icon(Icons.lock_person_rounded, size: 80, color: Theme.of(context).colorScheme.primary),
+                    const SizedBox(height: 32),
+                    Text(
+                      context.l10n.title_welcome_back,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      context.l10n.message_signin,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.grey.shade600),
+                    ),
+                    const SizedBox(height: 48),
+                    const _EmailField(),
+                    const SizedBox(height: 20),
+                    const _PasswordField(),
+                    const SizedBox(height: 12),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: TextButton(
                         onPressed: () {},
-                        style: FilledButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(vertical: 16),
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                        ),
-                        child: Text(
-                          context.l10n.button_signin,
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                        ),
+                        child: Text(context.l10n.button_forgot_password),
                       ),
-                    ],
-                  ),
+                    ),
+                    const SizedBox(height: 24),
+                    const _LoginButton(),
+                  ],
                 ),
               ),
             ),
@@ -109,6 +90,82 @@ class _LoginScreenState extends State<LoginScreen> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class _EmailField extends StatelessWidget {
+  const _EmailField();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<LoginCubit, LoginState>(
+      buildWhen: (prev, curr) => prev.email != curr.email,
+      builder: (context, state) {
+        return TextField(
+          onChanged: context.read<LoginCubit>().onEmailChanged,
+          keyboardType: TextInputType.emailAddress,
+          decoration: InputDecoration(
+            labelText: context.l10n.hint_email,
+            prefixIcon: const Icon(Icons.email_outlined),
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+            errorText: state.email.displayError?.locale(context, args: [context.l10n.hint_email]),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _PasswordField extends StatelessWidget {
+  const _PasswordField();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<LoginCubit, LoginState>(
+      buildWhen: (prev, curr) => prev.password != curr.password,
+      builder: (context, state) {
+        return TextField(
+          onChanged: context.read<LoginCubit>().onPasswordChanged,
+          obscureText: true,
+          decoration: InputDecoration(
+            labelText: context.l10n.hint_password,
+            prefixIcon: const Icon(Icons.lock_outline),
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+            errorText: state.password.displayError?.locale(context, args: [context.l10n.hint_password]),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _LoginButton extends StatelessWidget {
+  const _LoginButton();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<LoginCubit, LoginState>(
+      buildWhen: (prev, curr) => prev.status != curr.status,
+      builder: (context, state) {
+        return FilledButton(
+          onPressed: state.status.isInProgress ? null : context.read<LoginCubit>().onLoginPressed,
+          style: FilledButton.styleFrom(
+            padding: const EdgeInsets.symmetric(vertical: 16),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          ),
+          child: state.status.isInProgress
+              ? const SizedBox(
+                  height: 20,
+                  width: 20,
+                  child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+                )
+              : Text(
+                  context.l10n.button_signin,
+                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+        );
+      },
     );
   }
 }
