@@ -156,6 +156,24 @@ abstract class AppLocale {
   /// In en, this message translates to:
   /// **'Forgot password?'**
   String get button_forgot_password;
+
+  /// No description provided for @error_empty_input.
+  ///
+  /// In en, this message translates to:
+  /// **'{fieldName} cannot be empty'**
+  String error_empty_input(Object fieldName);
+
+  /// No description provided for @error_invalid_email.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid email address'**
+  String get error_invalid_email;
+
+  /// No description provided for @error_invalid_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 6 characters long'**
+  String get error_invalid_password;
 }
 
 class _AppLocaleDelegate extends LocalizationsDelegate<AppLocale> {

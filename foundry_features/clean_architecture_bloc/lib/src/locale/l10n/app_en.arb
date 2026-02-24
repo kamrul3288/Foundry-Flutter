@@ -12,5 +12,8 @@
     "hint_email": "Email",
     "hint_password": "Password",
     "button_signin": "Sign in",
-    "button_forgot_password": "Forgot password?"
+    "button_forgot_password": "Forgot password?",
+    "error_empty_input": "{fieldName} cannot be empty",
+    "error_invalid_email": "Invalid email address",
+    "error_invalid_password": "Password must be at least 6 characters long"
 }

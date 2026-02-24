@@ -41,4 +41,16 @@ class AppLocaleEn extends AppLocale {
 
   @override
   String get button_forgot_password => 'Forgot password?';
+
+  @override
+  String error_empty_input(Object fieldName) {
+    return '$fieldName cannot be empty';
+  }
+
+  @override
+  String get error_invalid_email => 'Invalid email address';
+
+  @override
+  String get error_invalid_password =>
+      'Password must be at least 6 characters long';
 }
