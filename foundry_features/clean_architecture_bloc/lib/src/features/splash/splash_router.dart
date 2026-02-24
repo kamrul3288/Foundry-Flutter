@@ -1,5 +1,5 @@
 import 'package:clean_architecture_bloc/src/di/app_di_module.dart';
-import 'package:clean_architecture_bloc/src/domain/repository/auth_repository.dart';
+import 'package:clean_architecture_bloc/src/domain/usecase/get_profile_usecase.dart';
 import 'package:clean_architecture_bloc/src/features/splash/bloc/splash_cubit.dart';
 import 'package:clean_architecture_bloc/src/features/splash/splash_screen.dart';
 import 'package:clean_architecture_bloc/src/router/app_route_name.dart';
@@ -18,7 +18,7 @@ final class SplashRouter implements BaseRouter {
         builder: (context, state) => BlocProvider(
           create: (context) => SplashCubit(
             locator.get<AuthTokenRepository>(),
-            locator.get<AuthRepository>(),
+            locator.get<GetProfileUseCase>(),
           ),
           child: const SplashScreen(),
         ),
