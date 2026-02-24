@@ -2,18 +2,32 @@ import 'package:clean_architecture_bloc/src/features/login/bloc/login_cubit.dart
 import 'package:clean_architecture_bloc/src/locale/cubit/locale_cubit.dart';
 import 'package:clean_architecture_bloc/src/locale/extensions/app_locale_extension.dart';
 import 'package:clean_architecture_bloc/src/locale/extensions/app_locale_key_extension.dart';
+import 'package:clean_architecture_bloc/src/router/app_route_name.dart';
+import 'package:clean_architecture_bloc/src/ui/error_handling/failure_message_resolver.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
+  void _listener(BuildContext context, LoginState state) {
+    if (state.status.isFailure) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.failure!.resolveMessage(context))));
+    } else if (state.status.isSuccess) {
+      context.goNamed(AppRouteName.posts);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: const _LoginView(),
+      body: BlocListener<LoginCubit, LoginState>(
+        listener: _listener,
+        child: SafeArea(
+          child: const _LoginView(),
+        ),
       ),
     );
   }
