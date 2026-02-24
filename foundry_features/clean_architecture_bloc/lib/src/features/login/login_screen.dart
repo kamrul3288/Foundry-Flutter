@@ -11,9 +11,10 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => LoginCubit(),
-      child: const _LoginView(),
+    return Scaffold(
+      body: SafeArea(
+        child: const _LoginView(),
+      ),
     );
   }
 }
@@ -23,73 +24,69 @@ class _LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Stack(
-          children: [
-            Center(
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.all(24.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Icon(Icons.lock_person_rounded, size: 80, color: Theme.of(context).colorScheme.primary),
-                    const SizedBox(height: 32),
-                    Text(
-                      context.l10n.title_welcome_back,
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      context.l10n.message_signin,
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.grey.shade600),
-                    ),
-                    const SizedBox(height: 48),
-                    const _EmailField(),
-                    const SizedBox(height: 20),
-                    const _PasswordField(),
-                    const SizedBox(height: 12),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Text(context.l10n.button_forgot_password),
-                      ),
-                    ),
-                    const SizedBox(height: 24),
-                    const _LoginButton(),
-                  ],
+    return Stack(
+      children: [
+        Center(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Icon(Icons.lock_person_rounded, size: 80, color: Theme.of(context).colorScheme.primary),
+                const SizedBox(height: 32),
+                Text(
+                  context.l10n.title_welcome_back,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
                 ),
-              ),
+                const SizedBox(height: 8),
+                Text(
+                  context.l10n.message_signin,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.grey.shade600),
+                ),
+                const SizedBox(height: 48),
+                const _EmailField(),
+                const SizedBox(height: 20),
+                const _PasswordField(),
+                const SizedBox(height: 12),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: TextButton(
+                    onPressed: () {},
+                    child: Text(context.l10n.button_forgot_password),
+                  ),
+                ),
+                const SizedBox(height: 24),
+                const _LoginButton(),
+              ],
             ),
-            Positioned(
-              top: 16,
-              right: 16,
-              child: BlocBuilder<LocaleCubit, Locale>(
-                builder: (context, locale) {
-                  return SegmentedButton<String>(
-                    segments: const [
-                      ButtonSegment<String>(value: 'en', label: Text('EN')),
-                      ButtonSegment<String>(value: 'bn', label: Text('BN')),
-                    ],
-                    selected: {locale.languageCode},
-                    onSelectionChanged: (Set<String> newSelection) {
-                      context.read<LocaleCubit>().changeLocale(newSelection.first);
-                    },
-                    showSelectedIcon: false,
-                    style: SegmentedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(horizontal: 12),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ],
+          ),
         ),
-      ),
+        Positioned(
+          top: 16,
+          right: 16,
+          child: BlocBuilder<LocaleCubit, Locale>(
+            builder: (context, locale) {
+              return SegmentedButton<String>(
+                segments: const [
+                  ButtonSegment<String>(value: 'en', label: Text('EN')),
+                  ButtonSegment<String>(value: 'bn', label: Text('BN')),
+                ],
+                selected: {locale.languageCode},
+                onSelectionChanged: (Set<String> newSelection) {
+                  context.read<LocaleCubit>().changeLocale(newSelection.first);
+                },
+                showSelectedIcon: false,
+                style: SegmentedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                ),
+              );
+            },
+          ),
+        ),
+      ],
     );
   }
 }

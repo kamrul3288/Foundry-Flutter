@@ -4,6 +4,6 @@ import 'package:clean_architecture_bloc/src/domain/entity/authentication_entity.
 import 'package:clean_architecture_bloc/src/domain/entity/user_entity.dart';
 
 abstract class AuthRepository {
-  Future<Result<AuthenticationEntity, Failure>> login(String phone, String password);
+  Future<Result<AuthenticationEntity, Failure>> login(String email, String password);
   Future<Result<UserEntity, Failure>> getProfile();
 }

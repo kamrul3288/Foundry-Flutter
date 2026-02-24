@@ -18,7 +18,7 @@ final class AuthRepoImpl extends AuthRepository with RestClientExecutor {
   AuthRepoImpl(this._restClient);
 
   @override
-  Future<Result<AuthenticationEntity, Failure>> login(String phone, String password) {
+  Future<Result<AuthenticationEntity, Failure>> login(String email, String password) {
     return execute(() async {
       await Future.delayed(const Duration(seconds: 3));
       final jsonString = await rootBundle.loadString('packages/clean_architecture_bloc/assets/mock/login.json');
