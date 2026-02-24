@@ -1,4 +1,3 @@
-import 'package:clean_architecture_bloc/src/data/client/api_exception.dart';
 import 'package:dio/dio.dart';
 
 class RestClient {
@@ -7,31 +6,25 @@ class RestClient {
   RestClient(this._dio);
 
   // --- GENERIC GET METHOD ---
-  Future<T> get<T>(
+  Future<dynamic> get(
     String path, {
     Map<String, dynamic>? queryParameters,
     Options? options,
     CancelToken? cancelToken,
     ProgressCallback? onReceiveProgress,
   }) async {
-    try {
-      final response = await _dio.get(
-        path,
-        queryParameters: queryParameters,
-        options: options,
-        cancelToken: cancelToken,
-        onReceiveProgress: onReceiveProgress,
-      );
-      return response.data as T;
-    } on DioException catch (e) {
-      throw ApiException.fromDioException(e);
-    } catch (e) {
-      throw ApiException(message: e.toString());
-    }
+    final response = await _dio.get(
+      path,
+      queryParameters: queryParameters,
+      options: options,
+      cancelToken: cancelToken,
+      onReceiveProgress: onReceiveProgress,
+    );
+    return response.data;
   }
 
   // --- GENERIC POST METHOD ---
-  Future<T> post<T>(
+  Future<dynamic> post(
     String path, {
     Object? data,
     Map<String, dynamic>? queryParameters,
@@ -40,22 +33,16 @@ class RestClient {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    try {
-      final response = await _dio.post(
-        path,
-        data: data,
-        queryParameters: queryParameters,
-        options: options,
-        cancelToken: cancelToken,
-        onSendProgress: onSendProgress,
-        onReceiveProgress: onReceiveProgress,
-      );
-      return response.data as T;
-    } on DioException catch (e) {
-      throw ApiException.fromDioException(e);
-    } catch (e) {
-      throw ApiException(message: e.toString());
-    }
+    final response = await _dio.post(
+      path,
+      data: data,
+      queryParameters: queryParameters,
+      options: options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+    return response.data;
   }
 
   // PUT, DELETE, PATCH method...

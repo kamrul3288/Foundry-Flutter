@@ -1,3 +1,4 @@
+import 'package:clean_architecture_bloc/src/common/result/failure.dart';
 import 'package:clean_architecture_bloc/src/domain/repository/auth_repository.dart';
 import 'package:clean_architecture_bloc/src/secure_storage/repository/auth_token_repository.dart';
 import 'package:equatable/equatable.dart';
@@ -26,7 +27,7 @@ class SplashCubit extends Cubit<SplashState> {
     final result = await _authRepository.getProfile();
     result.when(
       success: (user) => emit(state.copyWith(uiEvent: SplashUiEvent.authorized)),
-      failure: (message, code) => emit(state.copyWith(uiState: SplashUiState.error, errorMessage: message)),
+      failure: (failure) => emit(state.copyWith(uiState: SplashUiState.error, failure: failure)),
     );
   }
 }

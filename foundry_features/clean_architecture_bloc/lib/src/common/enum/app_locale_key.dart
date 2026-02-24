@@ -1,6 +1,6 @@
 enum AppLocaleKey {
   noInternet,
   connectionTimeout,
-  unknowError,
+  unknownError,
   somethingWentWrong,
 }

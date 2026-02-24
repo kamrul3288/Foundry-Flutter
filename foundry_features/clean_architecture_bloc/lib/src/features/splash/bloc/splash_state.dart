@@ -3,29 +3,29 @@ part of 'splash_cubit.dart';
 final class SplashState extends Equatable {
   final SplashUiState uiState;
   final SplashUiEvent? uiEvent;
-  final String? errorMessage;
+  final Failure? failure;
 
   const SplashState({
     this.uiState = SplashUiState.initial,
     this.uiEvent,
-    this.errorMessage,
+    this.failure,
   });
 
   SplashState copyWith({
     SplashUiState? uiState,
     SplashUiEvent? uiEvent,
     bool clearEvent = false,
-    String? errorMessage,
+    Failure? failure,
   }) {
     return SplashState(
       uiState: uiState ?? this.uiState,
       uiEvent: clearEvent ? null : (uiEvent ?? this.uiEvent),
-      errorMessage: errorMessage,
+      failure: failure,
     );
   }
 
   @override
-  List<Object?> get props => [uiState, uiEvent, errorMessage];
+  List<Object?> get props => [uiState, uiEvent, failure];
 }
 
 enum SplashUiState { initial, loading, error }
