@@ -1,9 +1,9 @@
-import 'package:clean_architecture_bloc/src/local_storage/repository/auth_token_repository.dart';
+import 'package:clean_architecture_bloc/src/local_storage/auth/auth_token_storage.dart';
 import 'package:dio/dio.dart';
 
 final class TokenRefreshInterceptor extends Interceptor {
   final Dio _dio;
-  final AuthTokenRepository _tokenRepository;
+  final AuthTokenStorage _authTokenStorage;
 
   // Concurrency বা Race Condition আটকানোর জন্য ফ্ল্যাগ
   bool _isRefreshing = false;
@@ -12,16 +12,16 @@ final class TokenRefreshInterceptor extends Interceptor {
 
   TokenRefreshInterceptor({
     required Dio dio,
-    required AuthTokenRepository tokenRepository,
+    required AuthTokenStorage authTokenStorage,
   }) : _dio = dio,
-       _tokenRepository = tokenRepository;
+       _authTokenStorage = authTokenStorage;
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
     if (_isWhitelisted(options.path)) {
       return handler.next(options);
     }
-    final token = await _tokenRepository.accessToken;
+    final token = await _authTokenStorage.accessToken;
     if (token != null) {
       options.headers['Authorization'] = 'Bearer $token';
     }
@@ -35,7 +35,7 @@ final class TokenRefreshInterceptor extends Interceptor {
 
       //If refresh token is expired or failed then logout the user
       if (options.path.contains('refresh-token')) {
-        await _tokenRepository.deleteAll();
+        await _authTokenStorage.deleteAll();
         _requestQueue.clear();
         return handler.next(err);
       }
@@ -52,15 +52,15 @@ final class TokenRefreshInterceptor extends Interceptor {
       try {
         final newTokens = await _refreshToken();
         if (newTokens != null) {
-          await _tokenRepository.saveToken(accessToken: newTokens['accessToken'], refreshToken: newTokens['refreshToken']);
+          await _authTokenStorage.saveToken(accessToken: newTokens['accessToken'], refreshToken: newTokens['refreshToken']);
           _processQueue(newTokens['accessToken']);
         } else {
           _rejectQueue(err);
-          await _tokenRepository.deleteAll();
+          await _authTokenStorage.deleteAll();
         }
       } catch (e) {
         _rejectQueue(err);
-        await _tokenRepository.deleteAll();
+        await _authTokenStorage.deleteAll();
       } finally {
         _isRefreshing = false;
       }
@@ -93,7 +93,7 @@ final class TokenRefreshInterceptor extends Interceptor {
 
   Future<Map<String, dynamic>?> _refreshToken() async {
     try {
-      final refreshToken = await _tokenRepository.refreshToken;
+      final refreshToken = await _authTokenStorage.refreshToken;
       if (refreshToken == null) return null;
 
       // Separate Dio instance to avoid infinite loops

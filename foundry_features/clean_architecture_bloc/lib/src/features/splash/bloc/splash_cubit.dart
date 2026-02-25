@@ -1,18 +1,18 @@
 import 'package:clean_architecture_bloc/src/common/result/failure.dart';
 import 'package:clean_architecture_bloc/src/domain/usecase/get_profile_usecase.dart';
-import 'package:clean_architecture_bloc/src/local_storage/repository/auth_token_repository.dart';
+import 'package:clean_architecture_bloc/src/local_storage/auth/auth_token_storage.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'splash_state.dart';
 
 class SplashCubit extends Cubit<SplashState> {
-  final AuthTokenRepository _authTokenRepository;
+  final AuthTokenStorage _authTokenStorage;
   final GetProfileUseCase _getProfileUseCase;
-  SplashCubit(this._authTokenRepository, this._getProfileUseCase) : super(SplashState());
+  SplashCubit(this._authTokenStorage, this._getProfileUseCase) : super(SplashState());
 
   void checkUserAhrorization() async {
-    final isAuthorized = await _authTokenRepository.isUserAuthorized();
+    final isAuthorized = await _authTokenStorage.isUserAuthorized();
 
     if (isAuthorized) {
       fetchUserProfile();

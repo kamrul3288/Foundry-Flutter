@@ -1,5 +1,7 @@
-import 'package:clean_architecture_bloc/src/local_storage/repository/auth_token_repository.dart';
-import 'package:clean_architecture_bloc/src/local_storage/repository/app_data_repository.dart';
+import 'package:clean_architecture_bloc/src/local_storage/auth/auth_token_storage.dart';
+import 'package:clean_architecture_bloc/src/local_storage/auth/auth_token_storage_impl.dart';
+import 'package:clean_architecture_bloc/src/local_storage/preferences/app_preferences_storage.dart';
+import 'package:clean_architecture_bloc/src/local_storage/preferences/app_preferences_storage_impl.dart';
 import 'package:clean_architecture_bloc/src/local_storage/service/secure_storage_service.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
@@ -11,9 +13,9 @@ Future<void> registerSecureStorageDiModule(GetIt locator) async {
   //Registering SecureStorageService & providing SecureStorageService
   locator.registerSingleton<SecureStorageService>(SecureStorageService(locator<FlutterSecureStorage>()));
 
-  //Registering AuthTokenRepository & providing AuthTokenRepositoryImpl
-  locator.registerSingleton<AuthTokenRepository>(AuthTokenRepositoryImpl(locator<SecureStorageService>()));
+  //Registering AuthTokenStorage & providing AuthTokenStorageImpl
+  locator.registerSingleton<AuthTokenStorage>(AuthTokenStorageImpl(locator<SecureStorageService>()));
 
-  //Registering AppDataRepository & providing AppDataRepositoryImpl
-  locator.registerSingleton<AppDataRepository>(AppDataRepositoryImpl(locator<SecureStorageService>()));
+  //Registering AppPreferencesStorage & providing AppPreferencesStorageImpl
+  locator.registerSingleton<AppPreferencesStorage>(AppPreferencesStorageImpl(locator<SecureStorageService>()));
 }

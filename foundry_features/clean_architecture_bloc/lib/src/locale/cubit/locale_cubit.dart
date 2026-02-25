@@ -1,9 +1,9 @@
-import 'package:clean_architecture_bloc/src/local_storage/repository/app_data_repository.dart';
+import 'package:clean_architecture_bloc/src/local_storage/preferences/app_preferences_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 final class LocaleCubit extends Cubit<Locale> {
-  final AppDataRepository _appDataRepository;
+  final AppPreferencesStorage _appDataRepository;
   LocaleCubit(this._appDataRepository) : super(const Locale('en'));
 
   Future<void> loadLocale() async {
