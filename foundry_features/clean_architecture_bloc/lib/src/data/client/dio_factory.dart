@@ -1,7 +1,7 @@
 import 'package:clean_architecture_bloc/src/data/interceptor/retry_interceptor.dart';
 import 'package:clean_architecture_bloc/src/data/interceptor/token_refresh_interceptor.dart';
 import 'package:clean_architecture_bloc/src/env/env.dart';
-import 'package:clean_architecture_bloc/src/secure_storage/repository/auth_token_repository.dart';
+import 'package:clean_architecture_bloc/src/local_storage/repository/auth_token_repository.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
