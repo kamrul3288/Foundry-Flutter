@@ -1,108 +1,130 @@
+import 'package:clean_architecture_bloc/src/domain/entity/post_entity.dart';
+import 'package:clean_architecture_bloc/src/features/posts/bloc/posts_cubit.dart';
+import 'package:clean_architecture_bloc/src/ui/error_handling/failure_message_resolver.dart';
+import 'package:clean_architecture_bloc/src/ui/widgets/network_error_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class PostsScreen extends StatelessWidget {
+class PostsScreen extends StatefulWidget {
   const PostsScreen({super.key});
+
+  @override
+  State<PostsScreen> createState() => _PostsScreenState();
+}
+
+class _PostsScreenState extends State<PostsScreen> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<PostsCubit>().fetchPosts();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Recent Posts'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () {
-              // Sign out logic here
-            },
-          ),
-        ],
-      ),
+      appBar: AppBar(title: const Text('Recent Posts')),
       backgroundColor: Theme.of(context).colorScheme.surface.withValues(alpha: 0.96),
-      body: ListView.builder(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-        itemCount: 10, // Mock item count
-        itemBuilder: (context, index) {
-          return Card(
-            elevation: 0,
-            color: Theme.of(context).colorScheme.surface,
-            margin: const EdgeInsets.only(bottom: 8.0),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-            child: InkWell(
-              borderRadius: BorderRadius.circular(12),
-              onTap: () {
-                // Navigate to post details
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        CircleAvatar(
-                          backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-                          child: const Icon(Icons.person),
-                        ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'User ${index + 1}',
-                                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                '2 hours ago',
-                                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                  color: Colors.grey.shade600,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
+      body: BlocBuilder<PostsCubit, PostsState>(
+        builder: (context, state) {
+          return switch (state.uiState) {
+            PostsUiState.loading => const Center(child: CircularProgressIndicator()),
+            PostsUiState.error => NetworkErrorScreen(
+              message: state.failure?.resolveMessage(context),
+              onRetry: () => context.read<PostsCubit>().fetchPosts(),
+            ),
+            PostsUiState.success => _PostListView(posts: state.posts),
+          };
+        },
+      ),
+    );
+  }
+}
+
+class _PostListView extends StatelessWidget {
+  const _PostListView({required this.posts});
+
+  final List<PostEntity> posts;
+
+  @override
+  Widget build(BuildContext context) {
+    if (posts.isEmpty) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.article_outlined, size: 64, color: Colors.grey.shade400),
+            const SizedBox(height: 16),
+            Text(
+              'No posts yet',
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.grey.shade600),
+            ),
+          ],
+        ),
+      );
+    }
+
+    return ListView.builder(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      itemCount: posts.length,
+      itemBuilder: (context, index) => _PostCard(post: posts[index]),
+    );
+  }
+}
+
+class _PostCard extends StatelessWidget {
+  const _PostCard({required this.post});
+
+  final PostEntity post;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 0,
+      color: Theme.of(context).colorScheme.surface,
+      margin: const EdgeInsets.only(bottom: 8.0),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(12),
+        onTap: () {
+          // Navigate to post details
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  CircleAvatar(
+                    backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+                    child: Text(
+                      '${post.id}',
+                      style: TextStyle(color: Theme.of(context).colorScheme.onPrimaryContainer, fontWeight: FontWeight.bold),
                     ),
-                    const SizedBox(height: 16),
-                    Text(
-                      'Post Title ${index + 1}',
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      'This is the content of the post. It contains some placeholder text to show what a post would look like in the list...',
-                      style: Theme.of(context).textTheme.bodyMedium,
-                      maxLines: 3,
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      post.title,
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                      maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    const SizedBox(height: 16),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Icon(Icons.favorite_border, size: 20, color: Colors.grey.shade600),
-                            const SizedBox(width: 4),
-                            Text('12', style: TextStyle(color: Colors.grey.shade600)),
-                            const SizedBox(width: 16),
-                            Icon(Icons.comment_outlined, size: 20, color: Colors.grey.shade600),
-                            const SizedBox(width: 4),
-                            Text('4', style: TextStyle(color: Colors.grey.shade600)),
-                          ],
-                        ),
-                        Icon(Icons.share_outlined, size: 20, color: Colors.grey.shade600),
-                      ],
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ),
-          );
-        },
+              const SizedBox(height: 12),
+              Text(
+                post.body,
+                style: Theme.of(context).textTheme.bodyMedium,
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

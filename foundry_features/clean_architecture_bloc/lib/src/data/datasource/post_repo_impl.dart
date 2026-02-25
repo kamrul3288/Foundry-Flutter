@@ -15,7 +15,7 @@ final class PostRepoImpl extends PostRepository with RestClientExecutor {
   Future<Result<List<PostEntity>, Failure>> getPosts() {
     return execute(() async {
       final response = await _restClient.get('/posts');
-      return response.map((e) => PostDto.fromJson(e).toPostEntity).toList();
+      return (response as List<dynamic>).map((e) => PostDto.fromJson(e).toPostEntity).toList();
     });
   }
 }
