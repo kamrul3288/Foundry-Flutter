@@ -1,4 +1,4 @@
-import 'package:clean_architecture_bloc/src/secure_storage/repository/auth_token_repository.dart';
+import 'package:clean_architecture_bloc/src/local_storage/repository/auth_token_repository.dart';
 import 'package:dio/dio.dart';
 
 final class TokenRefreshInterceptor extends Interceptor {

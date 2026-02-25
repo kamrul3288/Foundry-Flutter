@@ -10,8 +10,10 @@ class LoginUseCase extends RemoteUseCase<AuthenticationEntity, LoginParams> {
   LoginUseCase(this._repository);
 
   @override
-  Future<Result<AuthenticationEntity, Failure>> call(LoginParams params) {
-    return _repository.login(params.email, params.password);
+  Future<Result<AuthenticationEntity, Failure>> call(LoginParams params) async {
+    final result = await _repository.login(params.email, params.password);
+    if (result.isSuccess) {}
+    return result;
   }
 }
 
