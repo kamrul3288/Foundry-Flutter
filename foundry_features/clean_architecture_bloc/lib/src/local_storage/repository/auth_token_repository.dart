@@ -1,4 +1,4 @@
-import 'package:clean_architecture_bloc/src/secure_storage/service/secure_storage_service.dart';
+import 'package:clean_architecture_bloc/src/local_storage/service/secure_storage_service.dart';
 
 abstract class AuthTokenRepository {
   Future<void> saveToken({required String accessToken, required String refreshToken});

@@ -1,6 +1,6 @@
-import 'package:clean_architecture_bloc/src/secure_storage/repository/auth_token_repository.dart';
-import 'package:clean_architecture_bloc/src/secure_storage/repository/app_data_repository.dart';
-import 'package:clean_architecture_bloc/src/secure_storage/service/secure_storage_service.dart';
+import 'package:clean_architecture_bloc/src/local_storage/repository/auth_token_repository.dart';
+import 'package:clean_architecture_bloc/src/local_storage/repository/app_data_repository.dart';
+import 'package:clean_architecture_bloc/src/local_storage/service/secure_storage_service.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 
