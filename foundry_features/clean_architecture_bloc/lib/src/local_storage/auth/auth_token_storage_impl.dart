@@ -22,7 +22,9 @@ final class AuthTokenStorageImpl implements AuthTokenStorage {
 
   @override
   Future<bool> isUserAuthorized() async {
-    return (await accessToken != null) && (await refreshToken != null);
+    final accessToken = await this.accessToken;
+    final refreshToken = await this.refreshToken;
+    return accessToken != null && accessToken.isNotEmpty && refreshToken != null && refreshToken.isNotEmpty;
   }
 
   @override
