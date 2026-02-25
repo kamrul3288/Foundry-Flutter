@@ -174,6 +174,24 @@ abstract class AppLocale {
   /// In en, this message translates to:
   /// **'Password must be at least 6 characters long'**
   String get error_invalid_password;
+
+  /// No description provided for @title_posts.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent Posts'**
+  String get title_posts;
+
+  /// No description provided for @title_connection_error.
+  ///
+  /// In en, this message translates to:
+  /// **'Connection Error'**
+  String get title_connection_error;
+
+  /// No description provided for @button_retry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get button_retry;
 }
 
 class _AppLocaleDelegate extends LocalizationsDelegate<AppLocale> {

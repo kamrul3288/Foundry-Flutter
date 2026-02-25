@@ -52,4 +52,13 @@ class AppLocaleBn extends AppLocale {
 
   @override
   String get error_invalid_password => 'পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে';
+
+  @override
+  String get title_posts => 'সাম্প্রতিক পোস্ট';
+
+  @override
+  String get title_connection_error => 'সংযোগ ত্রুটি';
+
+  @override
+  String get button_retry => 'পুনরায় চেষ্টা করুন';
 }

@@ -1,3 +1,4 @@
+import 'package:clean_architecture_bloc/src/locale/extensions/app_locale_extension.dart';
 import 'package:flutter/material.dart';
 
 class NetworkErrorScreen extends StatefulWidget {
@@ -54,7 +55,7 @@ class _NetworkErrorScreenState extends State<NetworkErrorScreen> with SingleTick
                 delay: 0.0,
                 duration: const Duration(milliseconds: 600),
                 child: Text(
-                  widget.title ?? 'Connection Error',
+                  widget.title ?? context.l10n.title_connection_error,
                   textAlign: TextAlign.center,
                   style: theme.textTheme.headlineLarge?.copyWith(
                     fontWeight: FontWeight.w800,
@@ -64,11 +65,12 @@ class _NetworkErrorScreenState extends State<NetworkErrorScreen> with SingleTick
               ),
 
               // ৩. Error Message (20% Delay)
+              const SizedBox(height: 8),
               StaggeredFadeSlide(
                 delay: 0.2,
                 duration: const Duration(milliseconds: 600),
                 child: Text(
-                  widget.message ?? 'Something went wrong. Please try again.',
+                  widget.message ?? context.l10n.message_something_went_wrong,
                   textAlign: TextAlign.center,
                   style: theme.textTheme.bodyLarge?.copyWith(
                     color: colorScheme.onSurface,
@@ -95,8 +97,8 @@ class _NetworkErrorScreenState extends State<NetworkErrorScreen> with SingleTick
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    child: const Text(
-                      'Try Again',
+                    child: Text(
+                      context.l10n.button_retry,
                       style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                   ),

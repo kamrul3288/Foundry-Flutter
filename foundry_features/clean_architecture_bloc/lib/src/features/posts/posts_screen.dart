@@ -1,5 +1,6 @@
 import 'package:clean_architecture_bloc/src/domain/entity/post_entity.dart';
 import 'package:clean_architecture_bloc/src/features/posts/bloc/posts_cubit.dart';
+import 'package:clean_architecture_bloc/src/locale/extensions/app_locale_extension.dart';
 import 'package:clean_architecture_bloc/src/ui/error_handling/failure_message_resolver.dart';
 import 'package:clean_architecture_bloc/src/ui/widgets/network_error_screen.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,7 @@ class _PostsScreenState extends State<PostsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Recent Posts')),
+      appBar: AppBar(title: Text(context.l10n.title_posts)),
       backgroundColor: Theme.of(context).colorScheme.surface.withValues(alpha: 0.96),
       body: BlocBuilder<PostsCubit, PostsState>(
         builder: (context, state) {
@@ -49,22 +50,6 @@ class _PostListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (posts.isEmpty) {
-      return Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.article_outlined, size: 64, color: Colors.grey.shade400),
-            const SizedBox(height: 16),
-            Text(
-              'No posts yet',
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.grey.shade600),
-            ),
-          ],
-        ),
-      );
-    }
-
     return ListView.builder(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       itemCount: posts.length,

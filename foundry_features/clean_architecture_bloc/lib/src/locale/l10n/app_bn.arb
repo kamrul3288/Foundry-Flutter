@@ -12,5 +12,8 @@
     "button_forgot_password": "পাসওয়ার্ড ভুলে গেছেন?",
     "error_empty_input": "{fieldName} খালি রাখা যাবে না",
     "error_invalid_email": "অবৈধ ইমেইল ঠিকানা",
-    "error_invalid_password": "পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে"
+    "error_invalid_password": "পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে",
+    "title_posts": "সাম্প্রতিক পোস্ট",
+    "title_connection_error": "সংযোগ ত্রুটি",
+    "button_retry": "পুনরায় চেষ্টা করুন"
 }

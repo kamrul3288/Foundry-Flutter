@@ -15,5 +15,8 @@
     "button_forgot_password": "Forgot password?",
     "error_empty_input": "{fieldName} cannot be empty",
     "error_invalid_email": "Invalid email address",
-    "error_invalid_password": "Password must be at least 6 characters long"
+    "error_invalid_password": "Password must be at least 6 characters long",
+    "title_posts": "Recent Posts",
+    "title_connection_error": "Connection Error",
+    "button_retry": "Retry"
 }

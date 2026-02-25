@@ -53,4 +53,13 @@ class AppLocaleEn extends AppLocale {
   @override
   String get error_invalid_password =>
       'Password must be at least 6 characters long';
+
+  @override
+  String get title_posts => 'Recent Posts';
+
+  @override
+  String get title_connection_error => 'Connection Error';
+
+  @override
+  String get button_retry => 'Retry';
 }
