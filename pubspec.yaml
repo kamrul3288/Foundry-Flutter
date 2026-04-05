@@ -3,11 +3,11 @@ name: foundry_flutter
 workspace:
   - app/
   #========= THIS IS FLUTTER POPULAR PACKAGES SECTION=========#
-  - foundry_packages/flutter_secure_storage/
-  - foundry_packages/get_it/
-  - foundry_packages/go_router/
-  - foundry_packages/dio/
-  - foundry_packages/auto_router/
+  - flutter_popular_packages/flutter_secure_storage/
+  - flutter_popular_packages/get_it/
+  - flutter_popular_packages/go_router/
+  - flutter_popular_packages/dio/
+  - flutter_popular_packages/auto_router/
 
   - foundry_feat_components/media_picker/
   - foundry_feat_components/flutter_design_system/
