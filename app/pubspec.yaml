@@ -11,12 +11,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_secure_storagex: ^0.0.1
-  auto_router_x: ^0.0.1
+  pkg_flutter_secure_storage: ^1.0.0
+  pkg_get_it: ^1.0.0
+  pkg_go_router: ^1.0.0
+  pkg_dio: ^1.0.0
+  pkg_auto_router: ^1.0.0
+
   media_picker: ^0.0.1
-  dio_x: ^0.0.1
-  go_router_x: ^0.0.1
-  getit_x: ^0.0.1
   flutter_design_system: ^0.0.1
   cupertino_icons: ^1.0.8
   go_router_navigation: ^1.0.0

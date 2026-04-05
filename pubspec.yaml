@@ -2,13 +2,15 @@ name: foundry_flutter
 
 workspace:
   - app/
-  - foundry_packages/flutter_secure_storagex/
-  - foundry_packages/auto_router_x/
-  - foundry_packages/go_router_x/
-  - foundry_packages/dio_x/
+  #========= THIS IS FLUTTER POPULAR PACKAGES SECTION=========#
+  - foundry_packages/flutter_secure_storage/
+  - foundry_packages/get_it/
+  - foundry_packages/go_router/
+  - foundry_packages/dio/
+  - foundry_packages/auto_router/
+
   - foundry_feat_components/media_picker/
   - foundry_feat_components/flutter_design_system/
-  - foundry_packages/getit_x/
   - foundry_features/go_router_navigation/
   - foundry_features/clean_architecture_bloc/
 
