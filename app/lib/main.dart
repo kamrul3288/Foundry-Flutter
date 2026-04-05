@@ -1,4 +1,4 @@
-import 'package:clean_architecture_bloc/clean_architecture.dart';
+import 'package:app/src/screens/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
@@ -12,8 +12,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Foundry Hub',
       debugShowCheckedModeBanner: false,
-      home: CleanArchitectureBlocApp(),
+      theme: ThemeData(
+        useMaterial3: true,
+        colorSchemeSeed: const Color(0xFF1E293B),
+      ),
+      home: const DashboardScreen(),
     );
   }
 }
