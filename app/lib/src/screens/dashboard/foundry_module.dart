@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 
-enum ModuleCategory { all, packages, feature, component }
+enum ModuleCategory {
+  all('All'),
+  packages('PACKAGES'),
+  featMolecules('FEAT_MOLECULES'),
+  featAtom('FEAT_ATOM')
+  ;
+
+  const ModuleCategory(this.displayName);
+  final String displayName;
+}
 
 class FoundryModule {
   const FoundryModule({

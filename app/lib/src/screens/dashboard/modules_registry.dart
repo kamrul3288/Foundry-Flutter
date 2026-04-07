@@ -14,12 +14,12 @@ import 'package:pkg_go_router/go_router_pkg.dart';
 
 final modules = <FoundryModule>[
   // ── Features ────────────────────────────────────────────────────────────────
-  FoundryModule(title: 'Clean Architecture', description: 'BLoC with Clean Architecture pattern', icon: Icons.architecture_rounded, color: Color(0xFF6366F1), category: ModuleCategory.feature, destination: CleanArchitectureBlocApp()),
-  FoundryModule(title: 'Go Router Nav', description: 'Declarative routing with GoRouter', icon: Icons.navigation_rounded, color: Color(0xFF10B981), category: ModuleCategory.feature, destination: GoRouterNavigationApp()),
+  FoundryModule(title: 'Clean Architecture', description: 'BLoC with Clean Architecture pattern', icon: Icons.architecture_rounded, color: Color(0xFF6366F1), category: ModuleCategory.featMolecules, destination: CleanArchitectureBlocApp()),
+  FoundryModule(title: 'Go Router Nav', description: 'Declarative routing with GoRouter', icon: Icons.navigation_rounded, color: Color(0xFF10B981), category: ModuleCategory.featMolecules, destination: GoRouterNavigationApp()),
 
   // ── Components ──────────────────────────────────────────────────────────────
-  FoundryModule(title: 'Design System', description: 'Reusable UI components and themes', icon: Icons.palette_rounded, color: Color(0xFFF59E0B), category: ModuleCategory.component, destination: FlutterDsMainScreen()),
-  FoundryModule(title: 'Media Picker', description: 'Multi-image capture and selection', icon: Icons.photo_library_rounded, color: Color(0xFFEC4899), category: ModuleCategory.component, destination: MediaPickerMainScreen()),
+  FoundryModule(title: 'Design System', description: 'Reusable UI components and themes', icon: Icons.palette_rounded, color: Color(0xFFF59E0B), category: ModuleCategory.featAtom, destination: FlutterDsMainScreen()),
+  FoundryModule(title: 'Media Picker', description: 'Multi-image capture and selection', icon: Icons.photo_library_rounded, color: Color(0xFFEC4899), category: ModuleCategory.featAtom, destination: MediaPickerMainScreen()),
 
   // ── Utilities ───────────────────────────────────────────────────────────────
   FoundryModule(title: 'dio', description: 'Robust networking utility wrapper', icon: Icons.network_check_rounded, color: _colors, category: ModuleCategory.packages, destination: DioMainScreen()),

@@ -120,7 +120,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               padding: const EdgeInsets.only(right: 8),
               child: ChoiceChip(
                 label: Text(
-                  cat.name.toUpperCase(),
+                  cat.displayName,
                   style: TextStyle(
                     fontSize: 10,
                     fontWeight: FontWeight.bold,

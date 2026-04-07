@@ -9,8 +9,8 @@ class CategoryBadge extends StatelessWidget {
 
   Color _getModuleBgColor(ModuleCategory category) {
     return switch (category) {
-      ModuleCategory.feature => Colors.blue,
-      ModuleCategory.component => Colors.green,
+      ModuleCategory.featMolecules => Colors.blue,
+      ModuleCategory.featAtom => Colors.green,
       ModuleCategory.all => Colors.yellow,
       ModuleCategory.packages => Colors.purple,
     };
@@ -25,9 +25,11 @@ class CategoryBadge extends StatelessWidget {
         color: color.withAlpha(30),
         borderRadius: BorderRadius.circular(4),
       ),
-      child: Text(
-        category.name.toUpperCase(),
-        style: TextStyle(fontSize: 8, fontWeight: FontWeight.bold, color: color),
+      child: FittedBox(
+        child: Text(
+          category.displayName.toUpperCase(),
+          style: TextStyle(fontSize: 8, fontWeight: FontWeight.bold, color: color),
+        ),
       ),
     );
   }
