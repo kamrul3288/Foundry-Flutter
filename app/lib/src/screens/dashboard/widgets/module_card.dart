@@ -1,8 +1,7 @@
+import 'package:app/src/screens/dashboard/foundry_module.dart';
+import 'package:app/src/screens/dashboard/widgets/category_badge.dart';
 import 'package:flutter/material.dart';
-import '../foundry_module.dart';
-import 'category_badge.dart';
 
-/// Grid card for a single [FoundryModule].
 class ModuleCard extends StatelessWidget {
   const ModuleCard({super.key, required this.module});
 
@@ -10,7 +9,6 @@ class ModuleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final hasDestination = module.destination != null;
     return Material(
       color: Colors.white,
       borderRadius: BorderRadius.circular(20),
@@ -18,19 +16,18 @@ class ModuleCard extends StatelessWidget {
       shadowColor: Colors.black12,
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
-        onTap: hasDestination
-            ? () => Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => module.destination!),
-                )
-            : null,
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => module.destination),
+        ),
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CategoryBadge(category: module.category),
-              const Spacer(),
+              const SizedBox(height: 10),
+
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
@@ -42,9 +39,11 @@ class ModuleCard extends StatelessWidget {
               const SizedBox(height: 10),
               Text(
                 module.title,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 15,
+                  fontSize: 13,
                   color: Color(0xFF1E293B),
                 ),
               ),
@@ -59,17 +58,15 @@ class ModuleCard extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    hasDestination ? 'Open' : 'In Library',
+                    'Open',
                     style: TextStyle(
                       fontSize: 11,
                       fontWeight: FontWeight.bold,
-                      color: hasDestination ? module.color : Colors.grey,
+                      color: module.color,
                     ),
                   ),
-                  if (hasDestination) ...[
-                    const SizedBox(width: 2),
-                    Icon(Icons.arrow_forward_ios_rounded, size: 9, color: module.color),
-                  ],
+                  const SizedBox(width: 2),
+                  Icon(Icons.arrow_forward_ios_rounded, size: 9, color: module.color),
                 ],
               ),
             ],

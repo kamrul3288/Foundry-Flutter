@@ -148,17 +148,35 @@ class _DashboardScreenState extends State<DashboardScreen> {
   SliverPadding _buildGrid(List<FoundryModule> items) {
     return SliverPadding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
-      sliver: SliverGrid(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          mainAxisSpacing: 12,
-          crossAxisSpacing: 12,
-          childAspectRatio: 0.9,
-        ),
-        delegate: SliverChildBuilderDelegate(
-          (_, i) => ModuleCard(module: items[i]),
-          childCount: items.length,
-        ),
+      sliver: SliverList.builder(
+        itemCount: (items.length / 3).ceil(),
+        itemBuilder: (context, rowIndex) {
+          int startIndex = rowIndex * 3;
+          int endIndex = startIndex + 3;
+          if (endIndex > items.length) {
+            endIndex = items.length;
+          }
+
+          List rowItems = items.sublist(startIndex, endIndex);
+
+          double screenWidth = MediaQuery.of(context).size.width;
+          double itemWidth = (screenWidth - 32 - 24) / 3;
+
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 12),
+            child: Wrap(
+              alignment: WrapAlignment.start,
+              crossAxisAlignment: WrapCrossAlignment.start,
+              spacing: 12,
+              children: rowItems.map((item) {
+                return SizedBox(
+                  width: itemWidth,
+                  child: ModuleCard(module: item),
+                );
+              }).toList(),
+            ),
+          );
+        },
       ),
     );
   }

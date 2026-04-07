@@ -4,7 +4,7 @@ import 'package:flutter_design_system/src/foundation/app_colors.dart';
 final class AppColorScheme extends ThemeExtension<AppColorScheme> {
   final Color brandPrimary;
   final Color onBrandPrimary;
-  final Color brandPrimaryContainer; //light background color
+  final Color brandPrimaryContainer;
   final Color onBrandPrimaryContainer;
 
   final Color secondary;

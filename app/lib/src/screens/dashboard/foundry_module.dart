@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-enum ModuleCategory { all, feature, component, utility }
+enum ModuleCategory { all, packages, feature, component }
 
 class FoundryModule {
   const FoundryModule({
@@ -9,7 +9,7 @@ class FoundryModule {
     required this.icon,
     required this.color,
     required this.category,
-    this.destination,
+    required this.destination,
   });
 
   final String title;
@@ -17,5 +17,5 @@ class FoundryModule {
   final IconData icon;
   final Color color;
   final ModuleCategory category;
-  final Widget? destination;
+  final Widget destination;
 }

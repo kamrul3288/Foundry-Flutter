@@ -1,10 +1,9 @@
 import 'dart:async';
 import 'package:auto_route/auto_route.dart';
-import 'auth_config.dart';
-import 'auth_cubit.dart';
-import '../router/app_router.gr.dart';
-
-import '../router/app_router.dart';
+import 'package:pkg_auto_router/src/auth/auth_config.dart';
+import 'package:pkg_auto_router/src/auth/auth_cubit.dart';
+import 'package:pkg_auto_router/src/router/app_router.gr.dart';
+import 'package:pkg_auto_router/src/router/app_router.dart';
 
 final class AuthGuard extends AutoRouteGuard {
   final AuthCubit _authCubit;

@@ -7,16 +7,18 @@ class CategoryBadge extends StatelessWidget {
 
   final ModuleCategory category;
 
-  static const _colors = {
-    ModuleCategory.feature: Color(0xFF6366F1),
-    ModuleCategory.component: Color(0xFFF59E0B),
-    ModuleCategory.utility: Color(0xFF94A3B8),
-    ModuleCategory.all: Color(0xFF94A3B8),
-  };
+  Color _getModuleBgColor(ModuleCategory category) {
+    return switch (category) {
+      ModuleCategory.feature => Colors.blue,
+      ModuleCategory.component => Colors.green,
+      ModuleCategory.all => Colors.yellow,
+      ModuleCategory.packages => Colors.purple,
+    };
+  }
 
   @override
   Widget build(BuildContext context) {
-    final color = _colors[category] ?? Colors.grey;
+    final color = _getModuleBgColor(category);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
       decoration: BoxDecoration(
