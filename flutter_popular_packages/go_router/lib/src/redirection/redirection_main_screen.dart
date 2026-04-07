@@ -20,7 +20,9 @@ final authProvider = NotifierProvider<AuthState, bool>(AuthState.new);
 
 /// ======================== ROUTER CONFIGURATION ========================
 final _routerProvider = Provider<GoRouter>((ref) {
+  final bool loggedIn = ref.watch(authProvider);
   return GoRouter(
+    initialLocation: loggedIn ? '/' : '/login',
     routes: [
       GoRoute(
         path: '/login',
@@ -34,13 +36,12 @@ final _routerProvider = Provider<GoRouter>((ref) {
       ),
     ],
     redirect: (context, state) {
-      final bool loggedIn = ref.watch(authProvider);
-      // if user is not logged in and trying to access login screen, redirect to login
-      if (!loggedIn) {
+      // if user is not logged in and not on login screen, redirect to login
+      if (!loggedIn && state.matchedLocation != "/login") {
         return "/login";
       }
       // if user is logged in and trying to access login screen, redirect to home
-      if (loggedIn && state.fullPath == "/login") {
+      if (loggedIn && state.matchedLocation == "/login") {
         return "/";
       }
       return null;
@@ -57,6 +58,11 @@ class RedirectionMainScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(_routerProvider);
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        useMaterial3: true,
+        colorSchemeSeed: Colors.indigo,
+      ),
       routerConfig: router,
     );
   }
@@ -68,11 +74,44 @@ class _HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Home')),
+      appBar: AppBar(
+        title: const Text('Redirection (Home)'),
+        centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Navigator.of(context, rootNavigator: true).pop(),
+        ),
+      ),
       body: Center(
-        child: TextButton(
-          onPressed: () => ref.read(authProvider.notifier).logout(),
-          child: const Text('Logout'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(Icons.lock_open, size: 64, color: Colors.green),
+            const SizedBox(height: 16),
+            const Text(
+              'You are Authenticated!',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 32),
+              child: Text(
+                'GoRouter redirected you here because you are logged in. Try logging out to see redirection in action.',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.grey),
+              ),
+            ),
+            const SizedBox(height: 32),
+            FilledButton.icon(
+              onPressed: () => ref.read(authProvider.notifier).logout(),
+              icon: const Icon(Icons.logout),
+              label: const Text('Logout'),
+              style: FilledButton.styleFrom(
+                backgroundColor: Theme.of(context).colorScheme.errorContainer,
+                foregroundColor: Theme.of(context).colorScheme.onErrorContainer,
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -84,10 +123,43 @@ class _LoginScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Login Required'),
+        centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Navigator.of(context, rootNavigator: true).pop(),
+        ),
+      ),
       body: Center(
-        child: TextButton(
-          onPressed: () => ref.read(authProvider.notifier).login(),
-          child: const Text('Login'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(Icons.lock, size: 64, color: Colors.indigo),
+            const SizedBox(height: 16),
+            const Text(
+              'Authentication Demo',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 32),
+              child: Text(
+                'This screen demonstrates GoRouter\'s redirect property. You cannot access the home screen without "logging in" first.',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.grey),
+              ),
+            ),
+            const SizedBox(height: 48),
+            FilledButton.icon(
+              onPressed: () => ref.read(authProvider.notifier).login(),
+              icon: const Icon(Icons.login),
+              label: const Text('Login to Continue'),
+              style: FilledButton.styleFrom(
+                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+              ),
+            ),
+          ],
         ),
       ),
     );

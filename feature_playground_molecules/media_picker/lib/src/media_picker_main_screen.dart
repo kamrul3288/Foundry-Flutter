@@ -14,11 +14,9 @@ class MediaPickerMainScreen extends StatelessWidget {
         // Providing a ScaffoldMessengerKey for global SnackBar access
         scaffoldMessengerKeyProvider.overrideWithValue(GlobalKey<ScaffoldMessengerState>()),
       ],
-      child: MaterialApp(
-        home: Scaffold(
-          appBar: AppBar(title: Text('Media Picker')),
-          body: _MediaPickerBody(),
-        ),
+      child: Scaffold(
+        appBar: AppBar(title: const Text('Media Picker')),
+        body: const _MediaPickerBody(),
       ),
     );
   }
