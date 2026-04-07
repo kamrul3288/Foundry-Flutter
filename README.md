@@ -18,12 +18,12 @@ Welcome to **Foundry Flutter**! This project serves as a robust foundation for b
 ---
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/7a7a4c2a-a173-4484-844f-33d0501901da" width="40%">
+  <img src="https://github.com/user-attachments/assets/7a7a4c2a-a173-4484-844f-33d0501901da" width="30%">
   &nbsp;
-  <img src="https://github.com/user-attachments/assets/eaed11af-72ec-4eba-b228-7878496c676e" width="40%">
+  <img src="https://github.com/user-attachments/assets/572c29c6-a173-4eb5-9160-3db39eec6c07" width="30%">
+  &nbsp;
+  <img src="https://github.com/user-attachments/assets/eaed11af-72ec-4eba-b228-7878496c676e" width="30%">
 </p>
-
-
 
 
 ## 🌟 Key Features
