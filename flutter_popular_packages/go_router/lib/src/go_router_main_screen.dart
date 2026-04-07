@@ -34,19 +34,14 @@ class GoRouterMainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.indigo,
-          brightness: Brightness.light,
-        ),
-      ),
+      data: ThemeData(useMaterial3: true),
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Go Router Examples'),
           centerTitle: true,
-          elevation: 2,
+          backgroundColor: Colors.white,
         ),
+        backgroundColor: const Color(0xFFF8FAFC),
         body: const _AppBody(),
       ),
     );
@@ -158,16 +153,15 @@ class _ExampleCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 2,
+      elevation: 0,
+      color: Colors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: InkWell(
         onTap: () {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => item.useProviderScope
-                  ? ProviderScope(child: item.screen)
-                  : item.screen,
+              builder: (context) => item.useProviderScope ? ProviderScope(child: item.screen) : item.screen,
             ),
           );
         },
