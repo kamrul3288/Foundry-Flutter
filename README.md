@@ -22,10 +22,10 @@ Welcome to **Foundry Flutter**! This project serves as a robust foundation for b
 - **🏛 Architectural Pattern**: Implements **Clean Architecture**, completely decoupling the presentation, domain, and data layers.
 - **🧩 Modularity (Monorepo)**: Uses **Dart Workspaces via Melos** to orchestrate independent packages (`packages`, `features`, `components`).
 - **🎛 State Management**: Integrates **BLoC** (Business Logic Component) and **Riverpod** for reactive and predictable widget states.
-- **🔗 Advanced Routing**: Managed with both **GoRouter** (`go_router_x`) and **AutoRoute** (`auto_router_x`) depending on package needs.
+- **🔗 Advanced Routing**: Managed with both **GoRouter** (`go_router`) and **AutoRoute** (`auto_router`) depending on package needs.
 - **💉 Dependency Injection**: Utilizes `get_it` combined with Riverpod / BLoC strategies for decoupled dependencies.
-- **📡 Network Resilience**: Configured `dio` client wrapper (`dio_x`) with interceptors ensuring robust API interactions.
-- **🎨 Design System**: Reusable foundational UI & tokens located in `flutter_design_system`.
+- **📡 Network Resilience**: Configured `dio` client wrapper (`dio`) with interceptors ensuring robust API interactions.
+- **🎨 Design System**: Reusable foundational UI & tokens located in `feature_playground_atoms/flutter_design_system`.
 - **🚀 CI/CD Ready**: Built-in scripts for pushing ad-hoc and release builds directly to **TestApp.io**.
 
 ---
@@ -38,18 +38,19 @@ This workspace is composed of several nested Flutter packages, keeping core doma
 foundry_flutter/
 ├── app/                                 # Entry-point Flutter Application
 ├── foundry_core/                        # Base app constants, configuration, and interfaces
-├── foundry_features/                    # Independent Feature Modules
+├── foundry_native/                      # Native platform specific integrations
+├── feature_playground_atoms/            # Foundational features & architecture setups
 │   ├── clean_architecture_bloc/         # Feature set using BLoC & Clean Arch (Login, Splash)
-│   └── go_router_navigation/            # Feature set demonstrating Router navigation setups
-├── foundry_feat_components/             # Reusable UI Feature Components
-│   ├── flutter_design_system/           # Tokens, Colors, Theming, Base Widgets
+│   └── flutter_design_system/           # Tokens, Colors, Theming, Base Widgets
+├── feature_playground_molecules/        # Composite features & interactions
+│   ├── go_router_navigation/            # Feature set demonstrating Router navigation setups
 │   └── media_picker/                    # Abstract image/video picker implementations
-└── foundry_packages/                    # Reusable Application Infrastructures
-    ├── dio_x/                           # Networking (Dio wrappers & interceptors)
-    ├── flutter_secure_storagex/         # Encrypted local key-value storage
-    ├── auto_router_x/                   # AutoRoute extensions & configurations
-    ├── go_router_x/                     # GoRouter extensions & implementations
-    └── getit_x/                         # Dependency injection setup
+└── flutter_popular_packages/            # Reusable Application Infrastructures
+    ├── auto_router/                     # AutoRoute extensions & configurations
+    ├── dio/                             # Networking (Dio wrappers & interceptors)
+    ├── flutter_secure_storage/          # Encrypted local key-value storage
+    ├── get_it/                          # Dependency injection setup
+    └── go_router/                       # GoRouter extensions & implementations
 ```
 
 ---
@@ -120,10 +121,10 @@ We have configured several Melos wrapper scripts located in `pubspec.yaml` to st
 
 ## 📝 Conventions and Guidelines
 
-1. **Clean Architecture Compliance**: Features must reside within `foundry_features/` and internally separate their logic via Data, Domain, and Presentation directories.
+1. **Clean Architecture Compliance**: Features must reside within `feature_playground_atoms/` or `feature_playground_molecules/` and internally separate their logic via Data, Domain, and Presentation directories.
 2. **Localization First**: Raw strings should be kept to a minimum in presentation codes. Leverage `.arb` translations.
 3. **No Direct Package Dependency Abuse**: If package `A` needs something from package `B`, ensure the interaction boundary passes strictly through interfaces (`foundry_core` or explicit bridges).
-4. **Responsive UI**: Apply responsive sizing (e.g., `flutter_screenutil`) through the robust design system components (`foundry_feat_components/flutter_design_system`).
+4. **Responsive UI**: Apply responsive sizing (e.g., `flutter_screenutil`) through the robust design system components (`feature_playground_atoms/flutter_design_system`).
 
 ---
 
