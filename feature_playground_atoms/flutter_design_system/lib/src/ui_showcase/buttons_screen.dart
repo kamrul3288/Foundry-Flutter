@@ -4,130 +4,209 @@ import 'package:flutter_design_system/src/components/button/app_filled_button.da
 import 'package:flutter_design_system/src/components/button/app_icon_button.dart';
 import 'package:flutter_design_system/src/components/button/app_outline_button.dart';
 import 'package:flutter_design_system/src/components/button/app_text_button.dart';
+import 'package:flutter_design_system/src/components/structure/app_scaffold.dart';
+import 'package:flutter_design_system/src/components/structure/app_topbar.dart';
+import 'package:flutter_design_system/src/components/text/app_text.dart';
 
 class ButtonsScreen extends StatelessWidget {
   const ButtonsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Buttons')),
+    return AppScaffold(
+      appBar: const AppTopBar(title: 'Buttons'),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: 16,
           children: [
-            ///========================== App filled button ========================
-            AppFilledButton.text(
-              "Filled Rounded Button",
-              onPressed: () {},
-            ),
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            _buildSection(
+              title: "Button Variants",
+              description: "Buttons come in three main variants: Filled, Outline,Text and icon.",
               children: [
-                AppFilledButton.icon(
-                  Icon(Icons.add),
-                  onPressed: () {},
-                ),
-
-                AppFilledButton.icon(
-                  Icon(Icons.add),
-                  onPressed: () {},
-                  style: AppFilledButtonStyle(shape: AppButtonShape.circle),
-                ),
-                AppFilledButton.icon(
-                  Icon(Icons.add),
-                  onPressed: () {},
-                  style: AppFilledButtonStyle(shape: AppButtonShape.pill),
+                Row(
+                  children: [
+                    Expanded(
+                      child: AppFilledButton.text(
+                        "Filled",
+                        onPressed: () {},
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: AppOutlineButton.text(
+                        "Outline",
+                        onPressed: () {},
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: AppTextButton(
+                        "Text",
+                        onPressed: () {},
+                      ),
+                    ),
+                    AppIconButton(
+                      const Icon(Icons.add),
+                      onPressed: () {},
+                    ),
+                  ],
                 ),
               ],
             ),
-
-            AppFilledButton.text(
-              "Filled Rounded Button",
-              onPressed: () {},
-              isLoading: true,
-            ),
-
-            ///========================== App outline button ========================
-            SizedBox(height: 24),
-            AppOutlineButton.text(
-              "Outline Rounded Button",
-              onPressed: () {},
-            ),
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            const SizedBox(height: 24),
+            _buildSection(
+              title: "Button Sizes",
+              description: "Buttons support three sizes: Small, Medium, and Large.",
               children: [
-                AppOutlineButton.icon(
-                  Icon(Icons.add),
-                  onPressed: () {},
-                ),
-
-                AppOutlineButton.icon(
-                  Icon(Icons.add),
-                  onPressed: () {},
-                  style: AppOutlineButtonStyle(shape: AppButtonShape.circle),
-                ),
-                AppOutlineButton.icon(
-                  Icon(Icons.add),
-                  onPressed: () {},
-                  style: AppOutlineButtonStyle(shape: AppButtonShape.pill),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Expanded(
+                      child: AppFilledButton.text(
+                        "Small",
+                        height: AppButtonHeight.sm,
+                        onPressed: () {},
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: AppFilledButton.text(
+                        "Medium",
+                        height: AppButtonHeight.md,
+                        onPressed: () {},
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: AppFilledButton.text(
+                        "Large",
+                        height: AppButtonHeight.lg,
+                        onPressed: () {},
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
-
-            AppOutlineButton.text(
-              "Outline Rounded Button",
-              onPressed: () {},
-              isLoading: true,
-            ),
-
-            ///========================== App text button ========================
-            SizedBox(height: 24),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            const SizedBox(height: 24),
+            _buildSection(
+              title: "Button Shapes",
+              description: "Different shapes to match the visual style of your application.",
               children: [
-                AppTextButton(
-                  "Text Button",
-                  onPressed: () {},
+                Row(
+                  children: [
+                    Expanded(
+                      child: AppFilledButton.text(
+                        "Rounded",
+                        onPressed: () {},
+                        style: const AppFilledButtonStyle(shape: AppButtonShape.rounded),
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: AppFilledButton.text(
+                        "Pill",
+                        onPressed: () {},
+                        style: const AppFilledButtonStyle(shape: AppButtonShape.pill),
+                      ),
+                    ),
+                  ],
                 ),
-
-                AppTextButton(
-                  "Text Button",
-                  onPressed: () {},
-                  isLoading: true,
-                ),
-
-                AppTextButton(
-                  "Logout",
-                  onPressed: () {},
-                  style: AppTextButtonStyle(leading: Icon(Icons.logout)),
+                const SizedBox(height: 12),
+                Row(
+                  children: [
+                    AppFilledButton.icon(
+                      const Icon(Icons.add),
+                      onPressed: () {},
+                      style: const AppFilledButtonStyle(shape: AppButtonShape.circle),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: AppFilledButton.text(
+                        "Sharp",
+                        onPressed: () {},
+                        style: const AppFilledButtonStyle(shape: AppButtonShape.sharp),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
-
-            ///========================== App icon button ========================
-            SizedBox(height: 24),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+            const SizedBox(height: 24),
+            _buildSection(
+              title: "Button States",
+              description: "Buttons can be in various states like loading or disabled.",
               children: [
-                AppIconButton(
-                  Icon(Icons.logout, size: 24),
-                  onPressed: () {},
+                Row(
+                  children: [
+                    Expanded(
+                      child: AppFilledButton.text(
+                        "Loading",
+                        onPressed: () {},
+                        isLoading: true,
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: AppFilledButton.text(
+                        "Disabled",
+                        onPressed: null,
+                      ),
+                    ),
+                  ],
                 ),
-
-                AppIconButton(
-                  Icon(Icons.login, size: 24),
-                  onPressed: () {},
+              ],
+            ),
+            const SizedBox(height: 24),
+            _buildSection(
+              title: "Icon Buttons",
+              description: "Compact buttons used for simple actions with icons.",
+              children: [
+                Row(
+                  children: [
+                    AppIconButton(
+                      const Icon(Icons.favorite_border),
+                      onPressed: () {},
+                    ),
+                    const SizedBox(width: 12),
+                    AppIconButton(
+                      const Icon(Icons.share_outlined),
+                      onPressed: () {},
+                    ),
+                    const SizedBox(width: 12),
+                    AppIconButton(
+                      const Icon(Icons.bookmark_border),
+                      onPressed: () {},
+                    ),
+                    const SizedBox(width: 12),
+                    AppIconButton(
+                      const Icon(Icons.more_vert),
+                      onPressed: () {},
+                    ),
+                  ],
                 ),
               ],
             ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildSection({
+    required String title,
+    required String description,
+    required List<Widget> children,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        AppText.titleMedium(title),
+        AppText.bodySmall(description, color: Colors.grey),
+        const SizedBox(height: 16),
+        ...children,
+      ],
     );
   }
 }
