@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/src/components/structure/app_scaffold.dart';
 import 'package:flutter_design_system/src/components/structure/app_topbar.dart';
-import 'package:flutter_design_system/src/components/tag/app_tag.dart';
+import 'package:flutter_design_system/src/components/tag/tag.dart';
 import 'package:flutter_design_system/src/components/text/app_text.dart';
-import 'package:flutter_design_system/src/theme/extensions/app_tag_theme.dart';
 
 class TagsScreen extends StatelessWidget {
   const TagsScreen({super.key});
@@ -57,6 +56,7 @@ class TagsScreen extends StatelessWidget {
                     AppTag(
                       variant: AppTagVariant.filled,
                       shape: AppTagShape.pill,
+                      padding: EdgeInsets.all(4),
                       child: const AppText.bodySmall("Pill", inheritColor: true),
                     ),
                     AppTag(
@@ -67,10 +67,7 @@ class TagsScreen extends StatelessWidget {
                     AppTag(
                       variant: AppTagVariant.filled,
                       shape: AppTagShape.circle,
-                      child: const Padding(
-                        padding: EdgeInsets.all(4),
-                        child: Icon(Icons.add, size: 16),
-                      ),
+                      child: Icon(Icons.add, size: 16),
                     ),
                     AppTag(
                       variant: AppTagVariant.filled,
@@ -83,8 +80,8 @@ class TagsScreen extends StatelessWidget {
             ),
             const SizedBox(height: 24),
             _buildSection(
-              title: "Color Roles",
-              description: "Tags can use Primary or Neutral color roles.",
+              title: "Tags Color Intents",
+              description: "Tags can use brand or Neutral color roles.",
               children: [
                 Wrap(
                   spacing: 12,
@@ -93,14 +90,14 @@ class TagsScreen extends StatelessWidget {
                     AppTag(
                       variant: AppTagVariant.filled,
                       shape: AppTagShape.rounded,
-                      colorRole: AppTagColorRole.primary,
+                      intent: AppTagIntent.brand,
                       leading: const Icon(Icons.star, size: 14),
                       child: const AppText.bodySmall("Primary", inheritColor: true),
                     ),
                     AppTag(
                       variant: AppTagVariant.filled,
                       shape: AppTagShape.rounded,
-                      colorRole: AppTagColorRole.neutral,
+                      intent: AppTagIntent.info,
                       leading: const Icon(Icons.settings, size: 14),
                       child: const AppText.bodySmall("Neutral", inheritColor: true),
                     ),

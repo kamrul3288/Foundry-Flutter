@@ -1,94 +1,98 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_design_system/src/components/tag/app_tag_colors.dart';
-import 'package:flutter_design_system/src/theme/extensions/app_tag_theme.dart';
+import 'package:flutter_design_system/src/components/tag/tag.dart';
 
 class AppTag extends StatelessWidget {
+  final AppTagIntent intent;
   final AppTagVariant variant;
   final AppTagShape shape;
-  final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry? padding;
   final Widget child;
   final Widget? leading;
   final Widget? trailing;
-  final bool forceIconTheme;
-  final AppTagColorRole colorRole;
+  final bool tintLeadingTrailing;
 
   const AppTag({
     super.key,
-    required this.variant,
-    required this.shape,
-    this.padding = const EdgeInsets.all(4),
+    this.intent = AppTagIntent.brand,
+    this.variant = AppTagVariant.filled,
+    this.shape = AppTagShape.pill,
+    this.padding,
     required this.child,
     this.leading,
     this.trailing,
-    this.forceIconTheme = true,
-    this.colorRole = AppTagColorRole.primary,
+    this.tintLeadingTrailing = true,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).extension<AppTagTheme>()!;
-    final colors = _mapColorsToVariant(theme.resolve(colorRole));
+    final variants = theme.byIntent(intent);
+    final colors = switch (variant) {
+      AppTagVariant.filled => variants.filled,
+      AppTagVariant.outline => variants.outline,
+      AppTagVariant.filledOutline => variants.filledOutline,
+    };
+
     return Material(
-      shape: _resolveShape(shape, colors),
+      shape: _resolveShape(colors.border),
       color: colors.background,
-      child: _buildContent(colors),
-    );
-  }
-
-  Widget _buildContent(AppTagColors colors) {
-    final content = Padding(
-      padding: padding,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          if (leading != null) ...[_applyColorFilter(leading!, colors.foreground), SizedBox(width: 4)],
-          child,
-          if (trailing != null) ...[SizedBox(width: 4), _applyColorFilter(trailing!, colors.foreground)],
-        ],
+      child: Padding(
+        padding: padding ?? _defaultPaddingFor(shape),
+        child: IconTheme.merge(
+          data: IconThemeData(color: colors.foreground, size: 16),
+          child: DefaultTextStyle.merge(
+            style: TextStyle(color: colors.foreground),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                if (leading != null) ...[
+                  _tinted(leading!, colors.foreground),
+                  const SizedBox(width: 4),
+                ],
+                child,
+                if (trailing != null) ...[
+                  const SizedBox(width: 4),
+                  _tinted(trailing!, colors.foreground),
+                ],
+              ],
+            ),
+          ),
+        ),
       ),
     );
+  }
 
-    return IconTheme.merge(
-      data: IconThemeData(color: colors.foreground),
-      child: DefaultTextStyle(
-        style: TextStyle(color: colors.foreground),
-        child: content,
-      ),
+  Widget _tinted(Widget widget, Color color) {
+    if (!tintLeadingTrailing) return widget;
+    return ColorFiltered(
+      colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+      child: widget,
     );
   }
 
-  Widget _applyColorFilter(Widget widget, Color color) {
-    if (forceIconTheme) {
-      return ColorFiltered(colorFilter: ColorFilter.mode(color, BlendMode.srcIn), child: widget);
-    }
-    return widget;
+  ShapeBorder _resolveShape(Color borderColor) {
+    final side = BorderSide(color: borderColor, width: 1);
+    return switch (shape) {
+      AppTagShape.pill => StadiumBorder(side: side),
+      AppTagShape.rounded => RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5),
+        side: side,
+      ),
+      AppTagShape.circle => CircleBorder(side: side),
+      AppTagShape.sharp => RoundedRectangleBorder(
+        borderRadius: BorderRadius.zero,
+        side: side,
+      ),
+    };
   }
 
-  AppTagColors _mapColorsToVariant(AppTagColors baseColors) => switch (variant) {
-    AppTagVariant.filled => baseColors,
-    AppTagVariant.outline => AppTagColors(
-      background: Colors.transparent,
-      foreground: baseColors.outlineForeground ?? baseColors.foreground,
-      outline: baseColors.outline ?? baseColors.background,
-    ),
-    AppTagVariant.filledOutline => AppTagColors(
-      background: baseColors.outlineFillBackground ?? baseColors.background,
-      foreground: baseColors.outlineFillForeground ?? baseColors.foreground,
-      outline: baseColors.outline ?? baseColors.background,
-    ),
-  };
-
-  ShapeBorder _resolveShape(AppTagShape shape, AppTagColors colors) => switch (shape) {
-    AppTagShape.pill => StadiumBorder(side: _getBorderSide(colors.outline!)),
-    AppTagShape.rounded => RoundedRectangleBorder(borderRadius: BorderRadius.circular(5), side: _getBorderSide(colors.outline!)),
-    AppTagShape.circle => CircleBorder(side: _getBorderSide(colors.outline!)),
-    AppTagShape.sharp => RoundedRectangleBorder(borderRadius: BorderRadius.circular(0), side: _getBorderSide(colors.outline!)),
-  };
-
-  BorderSide _getBorderSide(Color outline) => BorderSide(color: outline, width: 1);
+  EdgeInsetsGeometry _defaultPaddingFor(AppTagShape shape) {
+    return switch (shape) {
+      AppTagShape.pill => const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+      AppTagShape.rounded => const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      AppTagShape.sharp => const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      AppTagShape.circle => const EdgeInsets.all(6),
+    };
+  }
 }
-
-enum AppTagVariant { filled, outline, filledOutline }
-
-enum AppTagShape { pill, rounded, circle, sharp }
