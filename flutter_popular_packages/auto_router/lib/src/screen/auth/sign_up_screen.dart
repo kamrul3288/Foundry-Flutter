@@ -1,5 +1,5 @@
 import 'package:auto_route/annotations.dart';
-import '../../auth/auth_cubit.dart';
+import 'package:pkg_auto_router/src/auth/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

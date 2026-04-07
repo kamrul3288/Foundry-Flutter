@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../constant/secure_storage_key.dart';
-import '../provider/secure_storage_provider.dart';
+import 'package:pkg_flutter_secure_storage/src/constant/secure_storage_key.dart';
+import 'package:pkg_flutter_secure_storage/src/provider/secure_storage_provider.dart';
 
 class WriteScreen extends ConsumerStatefulWidget {
   const WriteScreen({super.key});

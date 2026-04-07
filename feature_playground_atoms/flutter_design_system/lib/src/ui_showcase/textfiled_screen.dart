@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../components/inputfiled/app_input_text_filed.dart';
+import 'package:flutter_design_system/src/components/inputfiled/app_input_text_filed.dart';
 
 class TextFiledScreen extends StatelessWidget {
   const TextFiledScreen({super.key});

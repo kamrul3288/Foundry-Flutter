@@ -1,5 +1,5 @@
-import 'model/post.dart';
-import 'providers/providers.dart';
+import 'package:pkg_dio/src/scaleable_pattern/model/post.dart';
+import 'package:pkg_dio/src/scaleable_pattern/providers/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final class PostController extends Notifier<PostState> {

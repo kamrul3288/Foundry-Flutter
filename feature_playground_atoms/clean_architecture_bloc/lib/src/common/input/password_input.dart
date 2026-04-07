@@ -1,4 +1,4 @@
-import '../enum/app_locale_key.dart';
+import 'package:clean_architecture_bloc/src/common/enum/app_locale_key.dart';
 import 'package:formz/formz.dart';
 
 class PasswordInput extends FormzInput<String, AppLocaleKey> {

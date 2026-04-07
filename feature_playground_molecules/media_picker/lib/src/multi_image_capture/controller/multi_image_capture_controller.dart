@@ -1,10 +1,10 @@
 import 'dart:io';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
-import 'capture_status.dart';
-import 'multi_image_capture_state.dart';
-import '../../provider/media_picker_provider.dart';
-import '../../repository/image_repository.dart';
+import 'package:media_picker/src/multi_image_capture/controller/capture_status.dart';
+import 'package:media_picker/src/multi_image_capture/controller/multi_image_capture_state.dart';
+import 'package:media_picker/src/provider/media_picker_provider.dart';
+import 'package:media_picker/src/repository/image_repository.dart';
 
 class MultiImageCaptureController extends Notifier<MultiImageCaptureState> {
   final _picker = ImagePicker();

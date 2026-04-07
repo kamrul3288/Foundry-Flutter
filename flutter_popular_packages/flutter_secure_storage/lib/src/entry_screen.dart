@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'screen/home_screen.dart';
+import 'package:pkg_flutter_secure_storage/src/screen/home_screen.dart';
 
 class SecureStorageEntryScreen extends StatelessWidget {
   const SecureStorageEntryScreen({super.key});

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element_parameter, unused_element
 
 import 'package:flutter/material.dart';
-import 'app_text_weight.dart';
-import '../../theme/extensions/app_typography_theme.dart';
-import '../../foundation/app_typography_tokens.dart';
+import 'package:flutter_design_system/src/components/text/app_text_weight.dart';
+import 'package:flutter_design_system/src/theme/extensions/app_typography_theme.dart';
+import 'package:flutter_design_system/src/foundation/app_typography_tokens.dart';
 
 class AppText extends StatelessWidget {
   final String text;

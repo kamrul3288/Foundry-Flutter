@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'multi_image_capture/multi_image_capture_screen.dart';
-import 'provider/media_picker_provider.dart';
+import 'package:media_picker/src/multi_image_capture/multi_image_capture_screen.dart';
+import 'package:media_picker/src/provider/media_picker_provider.dart';
 
 class MediaPickerMainScreen extends StatelessWidget {
   const MediaPickerMainScreen({super.key});

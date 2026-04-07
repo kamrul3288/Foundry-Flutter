@@ -1,5 +1,5 @@
-import '../model/complex_args.dart' show ComplexArgs;
-import '../router/app_router.gr.dart';
+import 'package:pkg_auto_router/src/model/complex_args.dart' show ComplexArgs;
+import 'package:pkg_auto_router/src/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 

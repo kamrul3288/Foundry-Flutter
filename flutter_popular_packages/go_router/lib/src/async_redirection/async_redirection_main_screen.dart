@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'async_auth.dart';
-import 'async_auth_notifier.dart';
+import 'package:pkg_go_router/src/async_redirection/async_auth.dart';
+import 'package:pkg_go_router/src/async_redirection/async_auth_notifier.dart';
 
 ///======================== AUTH STATE FOR TRACKING REDIRECT========================
 final authRepositoryProvider = Provider.autoDispose<AsyncAuth>((ref) {

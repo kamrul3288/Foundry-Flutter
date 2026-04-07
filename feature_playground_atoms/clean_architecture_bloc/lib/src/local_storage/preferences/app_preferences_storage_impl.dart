@@ -1,5 +1,5 @@
-import 'app_preferences_storage.dart';
-import '../service/secure_storage_service.dart';
+import 'package:clean_architecture_bloc/src/local_storage/preferences/app_preferences_storage.dart';
+import 'package:clean_architecture_bloc/src/local_storage/service/secure_storage_service.dart';
 
 const String _languageCodeKey = 'language_code';
 

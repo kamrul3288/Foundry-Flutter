@@ -1,5 +1,5 @@
 import 'package:auto_route/annotations.dart';
-import '../model/complex_args.dart';
+import 'package:pkg_auto_router/src/model/complex_args.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()

@@ -1,6 +1,6 @@
-import 'file_downloader_controller.dart';
-import 'widget/download_progress_view.dart';
-import 'widget/no_download_view.dart';
+import 'package:pkg_dio/src/filedownload/file_downloader_controller.dart';
+import 'package:pkg_dio/src/filedownload/widget/download_progress_view.dart';
+import 'package:pkg_dio/src/filedownload/widget/no_download_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

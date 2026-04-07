@@ -1,2 +1,1 @@
-export 'dio_pkg.dart';
-export 'src/dio_main_screen.dart';
+export 'package:pkg_dio/src/dio_main_screen.dart';

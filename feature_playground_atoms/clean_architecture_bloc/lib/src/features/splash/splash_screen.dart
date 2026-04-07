@@ -1,8 +1,8 @@
-import 'bloc/splash_cubit.dart';
-import 'splash_body.dart';
-import '../../router/app_route_name.dart';
-import '../../ui/error_handling/failure_message_resolver.dart';
-import '../../ui/widgets/network_error_screen.dart';
+import 'package:clean_architecture_bloc/src/features/splash/bloc/splash_cubit.dart';
+import 'package:clean_architecture_bloc/src/features/splash/splash_body.dart';
+import 'package:clean_architecture_bloc/src/router/app_route_name.dart';
+import 'package:clean_architecture_bloc/src/ui/error_handling/failure_message_resolver.dart';
+import 'package:clean_architecture_bloc/src/ui/widgets/network_error_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';

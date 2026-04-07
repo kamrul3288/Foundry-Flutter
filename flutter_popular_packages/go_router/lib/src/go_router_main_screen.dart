@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'async_redirection/async_redirection_main_screen.dart';
-import 'basic_flat_route/flat_route_main_screen.dart';
-import 'basic_nested_route/nested_route_main_screen.dart';
-import 'dynamic_route/dynamic_route_main_screen.dart';
-import 'named_route/named_route_main_screen.dart';
-import 'onexit/on_exit_main_screen.dart';
-import 'path_query_params/path_query_params_main_screen.dart';
-import 'redirection/redirection_main_screen.dart';
-import 'shell_route/shell_route_main_screen.dart';
-import 'shell_route_keys/shell_route_keys_main_screen.dart';
-import 'shell_route_statefull/statefull_shell_route_main_screen.dart';
+import 'package:pkg_go_router/src/async_redirection/async_redirection_main_screen.dart';
+import 'package:pkg_go_router/src/basic_flat_route/flat_route_main_screen.dart';
+import 'package:pkg_go_router/src/basic_nested_route/nested_route_main_screen.dart';
+import 'package:pkg_go_router/src/dynamic_route/dynamic_route_main_screen.dart';
+import 'package:pkg_go_router/src/named_route/named_route_main_screen.dart';
+import 'package:pkg_go_router/src/onexit/on_exit_main_screen.dart';
+import 'package:pkg_go_router/src/path_query_params/path_query_params_main_screen.dart';
+import 'package:pkg_go_router/src/redirection/redirection_main_screen.dart';
+import 'package:pkg_go_router/src/shell_route/shell_route_main_screen.dart';
+import 'package:pkg_go_router/src/shell_route_keys/shell_route_keys_main_screen.dart';
+import 'package:pkg_go_router/src/shell_route_statefull/statefull_shell_route_main_screen.dart';
 
 class GoRouterMainScreen extends StatelessWidget {
   const GoRouterMainScreen({super.key});

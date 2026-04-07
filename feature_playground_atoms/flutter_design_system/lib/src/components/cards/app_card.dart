@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'app_card_colors.dart';
-import '../../theme/extensions/app_card_theme.dart';
+import 'package:flutter_design_system/src/components/cards/app_card_colors.dart';
+import 'package:flutter_design_system/src/theme/extensions/app_card_theme.dart';
 
 class AppCard extends StatelessWidget {
   final double elevation;

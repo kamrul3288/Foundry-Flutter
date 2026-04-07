@@ -1,10 +1,10 @@
-import '../../../common/input/email_input.dart';
-import '../../../common/input/password_input.dart';
-import '../../../common/result/failure.dart';
+import 'package:clean_architecture_bloc/src/common/input/email_input.dart';
+import 'package:clean_architecture_bloc/src/common/input/password_input.dart';
+import 'package:clean_architecture_bloc/src/common/result/failure.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import '../../../domain/usecase/login_usecase.dart';
+import 'package:clean_architecture_bloc/src/domain/usecase/login_usecase.dart';
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {

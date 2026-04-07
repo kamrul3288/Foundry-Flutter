@@ -1,4 +1,4 @@
-import '../../local_storage/preferences/app_preferences_storage.dart';
+import 'package:clean_architecture_bloc/src/local_storage/preferences/app_preferences_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

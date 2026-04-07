@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../components/inputfiled/input_field_color.dart';
-import '../../foundation/app_colors.dart';
+import 'package:flutter_design_system/src/components/inputfiled/input_field_color.dart';
+import 'package:flutter_design_system/src/foundation/app_colors.dart';
 
 class AppInputTheme extends ThemeExtension<AppInputTheme> {
   final AppInputColor primary;

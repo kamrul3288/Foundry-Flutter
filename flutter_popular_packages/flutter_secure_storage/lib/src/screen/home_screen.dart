@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'read_and_delete_screen.dart';
-import 'write_screen.dart';
+import 'package:pkg_flutter_secure_storage/src/screen/read_and_delete_screen.dart';
+import 'package:pkg_flutter_secure_storage/src/screen/write_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

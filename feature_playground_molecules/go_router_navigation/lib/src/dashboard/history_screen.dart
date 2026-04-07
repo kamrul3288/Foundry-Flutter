@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../router/app_named_route.dart';
+import 'package:go_router_navigation/src/router/app_named_route.dart';
 
 class HistoryScreen extends StatelessWidget {
   const HistoryScreen({super.key});

@@ -1,7 +1,7 @@
-import '../interceptor/retry_interceptor.dart';
-import '../interceptor/token_refresh_interceptor.dart';
-import '../../env/env.dart';
-import '../../local_storage/auth/auth_token_storage.dart';
+import 'package:clean_architecture_bloc/src/data/interceptor/retry_interceptor.dart';
+import 'package:clean_architecture_bloc/src/data/interceptor/token_refresh_interceptor.dart';
+import 'package:clean_architecture_bloc/src/env/env.dart';
+import 'package:clean_architecture_bloc/src/local_storage/auth/auth_token_storage.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 

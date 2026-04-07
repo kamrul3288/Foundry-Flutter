@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../components/tag/app_tag.dart';
-import '../components/text/app_text.dart';
-import '../theme/extensions/app_tag_theme.dart';
+import 'package:flutter_design_system/src/components/tag/app_tag.dart';
+import 'package:flutter_design_system/src/components/text/app_text.dart';
+import 'package:flutter_design_system/src/theme/extensions/app_tag_theme.dart';
 
 class TagsScreen extends StatelessWidget {
   const TagsScreen({super.key});

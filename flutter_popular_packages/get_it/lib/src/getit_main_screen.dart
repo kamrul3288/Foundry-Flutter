@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'async_object_registration/async_object_registration_screen.dart';
-import 'multiple_registration/multiple_registration_screen.dart';
-import 'object_registration/object_registration_screen.dart';
-import 'scoping/scopeing_screen.dart';
+import 'package:pkg_get_it/src/async_object_registration/async_object_registration_screen.dart';
+import 'package:pkg_get_it/src/multiple_registration/multiple_registration_screen.dart';
+import 'package:pkg_get_it/src/object_registration/object_registration_screen.dart';
+import 'package:pkg_get_it/src/scoping/scopeing_screen.dart';
 
 class GetitMainScreen extends StatelessWidget {
   const GetitMainScreen({super.key});

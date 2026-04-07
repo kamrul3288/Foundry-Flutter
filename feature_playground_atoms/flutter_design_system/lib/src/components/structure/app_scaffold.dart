@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'app_topbar.dart';
-import '../../theme/extensions/app_scaffold_theme.dart';
+import 'package:flutter_design_system/src/components/structure/app_topbar.dart';
+import 'package:flutter_design_system/src/theme/extensions/app_scaffold_theme.dart';
 
 class AppScaffold extends StatelessWidget {
   final Widget body;

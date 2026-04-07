@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:dio/dio.dart';
-import 'file_downloader_state.dart';
+import 'package:pkg_dio/src/filedownload/file_downloader_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
 

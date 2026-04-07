@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../components/button/app_button_color.dart';
-import '../../components/button/app_button_color_role.dart';
-import '../../foundation/app_colors.dart';
+import 'package:flutter_design_system/src/components/button/app_button_color.dart';
+import 'package:flutter_design_system/src/components/button/app_button_color_role.dart';
+import 'package:flutter_design_system/src/foundation/app_colors.dart';
 
 final class AppButtonTheme extends ThemeExtension<AppButtonTheme> {
   final AppButtonColor primary;

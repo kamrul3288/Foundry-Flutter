@@ -1,4 +1,4 @@
-import '../../locale/extensions/app_locale_extension.dart';
+import 'package:clean_architecture_bloc/src/locale/extensions/app_locale_extension.dart';
 import 'package:flutter/material.dart';
 
 class NetworkErrorScreen extends StatefulWidget {

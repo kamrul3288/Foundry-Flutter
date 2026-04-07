@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'controller/capture_status.dart';
-import 'controller/multi_image_capture_controller.dart';
-import 'controller/multi_image_capture_state.dart';
-import 'widget/captured_image_grids.dart';
+import 'package:media_picker/src/multi_image_capture/controller/capture_status.dart';
+import 'package:media_picker/src/multi_image_capture/controller/multi_image_capture_controller.dart';
+import 'package:media_picker/src/multi_image_capture/controller/multi_image_capture_state.dart';
+import 'package:media_picker/src/multi_image_capture/widget/captured_image_grids.dart';
 part 'multi_image_capture_provider.dart';
 
 /// Problem story of this screen goes here:

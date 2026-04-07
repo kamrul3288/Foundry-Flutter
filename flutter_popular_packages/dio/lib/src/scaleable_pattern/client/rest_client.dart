@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'api_exception.dart';
+import 'package:pkg_dio/src/scaleable_pattern/client/api_exception.dart';
 
 class RestClient {
   final Dio _dio;

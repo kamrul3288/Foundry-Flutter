@@ -1,11 +1,11 @@
-import '../../common/result/failure.dart';
-import '../../common/result/result.dart';
-import '../client/rest_client.dart';
-import '../client/rest_client_executor.dart';
-import '../dto/post_dto.dart';
-import '../mapper/post_dto_mapper.dart';
-import '../../domain/entity/post_entity.dart';
-import '../../domain/repository/post_repository.dart';
+import 'package:clean_architecture_bloc/src/common/result/failure.dart';
+import 'package:clean_architecture_bloc/src/common/result/result.dart';
+import 'package:clean_architecture_bloc/src/data/client/rest_client.dart';
+import 'package:clean_architecture_bloc/src/data/client/rest_client_executor.dart';
+import 'package:clean_architecture_bloc/src/data/dto/post_dto.dart';
+import 'package:clean_architecture_bloc/src/data/mapper/post_dto_mapper.dart';
+import 'package:clean_architecture_bloc/src/domain/entity/post_entity.dart';
+import 'package:clean_architecture_bloc/src/domain/repository/post_repository.dart';
 
 final class PostRepoImpl extends PostRepository with RestClientExecutor {
   final RestClient _restClient;

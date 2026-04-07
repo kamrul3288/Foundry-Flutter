@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
-import '../auth/auth_redirect_guard.dart';
-import 'app_router.gr.dart';
-import '../screen/home_screen.dart' show HomeScreen;
+import 'package:pkg_auto_router/src/auth/auth_redirect_guard.dart';
+import 'package:pkg_auto_router/src/router/app_router.gr.dart';
+import 'package:pkg_auto_router/src/screen/home_screen.dart' show HomeScreen;
 
 
 final class AppRoute{

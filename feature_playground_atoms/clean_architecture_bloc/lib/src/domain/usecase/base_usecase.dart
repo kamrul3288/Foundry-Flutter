@@ -1,5 +1,5 @@
-import '../../common/result/failure.dart';
-import '../../common/result/result.dart';
+import 'package:clean_architecture_bloc/src/common/result/failure.dart';
+import 'package:clean_architecture_bloc/src/common/result/result.dart';
 
 /// Remote use case with parameters.
 /// [Params] - the input parameter type.

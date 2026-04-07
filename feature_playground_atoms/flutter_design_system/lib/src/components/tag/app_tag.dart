@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'app_tag_colors.dart';
-import '../../theme/extensions/app_tag_theme.dart';
+import 'package:flutter_design_system/src/components/tag/app_tag_colors.dart';
+import 'package:flutter_design_system/src/theme/extensions/app_tag_theme.dart';
 
 class AppTag extends StatelessWidget {
   final AppTagVariant variant;

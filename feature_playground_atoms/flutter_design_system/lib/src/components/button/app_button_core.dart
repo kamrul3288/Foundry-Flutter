@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'app_button_color.dart';
-import 'app_button_color_role.dart';
-import 'app_button_types.dart';
-import '../../theme/extensions/app_button_theme.dart';
-import '../../theme/extensions/app_typography_theme.dart';
+import 'package:flutter_design_system/src/components/button/app_button_color.dart';
+import 'package:flutter_design_system/src/components/button/app_button_color_role.dart';
+import 'package:flutter_design_system/src/components/button/app_button_types.dart';
+import 'package:flutter_design_system/src/theme/extensions/app_button_theme.dart';
+import 'package:flutter_design_system/src/theme/extensions/app_typography_theme.dart';
 
 class AppButtonCore extends StatelessWidget {
   const AppButtonCore({

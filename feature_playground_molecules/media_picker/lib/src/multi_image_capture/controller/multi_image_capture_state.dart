@@ -1,6 +1,6 @@
 import 'dart:io';
-import 'capture_status.dart';
-import 'upload_status.dart';
+import 'package:media_picker/src/multi_image_capture/controller/capture_status.dart';
+import 'package:media_picker/src/multi_image_capture/controller/upload_status.dart';
 
 class MultiImageCaptureState {
   final List<File> photos;

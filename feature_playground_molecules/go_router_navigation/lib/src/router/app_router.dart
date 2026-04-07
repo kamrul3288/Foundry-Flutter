@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../auth/otp_verify_screen.dart';
-import '../auth/sign_up_screen.dart';
-import '../bike_service/bike_service_screen.dart';
-import '../car_service/car_service_screen.dart';
-import '../dashboard/history_screen.dart';
-import '../dashboard/home_screen.dart';
-import '../dashboard/menu_screen.dart';
-import '../dashboard/notification_screen.dart';
-import '../entry/splash_screen.dart';
-import 'app_named_route.dart';
-import '../widgets/app_botton_nav_bar.dart' show AppBottonNavBar;
+import 'package:go_router_navigation/src/auth/otp_verify_screen.dart';
+import 'package:go_router_navigation/src/auth/sign_up_screen.dart';
+import 'package:go_router_navigation/src/bike_service/bike_service_screen.dart';
+import 'package:go_router_navigation/src/car_service/car_service_screen.dart';
+import 'package:go_router_navigation/src/dashboard/history_screen.dart';
+import 'package:go_router_navigation/src/dashboard/home_screen.dart';
+import 'package:go_router_navigation/src/dashboard/menu_screen.dart';
+import 'package:go_router_navigation/src/dashboard/notification_screen.dart';
+import 'package:go_router_navigation/src/entry/splash_screen.dart';
+import 'package:go_router_navigation/src/router/app_named_route.dart';
+import 'package:go_router_navigation/src/widgets/app_botton_nav_bar.dart' show AppBottonNavBar;
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 final GlobalKey<NavigatorState> _shellNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'shell');

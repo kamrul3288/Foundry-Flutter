@@ -1,15 +1,15 @@
 import 'dart:convert';
-import '../../common/result/failure.dart';
-import '../../common/result/result.dart';
-import '../client/rest_client.dart';
-import '../client/rest_client_executor.dart';
-import '../dto/authentication_dto.dart';
-import '../dto/user_dto.dart';
-import '../mapper/authentication_dto_mapper.dart';
-import '../mapper/user_dto_mapper.dart';
-import '../../domain/entity/authentication_entity.dart';
-import '../../domain/entity/user_entity.dart';
-import '../../domain/repository/auth_repository.dart';
+import 'package:clean_architecture_bloc/src/common/result/failure.dart';
+import 'package:clean_architecture_bloc/src/common/result/result.dart';
+import 'package:clean_architecture_bloc/src/data/client/rest_client.dart';
+import 'package:clean_architecture_bloc/src/data/client/rest_client_executor.dart';
+import 'package:clean_architecture_bloc/src/data/dto/authentication_dto.dart';
+import 'package:clean_architecture_bloc/src/data/dto/user_dto.dart';
+import 'package:clean_architecture_bloc/src/data/mapper/authentication_dto_mapper.dart';
+import 'package:clean_architecture_bloc/src/data/mapper/user_dto_mapper.dart';
+import 'package:clean_architecture_bloc/src/domain/entity/authentication_entity.dart';
+import 'package:clean_architecture_bloc/src/domain/entity/user_entity.dart';
+import 'package:clean_architecture_bloc/src/domain/repository/auth_repository.dart';
 import 'package:flutter/services.dart';
 
 final class AuthRepoImpl extends AuthRepository with RestClientExecutor {

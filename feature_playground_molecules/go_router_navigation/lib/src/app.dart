@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'router/app_router.dart';
+import 'package:go_router_navigation/src/router/app_router.dart';
 
 class GoRouterNavigationApp extends StatelessWidget {
   const GoRouterNavigationApp({super.key});

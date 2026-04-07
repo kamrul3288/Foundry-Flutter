@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'app_button_color_role.dart';
-import 'app_button_core.dart';
-import 'app_button_types.dart';
+import 'package:flutter_design_system/src/components/button/app_button_color_role.dart';
+import 'package:flutter_design_system/src/components/button/app_button_core.dart';
+import 'package:flutter_design_system/src/components/button/app_button_types.dart';
 
 class AppTextButton extends StatelessWidget {
   final String label;

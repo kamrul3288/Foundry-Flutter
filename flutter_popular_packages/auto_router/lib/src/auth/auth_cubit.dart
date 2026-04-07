@@ -1,4 +1,4 @@
-import 'auth_config.dart';
+import 'package:pkg_auto_router/src/auth/auth_config.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'auth_state.dart';

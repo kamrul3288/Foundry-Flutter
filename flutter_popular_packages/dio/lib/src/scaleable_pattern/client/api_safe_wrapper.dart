@@ -1,5 +1,5 @@
-import 'api_exception.dart';
-import '../model/result.dart';
+import 'package:pkg_dio/src/scaleable_pattern/client/api_exception.dart';
+import 'package:pkg_dio/src/scaleable_pattern/model/result.dart';
 
 mixin ApiSafeWrapper {
   /// This generic function takes an async API call (Function) as a parameter.

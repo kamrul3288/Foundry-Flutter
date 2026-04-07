@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
-import '../auth/auth_config.dart';
-import '../auth/auth_cubit.dart';
-import '../router/app_router.gr.dart';
+import 'package:pkg_auto_router/src/auth/auth_config.dart';
+import 'package:pkg_auto_router/src/auth/auth_cubit.dart';
+import 'package:pkg_auto_router/src/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

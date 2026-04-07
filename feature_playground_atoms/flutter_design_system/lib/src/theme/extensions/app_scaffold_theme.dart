@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../foundation/app_colors.dart';
+import 'package:flutter_design_system/src/foundation/app_colors.dart';
 
 final class AppScaffoldTheme extends ThemeExtension<AppScaffoldTheme> {
   final Color backgroundColor;

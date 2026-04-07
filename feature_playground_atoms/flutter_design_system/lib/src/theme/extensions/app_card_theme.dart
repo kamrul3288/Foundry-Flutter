@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../components/cards/app_card_colors.dart';
+import 'package:flutter_design_system/src/components/cards/app_card_colors.dart';
 
 final class AppCardTheme extends ThemeExtension<AppCardTheme> {
   final AppCardColors surface;

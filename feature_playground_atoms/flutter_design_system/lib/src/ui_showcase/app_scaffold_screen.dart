@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../components/structure/app_scaffold.dart';
-import '../components/structure/app_topbar.dart';
+import 'package:flutter_design_system/src/components/structure/app_scaffold.dart';
+import 'package:flutter_design_system/src/components/structure/app_topbar.dart';
 
 class AppScaffoldScreen extends StatelessWidget {
   const AppScaffoldScreen({super.key});

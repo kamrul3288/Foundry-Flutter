@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../components/tag/app_tag_colors.dart';
-import '../../foundation/app_colors.dart';
+import 'package:flutter_design_system/src/components/tag/app_tag_colors.dart';
+import 'package:flutter_design_system/src/foundation/app_colors.dart';
 
 final class AppTagTheme extends ThemeExtension<AppTagTheme> {
   final AppTagColors primary;

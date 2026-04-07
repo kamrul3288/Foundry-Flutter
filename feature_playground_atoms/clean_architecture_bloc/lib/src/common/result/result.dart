@@ -1,4 +1,4 @@
-import 'failure.dart';
+import 'package:clean_architecture_bloc/src/common/result/failure.dart';
 
 sealed class Result<S, F extends Failure> {
   const Result();

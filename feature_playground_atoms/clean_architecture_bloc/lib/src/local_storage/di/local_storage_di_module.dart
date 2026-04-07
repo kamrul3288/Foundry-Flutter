@@ -1,8 +1,8 @@
-import '../auth/auth_token_storage.dart';
-import '../auth/auth_token_storage_impl.dart';
-import '../preferences/app_preferences_storage.dart';
-import '../preferences/app_preferences_storage_impl.dart';
-import '../service/secure_storage_service.dart';
+import 'package:clean_architecture_bloc/src/local_storage/auth/auth_token_storage.dart';
+import 'package:clean_architecture_bloc/src/local_storage/auth/auth_token_storage_impl.dart';
+import 'package:clean_architecture_bloc/src/local_storage/preferences/app_preferences_storage.dart';
+import 'package:clean_architecture_bloc/src/local_storage/preferences/app_preferences_storage_impl.dart';
+import 'package:clean_architecture_bloc/src/local_storage/service/secure_storage_service.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 

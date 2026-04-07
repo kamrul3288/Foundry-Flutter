@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'get_request_provider.dart';
+import 'package:pkg_dio/src/get/get_request_provider.dart';
 
 class GetRequestScreen extends ConsumerWidget {
   const GetRequestScreen({super.key});

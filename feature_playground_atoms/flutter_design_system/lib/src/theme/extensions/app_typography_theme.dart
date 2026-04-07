@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../foundation/app_typography_tokens.dart';
-import '../app_color_scheme.dart';
+import 'package:flutter_design_system/src/foundation/app_typography_tokens.dart';
+import 'package:flutter_design_system/src/theme/app_color_scheme.dart';
 
 class AppTypographyTheme extends ThemeExtension<AppTypographyTheme> {
   final TextStyle h1;

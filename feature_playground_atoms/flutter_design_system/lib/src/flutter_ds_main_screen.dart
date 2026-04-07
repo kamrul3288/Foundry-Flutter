@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'theme/extensions/app_card_theme.dart';
-import 'theme/extensions/app_input_theme.dart';
-import 'theme/extensions/app_scaffold_theme.dart';
-import 'theme/extensions/app_tag_theme.dart';
-import 'theme/extensions/app_typography_theme.dart';
-import 'theme/app_color_scheme.dart';
-import 'theme/extensions/app_button_theme.dart';
-import 'ui_showcase/app_cards_screen.dart';
-import 'ui_showcase/buttons_screen.dart';
-import 'ui_showcase/app_scaffold_screen.dart';
-import 'ui_showcase/tags_screen.dart';
-import 'ui_showcase/textfiled_screen.dart';
-import 'ui_showcase/texts_screen.dart';
+import 'package:flutter_design_system/src/theme/extensions/app_card_theme.dart';
+import 'package:flutter_design_system/src/theme/extensions/app_input_theme.dart';
+import 'package:flutter_design_system/src/theme/extensions/app_scaffold_theme.dart';
+import 'package:flutter_design_system/src/theme/extensions/app_tag_theme.dart';
+import 'package:flutter_design_system/src/theme/extensions/app_typography_theme.dart';
+import 'package:flutter_design_system/src/theme/app_color_scheme.dart';
+import 'package:flutter_design_system/src/theme/extensions/app_button_theme.dart';
+import 'package:flutter_design_system/src/ui_showcase/app_cards_screen.dart';
+import 'package:flutter_design_system/src/ui_showcase/buttons_screen.dart';
+import 'package:flutter_design_system/src/ui_showcase/app_scaffold_screen.dart';
+import 'package:flutter_design_system/src/ui_showcase/tags_screen.dart';
+import 'package:flutter_design_system/src/ui_showcase/textfiled_screen.dart';
+import 'package:flutter_design_system/src/ui_showcase/texts_screen.dart';
 
 class FlutterDsMainScreen extends StatelessWidget {
   const FlutterDsMainScreen({super.key});

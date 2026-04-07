@@ -1,9 +1,9 @@
-import '../repository/auth_repository.dart';
-import '../repository/post_repository.dart';
-import '../usecase/get_posts_usecase.dart';
-import '../usecase/get_profile_usecase.dart';
-import '../usecase/login_usecase.dart';
-import '../../local_storage/auth/auth_token_storage.dart';
+import 'package:clean_architecture_bloc/src/domain/repository/auth_repository.dart';
+import 'package:clean_architecture_bloc/src/domain/repository/post_repository.dart';
+import 'package:clean_architecture_bloc/src/domain/usecase/get_posts_usecase.dart';
+import 'package:clean_architecture_bloc/src/domain/usecase/get_profile_usecase.dart';
+import 'package:clean_architecture_bloc/src/domain/usecase/login_usecase.dart';
+import 'package:clean_architecture_bloc/src/local_storage/auth/auth_token_storage.dart';
 import 'package:get_it/get_it.dart';
 
 Future<void> registerDomainDiModule(GetIt locator) async {

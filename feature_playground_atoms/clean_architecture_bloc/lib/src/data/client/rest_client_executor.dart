@@ -1,6 +1,6 @@
-import '../../common/enum/app_locale_key.dart';
-import '../../common/result/failure.dart';
-import '../../common/result/result.dart';
+import 'package:clean_architecture_bloc/src/common/enum/app_locale_key.dart';
+import 'package:clean_architecture_bloc/src/common/result/failure.dart';
+import 'package:clean_architecture_bloc/src/common/result/result.dart';
 import 'package:dio/dio.dart';
 
 mixin RestClientExecutor {

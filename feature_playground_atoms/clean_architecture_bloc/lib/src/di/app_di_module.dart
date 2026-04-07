@@ -1,6 +1,6 @@
-import '../data/di/data_di_module.dart';
-import '../domain/di/domain_di_module.dart';
-import '../local_storage/di/local_storage_di_module.dart';
+import 'package:clean_architecture_bloc/src/data/di/data_di_module.dart';
+import 'package:clean_architecture_bloc/src/domain/di/domain_di_module.dart';
+import 'package:clean_architecture_bloc/src/local_storage/di/local_storage_di_module.dart';
 import 'package:get_it/get_it.dart';
 
 final locator = GetIt.instance;

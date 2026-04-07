@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../components/cards/app_card.dart';
-import '../components/text/app_text.dart';
-import '../theme/app_color_scheme.dart';
+import 'package:flutter_design_system/src/components/cards/app_card.dart';
+import 'package:flutter_design_system/src/components/text/app_text.dart';
+import 'package:flutter_design_system/src/theme/app_color_scheme.dart';
 
 class AppCardsScreen extends StatelessWidget {
   const AppCardsScreen({super.key});

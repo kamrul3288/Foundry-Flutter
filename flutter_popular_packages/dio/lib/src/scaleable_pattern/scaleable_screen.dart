@@ -1,5 +1,5 @@
-import 'post_controller.dart';
-import 'providers/providers.dart';
+import 'package:pkg_dio/src/scaleable_pattern/post_controller.dart';
+import 'package:pkg_dio/src/scaleable_pattern/providers/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

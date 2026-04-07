@@ -1,6 +1,6 @@
-import '../../../common/result/failure.dart';
-import '../../../domain/entity/post_entity.dart';
-import '../../../domain/usecase/get_posts_usecase.dart';
+import 'package:clean_architecture_bloc/src/common/result/failure.dart';
+import 'package:clean_architecture_bloc/src/domain/entity/post_entity.dart';
+import 'package:clean_architecture_bloc/src/domain/usecase/get_posts_usecase.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

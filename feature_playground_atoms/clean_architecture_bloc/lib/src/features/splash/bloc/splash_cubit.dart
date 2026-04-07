@@ -1,6 +1,6 @@
-import '../../../common/result/failure.dart';
-import '../../../domain/usecase/get_profile_usecase.dart';
-import '../../../local_storage/auth/auth_token_storage.dart';
+import 'package:clean_architecture_bloc/src/common/result/failure.dart';
+import 'package:clean_architecture_bloc/src/domain/usecase/get_profile_usecase.dart';
+import 'package:clean_architecture_bloc/src/local_storage/auth/auth_token_storage.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

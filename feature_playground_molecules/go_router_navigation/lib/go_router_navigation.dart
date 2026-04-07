@@ -1,1 +1,1 @@
-export 'src/app.dart';
+export 'package:go_router_navigation/src/app.dart';

@@ -1,9 +1,9 @@
-import '../../di/app_di_module.dart';
-import '../../domain/usecase/get_posts_usecase.dart';
-import 'bloc/posts_cubit.dart';
-import 'posts_screen.dart';
-import '../../router/app_route_name.dart';
-import '../../router/base_router.dart';
+import 'package:clean_architecture_bloc/src/di/app_di_module.dart';
+import 'package:clean_architecture_bloc/src/domain/usecase/get_posts_usecase.dart';
+import 'package:clean_architecture_bloc/src/features/posts/bloc/posts_cubit.dart';
+import 'package:clean_architecture_bloc/src/features/posts/posts_screen.dart';
+import 'package:clean_architecture_bloc/src/router/app_route_name.dart';
+import 'package:clean_architecture_bloc/src/router/base_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 

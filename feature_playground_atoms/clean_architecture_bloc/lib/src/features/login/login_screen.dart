@@ -1,9 +1,9 @@
-import 'bloc/login_cubit.dart';
-import '../../locale/cubit/locale_cubit.dart';
-import '../../locale/extensions/app_locale_extension.dart';
-import '../../locale/extensions/app_locale_key_extension.dart';
-import '../../router/app_route_name.dart';
-import '../../ui/error_handling/failure_message_resolver.dart';
+import 'package:clean_architecture_bloc/src/features/login/bloc/login_cubit.dart';
+import 'package:clean_architecture_bloc/src/locale/cubit/locale_cubit.dart';
+import 'package:clean_architecture_bloc/src/locale/extensions/app_locale_extension.dart';
+import 'package:clean_architecture_bloc/src/locale/extensions/app_locale_key_extension.dart';
+import 'package:clean_architecture_bloc/src/router/app_route_name.dart';
+import 'package:clean_architecture_bloc/src/ui/error_handling/failure_message_resolver.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';

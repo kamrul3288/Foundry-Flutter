@@ -1,4 +1,4 @@
-import 'app_button_color.dart';
+import 'package:flutter_design_system/src/components/button/app_button_color.dart';
 
 sealed class AppButtonColorRole {
   const AppButtonColorRole();

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../foundation/app_colors.dart';
+import 'package:flutter_design_system/src/foundation/app_colors.dart';
 
 final class AppColorScheme extends ThemeExtension<AppColorScheme> {
   final Color brandPrimary;

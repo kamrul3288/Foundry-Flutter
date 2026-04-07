@@ -1,9 +1,9 @@
-import 'filedownload/file_download_screen.dart';
-import 'fileupload/file_upload_request_screen.dart';
-import 'get/get_request_screen.dart';
-import 'interceptor/interceptor_screen.dart';
-import 'post/post_request_screen.dart';
-import 'scaleable_pattern/scaleable_screen.dart';
+import 'package:pkg_dio/src/filedownload/file_download_screen.dart';
+import 'package:pkg_dio/src/fileupload/file_upload_request_screen.dart';
+import 'package:pkg_dio/src/get/get_request_screen.dart';
+import 'package:pkg_dio/src/interceptor/interceptor_screen.dart';
+import 'package:pkg_dio/src/post/post_request_screen.dart';
+import 'package:pkg_dio/src/scaleable_pattern/scaleable_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

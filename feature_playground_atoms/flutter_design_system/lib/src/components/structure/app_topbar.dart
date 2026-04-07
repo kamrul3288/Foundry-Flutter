@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../text/app_text.dart';
-import '../../theme/extensions/app_scaffold_theme.dart';
+import 'package:flutter_design_system/src/components/text/app_text.dart';
+import 'package:flutter_design_system/src/theme/extensions/app_scaffold_theme.dart';
 
 class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;

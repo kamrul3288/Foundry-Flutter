@@ -1,4 +1,4 @@
-import '../client/api_exception.dart';
+import 'package:pkg_dio/src/scaleable_pattern/client/api_exception.dart';
 
 sealed class Result<T> {
   const Result();

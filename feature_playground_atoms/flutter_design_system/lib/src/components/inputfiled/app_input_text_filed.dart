@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'input_field_color.dart';
-import '../../theme/extensions/app_input_theme.dart';
+import 'package:flutter_design_system/src/components/inputfiled/input_field_color.dart';
+import 'package:flutter_design_system/src/theme/extensions/app_input_theme.dart';
 
 class AppTextField extends StatelessWidget {
   final TextEditingController? controller;

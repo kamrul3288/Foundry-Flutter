@@ -1,10 +1,10 @@
-import '../client/dio_factory.dart';
-import '../client/rest_client.dart';
-import '../datasource/auth_repo_impl.dart';
-import '../datasource/post_repo_impl.dart';
-import '../../domain/repository/auth_repository.dart';
-import '../../domain/repository/post_repository.dart';
-import '../../local_storage/auth/auth_token_storage.dart';
+import 'package:clean_architecture_bloc/src/data/client/dio_factory.dart';
+import 'package:clean_architecture_bloc/src/data/client/rest_client.dart';
+import 'package:clean_architecture_bloc/src/data/datasource/auth_repo_impl.dart';
+import 'package:clean_architecture_bloc/src/data/datasource/post_repo_impl.dart';
+import 'package:clean_architecture_bloc/src/domain/repository/auth_repository.dart';
+import 'package:clean_architecture_bloc/src/domain/repository/post_repository.dart';
+import 'package:clean_architecture_bloc/src/local_storage/auth/auth_token_storage.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 

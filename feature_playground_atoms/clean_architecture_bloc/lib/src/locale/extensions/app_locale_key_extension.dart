@@ -1,5 +1,5 @@
-import '../../common/enum/app_locale_key.dart';
-import '../l10n/generated/app_locale.dart';
+import 'package:clean_architecture_bloc/src/common/enum/app_locale_key.dart';
+import 'package:clean_architecture_bloc/src/locale/l10n/generated/app_locale.dart';
 import 'package:flutter/material.dart';
 
 extension AppLocaleKeyExtension on AppLocaleKey {

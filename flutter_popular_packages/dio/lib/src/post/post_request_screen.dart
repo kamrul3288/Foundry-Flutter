@@ -1,4 +1,4 @@
-import 'post_request_provider.dart';
+import 'package:pkg_dio/src/post/post_request_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

@@ -1,8 +1,8 @@
-import '../../domain/entity/post_entity.dart';
-import 'bloc/posts_cubit.dart';
-import '../../locale/extensions/app_locale_extension.dart';
-import '../../ui/error_handling/failure_message_resolver.dart';
-import '../../ui/widgets/network_error_screen.dart';
+import 'package:clean_architecture_bloc/src/domain/entity/post_entity.dart';
+import 'package:clean_architecture_bloc/src/features/posts/bloc/posts_cubit.dart';
+import 'package:clean_architecture_bloc/src/locale/extensions/app_locale_extension.dart';
+import 'package:clean_architecture_bloc/src/ui/error_handling/failure_message_resolver.dart';
+import 'package:clean_architecture_bloc/src/ui/widgets/network_error_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

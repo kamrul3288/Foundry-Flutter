@@ -1,5 +1,5 @@
-import '../enum/app_locale_key.dart';
-import 'failure_message.dart';
+import 'package:clean_architecture_bloc/src/common/enum/app_locale_key.dart';
+import 'package:clean_architecture_bloc/src/common/result/failure_message.dart';
 
 sealed class Failure {
   int? get statusCode;

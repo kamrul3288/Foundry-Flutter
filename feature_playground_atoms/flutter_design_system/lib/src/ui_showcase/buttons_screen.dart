@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../components/button/app_button_types.dart';
-import '../components/button/app_filled_button.dart';
-import '../components/button/app_icon_button.dart';
-import '../components/button/app_outline_button.dart';
-import '../components/button/app_text_button.dart';
+import 'package:flutter_design_system/src/components/button/app_button_types.dart';
+import 'package:flutter_design_system/src/components/button/app_filled_button.dart';
+import 'package:flutter_design_system/src/components/button/app_icon_button.dart';
+import 'package:flutter_design_system/src/components/button/app_outline_button.dart';
+import 'package:flutter_design_system/src/components/button/app_text_button.dart';
 
 class ButtonsScreen extends StatelessWidget {
   const ButtonsScreen({super.key});

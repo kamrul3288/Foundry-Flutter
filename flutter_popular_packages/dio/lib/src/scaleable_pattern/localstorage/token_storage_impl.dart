@@ -1,4 +1,4 @@
-import 'token_storage.dart';
+import 'package:pkg_dio/src/scaleable_pattern/localstorage/token_storage.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 final class TokenStorageImpl implements TokenStorage {

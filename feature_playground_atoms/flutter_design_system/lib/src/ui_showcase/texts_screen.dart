@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../components/text/app_text.dart';
+import 'package:flutter_design_system/src/components/text/app_text.dart';
 
 class TextsScreen extends StatelessWidget {
   const TextsScreen({super.key});

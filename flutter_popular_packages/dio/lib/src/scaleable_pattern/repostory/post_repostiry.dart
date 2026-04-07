@@ -1,7 +1,7 @@
-import '../client/api_safe_wrapper.dart';
-import '../client/rest_client.dart';
-import '../model/post.dart';
-import '../model/result.dart';
+import 'package:pkg_dio/src/scaleable_pattern/client/api_safe_wrapper.dart';
+import 'package:pkg_dio/src/scaleable_pattern/client/rest_client.dart';
+import 'package:pkg_dio/src/scaleable_pattern/model/post.dart';
+import 'package:pkg_dio/src/scaleable_pattern/model/result.dart';
 
 final class PostRepository with ApiSafeWrapper {
   final RestClient _restClient;

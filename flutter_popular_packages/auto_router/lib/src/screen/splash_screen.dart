@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import '../router/app_router.dart';
-import '../router/app_router.gr.dart';
+import 'package:pkg_auto_router/src/router/app_router.dart';
+import 'package:pkg_auto_router/src/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()

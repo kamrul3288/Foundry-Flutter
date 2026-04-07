@@ -1,4 +1,4 @@
-import 'interceptor_controller.dart';
+import 'package:pkg_dio/src/interceptor/interceptor_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

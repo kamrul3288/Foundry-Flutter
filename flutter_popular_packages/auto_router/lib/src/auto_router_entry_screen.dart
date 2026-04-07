@@ -1,6 +1,6 @@
-import 'auth/auth_cubit.dart';
-import 'auth/auth_redirect_guard.dart';
-import 'router/app_router.dart';
+import 'package:pkg_auto_router/src/auth/auth_cubit.dart';
+import 'package:pkg_auto_router/src/auth/auth_redirect_guard.dart';
+import 'package:pkg_auto_router/src/router/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

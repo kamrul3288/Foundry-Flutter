@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import '../localstorage/token_storage.dart';
-import '../model/request_queue_item.dart';
+import 'package:pkg_dio/src/scaleable_pattern/localstorage/token_storage.dart';
+import 'package:pkg_dio/src/scaleable_pattern/model/request_queue_item.dart';
 
 final class TokenRefreshInterceptor extends Interceptor {
   final Dio _dio;

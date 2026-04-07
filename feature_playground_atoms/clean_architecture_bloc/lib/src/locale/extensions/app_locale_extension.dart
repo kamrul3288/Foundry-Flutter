@@ -1,4 +1,4 @@
-import '../l10n/generated/app_locale.dart';
+import 'package:clean_architecture_bloc/src/locale/l10n/generated/app_locale.dart';
 import 'package:flutter/material.dart';
 
 extension LocalizedBuildContext on BuildContext {

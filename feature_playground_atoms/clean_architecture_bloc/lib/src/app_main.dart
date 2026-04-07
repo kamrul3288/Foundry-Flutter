@@ -1,8 +1,8 @@
-import 'di/app_di_module.dart';
-import 'locale/cubit/locale_cubit.dart';
-import 'locale/l10n/generated/app_locale.dart';
-import 'router/app_router.dart';
-import 'local_storage/preferences/app_preferences_storage.dart';
+import 'package:clean_architecture_bloc/src/di/app_di_module.dart';
+import 'package:clean_architecture_bloc/src/locale/cubit/locale_cubit.dart';
+import 'package:clean_architecture_bloc/src/locale/l10n/generated/app_locale.dart';
+import 'package:clean_architecture_bloc/src/router/app_router.dart';
+import 'package:clean_architecture_bloc/src/local_storage/preferences/app_preferences_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';

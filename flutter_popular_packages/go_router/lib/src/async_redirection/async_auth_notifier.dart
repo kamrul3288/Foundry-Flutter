@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'async_auth.dart';
+import 'package:pkg_go_router/src/async_redirection/async_auth.dart';
 
 final class AsyncAuthNotifier extends ChangeNotifier {
   final AsyncAuth _auth;

@@ -1,6 +1,6 @@
-import '../features/login/login_router.dart';
-import '../features/posts/post_router.dart';
-import '../features/splash/splash_router.dart';
+import 'package:clean_architecture_bloc/src/features/login/login_router.dart';
+import 'package:clean_architecture_bloc/src/features/posts/post_router.dart';
+import 'package:clean_architecture_bloc/src/features/splash/splash_router.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter appRouter = GoRouter(
