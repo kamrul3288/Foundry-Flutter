@@ -1,0 +1,23 @@
+import '../client/dio_factory.dart';
+import '../client/rest_client.dart';
+import '../datasource/auth_repo_impl.dart';
+import '../datasource/post_repo_impl.dart';
+import '../../domain/repository/auth_repository.dart';
+import '../../domain/repository/post_repository.dart';
+import '../../local_storage/auth/auth_token_storage.dart';
+import 'package:dio/dio.dart';
+import 'package:get_it/get_it.dart';
+
+Future<void> registerDataDiModule(GetIt locator) async {
+  //Registering Dio & providing Dio
+  locator.registerSingleton<Dio>(DioFactory.create(locator<AuthTokenStorage>()));
+
+  //Registering RestClient & providing RestClient
+  locator.registerSingleton<RestClient>(RestClient(locator<Dio>()));
+
+  //Registering AuthRepository & providing AuthRepoImpl
+  locator.registerSingleton<AuthRepository>(AuthRepoImpl(locator<RestClient>()));
+
+  //Registering PostRepository & providing PostRepoImpl
+  locator.registerSingleton<PostRepository>(PostRepoImpl(locator<RestClient>()));
+}

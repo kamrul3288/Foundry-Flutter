@@ -1,0 +1,39 @@
+import 'dart:convert';
+import '../../common/result/failure.dart';
+import '../../common/result/result.dart';
+import '../client/rest_client.dart';
+import '../client/rest_client_executor.dart';
+import '../dto/authentication_dto.dart';
+import '../dto/user_dto.dart';
+import '../mapper/authentication_dto_mapper.dart';
+import '../mapper/user_dto_mapper.dart';
+import '../../domain/entity/authentication_entity.dart';
+import '../../domain/entity/user_entity.dart';
+import '../../domain/repository/auth_repository.dart';
+import 'package:flutter/services.dart';
+
+final class AuthRepoImpl extends AuthRepository with RestClientExecutor {
+  // ignore: unused_field
+  final RestClient _restClient;
+  AuthRepoImpl(this._restClient);
+
+  @override
+  Future<Result<AuthenticationEntity, Failure>> login(String email, String password) {
+    return execute(() async {
+      await Future.delayed(const Duration(seconds: 3));
+      final jsonString = await rootBundle.loadString('packages/clean_architecture_bloc/assets/mock/login.json');
+      final response = jsonDecode(jsonString);
+      return AuthenticationDto.fromJson(response).toAuthenticationEntity;
+    });
+  }
+
+  @override
+  Future<Result<UserEntity, Failure>> getProfile() async {
+    return execute(() async {
+      await Future.delayed(const Duration(seconds: 3));
+      final jsonString = await rootBundle.loadString('packages/clean_architecture_bloc/assets/mock/profile.json');
+      final response = jsonDecode(jsonString);
+      return UserDto.fromJson(response).toUserEntity;
+    });
+  }
+}

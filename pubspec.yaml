@@ -9,10 +9,11 @@ workspace:
   - flutter_popular_packages/dio/
   - flutter_popular_packages/auto_router/
 
-  - foundry_feat_components/media_picker/
-  - foundry_feat_components/flutter_design_system/
-  - foundry_features/go_router_navigation/
-  - foundry_features/clean_architecture_bloc/
+  - feature_playground_molecules/media_picker/
+  - feature_playground_molecules/go_router_navigation/
+
+  - feature_playground_atoms/clean_architecture_bloc/
+  - feature_playground_atoms/flutter_design_system/
 
 environment:
   sdk: ^3.11.0
