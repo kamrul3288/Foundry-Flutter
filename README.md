@@ -17,6 +17,15 @@ Welcome to **Foundry Flutter**! This project serves as a robust foundation for b
 
 ---
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/7a7a4c2a-a173-4484-844f-33d0501901da" width="40%">
+  &nbsp;
+  <img src="https://github.com/user-attachments/assets/eaed11af-72ec-4eba-b228-7878496c676e" width="40%">
+</p>
+
+
+
+
 ## 🌟 Key Features
 
 - **🏛 Architectural Pattern**: Implements **Clean Architecture**, completely decoupling the presentation, domain, and data layers.
