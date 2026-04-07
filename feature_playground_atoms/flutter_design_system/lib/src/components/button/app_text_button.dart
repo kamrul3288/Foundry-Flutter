@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_design_system/src/components/button/app_button_color_role.dart';
-import 'package:flutter_design_system/src/components/button/app_button_core.dart';
-import 'package:flutter_design_system/src/components/button/app_button_types.dart';
+import 'package:flutter_design_system/src/components/button/button.dart';
 
 class AppTextButton extends StatelessWidget {
   final String label;
@@ -27,7 +25,7 @@ class AppTextButton extends StatelessWidget {
       isLoading: isLoading,
       leading: style.leading,
       trailing: style.trailing,
-      colorRole: style.colorRole,
+      intent: style.intent,
       shape: AppButtonShape.pill,
       padding: padding,
       shrinkWrap: true,
@@ -37,23 +35,23 @@ class AppTextButton extends StatelessWidget {
 }
 
 final class AppTextButtonStyle {
-  final AppButtonColorRole colorRole;
+  final AppButtonIntent intent;
   final Widget? leading;
   final Widget? trailing;
 
   const AppTextButtonStyle({
     this.leading,
     this.trailing,
-    this.colorRole = const AppButtonColorRole.primary(),
+    this.intent = const AppButtonIntent.primary(),
   });
 
   AppTextButtonStyle copyWith({
-    AppButtonColorRole? colorRole,
+    AppButtonIntent? intent,
     Widget? leading,
     Widget? trailing,
   }) {
     return AppTextButtonStyle(
-      colorRole: colorRole ?? this.colorRole,
+      intent: intent ?? this.intent,
       leading: leading ?? this.leading,
       trailing: trailing ?? this.trailing,
     );

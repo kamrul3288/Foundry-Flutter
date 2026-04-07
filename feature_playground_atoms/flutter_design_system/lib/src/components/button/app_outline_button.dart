@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_design_system/src/components/button/app_button_color_role.dart';
-import 'package:flutter_design_system/src/components/button/app_button_core.dart';
-import 'package:flutter_design_system/src/components/button/app_button_types.dart';
+import 'package:flutter_design_system/src/components/button/button.dart';
 
 class AppOutlineButton extends StatelessWidget {
   final Widget child;
@@ -22,24 +20,6 @@ class AppOutlineButton extends StatelessWidget {
     this.padding,
     this.style = const AppOutlineButtonStyle(),
   });
-
-  @override
-  Widget build(BuildContext context) {
-    return AppButtonCore(
-      variant: AppButtonVariant.outline,
-      onPressed: onPressed,
-      isLoading: isLoading,
-      leading: style.leading,
-      trailing: style.trailing,
-      colorRole: style.colorRole,
-      shrinkWrap: style.shrinkWrap,
-      width: width,
-      height: height,
-      shape: style.shape,
-      padding: padding,
-      child: child,
-    );
-  }
 
   factory AppOutlineButton.text(
     String label, {
@@ -80,10 +60,28 @@ class AppOutlineButton extends StatelessWidget {
       child: icon,
     );
   }
+
+  @override
+  Widget build(BuildContext context) {
+    return AppButtonCore(
+      variant: AppButtonVariant.outline,
+      onPressed: onPressed,
+      isLoading: isLoading,
+      leading: style.leading,
+      trailing: style.trailing,
+      intent: style.intent,
+      width: width,
+      height: height,
+      shape: style.shape,
+      padding: padding,
+      shrinkWrap: style.shrinkWrap,
+      child: child,
+    );
+  }
 }
 
 final class AppOutlineButtonStyle {
-  final AppButtonColorRole colorRole;
+  final AppButtonIntent intent;
   final AppButtonShape shape;
   final Widget? leading;
   final Widget? trailing;
@@ -92,20 +90,20 @@ final class AppOutlineButtonStyle {
   const AppOutlineButtonStyle({
     this.leading,
     this.trailing,
-    this.colorRole = const AppButtonColorRole.primary(),
+    this.intent = const AppButtonIntent.primary(),
     this.shape = AppButtonShape.rounded,
     this.shrinkWrap = false,
   });
 
   AppOutlineButtonStyle copyWith({
-    AppButtonColorRole? colorRole,
+    AppButtonIntent? intent,
     AppButtonShape? shape,
     Widget? leading,
     Widget? trailing,
     bool? shrinkWrap,
   }) {
     return AppOutlineButtonStyle(
-      colorRole: colorRole ?? this.colorRole,
+      intent: intent ?? this.intent,
       shape: shape ?? this.shape,
       leading: leading ?? this.leading,
       trailing: trailing ?? this.trailing,

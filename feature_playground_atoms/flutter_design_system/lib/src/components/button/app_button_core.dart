@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_design_system/src/components/button/app_button_color.dart';
-import 'package:flutter_design_system/src/components/button/app_button_color_role.dart';
-import 'package:flutter_design_system/src/components/button/app_button_types.dart';
-import 'package:flutter_design_system/src/theme/extensions/app_button_theme.dart';
-import 'package:flutter_design_system/src/components/typography/app_typography_theme.dart';
+import 'package:flutter_design_system/src/components/button/button.dart';
+import 'package:flutter_design_system/src/components/typography/typography.dart';
 
 class AppButtonCore extends StatelessWidget {
   const AppButtonCore({
@@ -11,7 +8,7 @@ class AppButtonCore extends StatelessWidget {
     required this.child,
     required this.variant,
     required this.onPressed,
-    required this.colorRole,
+    this.intent = const AppButtonIntent.primary(),
     this.height = AppButtonHeight.md,
     this.shape = AppButtonShape.rounded,
     this.isLoading = false,
@@ -25,7 +22,7 @@ class AppButtonCore extends StatelessWidget {
   final Widget child;
   final AppButtonVariant variant;
   final VoidCallback? onPressed;
-  final AppButtonColorRole colorRole;
+  final AppButtonIntent intent;
   final AppButtonHeight height;
   final AppButtonShape shape;
   final bool isLoading;
@@ -35,71 +32,34 @@ class AppButtonCore extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final bool shrinkWrap;
 
-  OutlinedBorder? _resolveButtonShape() => switch (shape) {
-    AppButtonShape.rounded => RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-    AppButtonShape.pill => const StadiumBorder(),
-    AppButtonShape.circle => const CircleBorder(),
-    AppButtonShape.sharp => const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-  };
-
-  BorderSide? _resolveBorderSide(AppButtonColor color) {
-    if (variant == AppButtonVariant.outline) {
-      return BorderSide(color: onPressed == null ? color.outline.withValues(alpha: 0.2) : color.outline);
-    }
-    return null;
-  }
-
-  // Resolves the colors based on the variant (Filled vs Outline vs Text)
-  AppButtonColor _mapColorsToVariant(AppButtonColor base) {
-    return switch (variant) {
-      AppButtonVariant.filled => base,
-      AppButtonVariant.outline => AppButtonColor(
-        background: Colors.transparent,
-        foreground: base.outlineForeground ?? base.background,
-        outline: base.outline,
-      ),
-      AppButtonVariant.text || AppButtonVariant.icon => AppButtonColor(
-        background: Colors.transparent,
-        foreground: base.background,
-        outline: Colors.transparent,
-      ),
-    };
-  }
+  static const double _disabledOpacity = 0.38;
+  static const double _hoverOverlayOpacity = 0.08;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).extension<AppButtonTheme>()!;
     final typography = Theme.of(context).extension<AppTypographyTheme>()!;
 
-    final baseColors = theme.resolve(colorRole);
-    final colors = _mapColorsToVariant(baseColors);
-
-    // Resolve Dimensions
-    final double resolveHeight = switch (height) {
-      AppButtonHeight.sm => 32.0,
-      AppButtonHeight.md => 48.0,
-      AppButtonHeight.lg => 56.0,
+    final variants = theme.byIntent(intent);
+    final colors = switch (variant) {
+      AppButtonVariant.filled => variants.filled,
+      AppButtonVariant.outline => variants.outline,
+      AppButtonVariant.text => variants.text,
     };
 
-    final double loadingSize = switch (height) {
-      AppButtonHeight.sm => 12.0,
-      AppButtonHeight.md => 16.0,
-      AppButtonHeight.lg => 20.0,
-    };
+    final dims = _dimensionsFor(height);
+    final textStyle = _textStyleFor(height, typography);
 
-    final TextStyle textStyle = switch (height) {
-      AppButtonHeight.sm => typography.bodySmall.copyWith(fontWeight: FontWeight.w500),
-      AppButtonHeight.md => typography.bodyMedium.copyWith(fontWeight: FontWeight.w500),
-      AppButtonHeight.lg => typography.bodyLarge.copyWith(fontWeight: FontWeight.w500),
-    };
+    final isInteractive = onPressed != null && !isLoading;
 
-    // Calculate effective content color
-    final contentColor = onPressed != null ? colors.foreground : colors.foreground.withValues(alpha: 0.6);
-    final disableBgColor = variant == AppButtonVariant.filled ? colors.background.withValues(alpha: 0.2) : Colors.transparent;
-    final overlayColor = variant == AppButtonVariant.filled ? null : colors.foreground.withValues(alpha: 0.2);
+    final effectiveForeground = isInteractive ? colors.foreground : colors.foreground.withValues(alpha: _disabledOpacity);
+
+    final disabledBackground = variant == AppButtonVariant.filled ? colors.background.withValues(alpha: _disabledOpacity) : Colors.transparent;
+
+    final overlayColor = variant == AppButtonVariant.filled ? null : colors.foreground.withValues(alpha: _hoverOverlayOpacity);
 
     return SizedBox(
-      height: shrinkWrap ? null : resolveHeight,
+      height: shrinkWrap ? null : dims.height,
       width: width,
       child: ElevatedButton(
         onPressed: isLoading ? null : onPressed,
@@ -107,52 +67,92 @@ class AppButtonCore extends StatelessWidget {
           elevation: 0,
           backgroundColor: colors.background,
           foregroundColor: colors.foreground,
-          disabledBackgroundColor: isLoading ? colors.background : disableBgColor,
-          side: _resolveBorderSide(colors),
+          disabledBackgroundColor: isLoading ? colors.background : disabledBackground,
+          side: _resolveBorderSide(colors, isInteractive),
           overlayColor: overlayColor,
           shadowColor: Colors.transparent,
-          shape: _resolveButtonShape(),
+          shape: _resolveShape(),
           padding: padding,
           tapTargetSize: shrinkWrap ? MaterialTapTargetSize.shrinkWrap : null,
           minimumSize: shrinkWrap ? Size.zero : null,
         ),
-        child: _buildChild(contentColor, loadingSize, textStyle),
+        child: _buildChild(effectiveForeground, dims.loadingSize, textStyle),
       ),
     );
   }
 
-  Widget _buildChild(Color contentColor, double loadingSize, textStyle) {
+  BorderSide? _resolveBorderSide(AppButtonColors colors, bool isInteractive) {
+    if (variant != AppButtonVariant.outline) return null;
+    final color = isInteractive ? colors.border : colors.border.withValues(alpha: _disabledOpacity);
+    return BorderSide(color: color);
+  }
+
+  OutlinedBorder _resolveShape() => switch (shape) {
+    AppButtonShape.rounded => RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+    AppButtonShape.pill => const StadiumBorder(),
+    AppButtonShape.circle => const CircleBorder(),
+    AppButtonShape.sharp => const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+  };
+
+  _ButtonDimensions _dimensionsFor(AppButtonHeight h) => switch (h) {
+    AppButtonHeight.sm => const _ButtonDimensions(height: 32, loadingSize: 12),
+    AppButtonHeight.md => const _ButtonDimensions(height: 48, loadingSize: 16),
+    AppButtonHeight.lg => const _ButtonDimensions(height: 56, loadingSize: 20),
+  };
+
+  TextStyle _textStyleFor(AppButtonHeight h, AppTypographyTheme t) => switch (h) {
+    AppButtonHeight.sm => t.labelSmall,
+    AppButtonHeight.md => t.labelMedium,
+    AppButtonHeight.lg => t.labelLarge,
+  };
+
+  Widget _buildChild(
+    Color contentColor,
+    double loadingSize,
+    TextStyle textStyle,
+  ) {
     if (isLoading) {
       return Row(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        spacing: 8,
         children: [
-          Text("Processing...", style: textStyle.copyWith(color: contentColor)),
+          Text(
+            'Processing...',
+            style: textStyle.copyWith(color: contentColor),
+          ),
+          const SizedBox(width: 8),
           SizedBox(
             width: loadingSize,
             height: loadingSize,
-            child: CircularProgressIndicator(strokeWidth: 2, color: contentColor),
+            child: CircularProgressIndicator(
+              strokeWidth: 2,
+              color: contentColor,
+            ),
           ),
         ],
       );
     }
 
-    final content = Row(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        if (leading != null) ...[leading!, const SizedBox(width: 8)],
-        Flexible(child: child),
-        if (trailing != null) ...[const SizedBox(width: 8), trailing!],
-      ],
-    );
-
     return DefaultTextStyle(
       style: textStyle.copyWith(color: contentColor),
-      child: content,
+      child: IconTheme.merge(
+        data: IconThemeData(color: contentColor),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (leading != null) ...[leading!, const SizedBox(width: 8)],
+            Flexible(child: child),
+            if (trailing != null) ...[const SizedBox(width: 8), trailing!],
+          ],
+        ),
+      ),
     );
   }
+}
+
+class _ButtonDimensions {
+  final double height;
+  final double loadingSize;
+  const _ButtonDimensions({required this.height, required this.loadingSize});
 }

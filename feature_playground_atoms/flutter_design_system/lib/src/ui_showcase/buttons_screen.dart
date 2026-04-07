@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_design_system/src/components/button/app_button_types.dart';
-import 'package:flutter_design_system/src/components/button/app_filled_button.dart';
-import 'package:flutter_design_system/src/components/button/app_icon_button.dart';
-import 'package:flutter_design_system/src/components/button/app_outline_button.dart';
-import 'package:flutter_design_system/src/components/button/app_text_button.dart';
+import 'package:flutter_design_system/src/components/button/button.dart';
 import 'package:flutter_design_system/src/components/structure/app_scaffold.dart';
 import 'package:flutter_design_system/src/components/structure/app_topbar.dart';
 import 'package:flutter_design_system/src/components/text/app_text.dart';

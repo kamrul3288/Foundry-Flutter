@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_design_system/src/components/button/app_button_color_role.dart';
-import 'package:flutter_design_system/src/components/button/app_button_core.dart';
-import 'package:flutter_design_system/src/components/button/app_button_types.dart';
+import 'package:flutter_design_system/src/components/button/button.dart';
 
 class AppIconButton extends StatelessWidget {
   final Widget icon;
-  final AppButtonColorRole colorRole;
+  final AppButtonIntent intent;
   final VoidCallback? onPressed;
   final bool isLoading;
   final EdgeInsetsGeometry padding;
@@ -13,7 +11,7 @@ class AppIconButton extends StatelessWidget {
   const AppIconButton(
     this.icon, {
     super.key,
-    this.colorRole = const AppButtonColorRole.primary(),
+    this.intent = const AppButtonIntent.primary(),
     required this.onPressed,
     this.isLoading = false,
     this.padding = const EdgeInsets.all(4),
@@ -25,7 +23,7 @@ class AppIconButton extends StatelessWidget {
       variant: AppButtonVariant.text,
       onPressed: onPressed,
       isLoading: isLoading,
-      colorRole: colorRole,
+      intent: intent,
       shape: AppButtonShape.pill,
       padding: padding,
       shrinkWrap: true,

@@ -5,7 +5,7 @@ import 'package:flutter_design_system/src/theme/extensions/app_scaffold_theme.da
 import 'package:flutter_design_system/src/components/tag/app_tag_theme.dart';
 import 'package:flutter_design_system/src/components/typography/app_typography_theme.dart';
 import 'package:flutter_design_system/src/theme/app_color_scheme.dart';
-import 'package:flutter_design_system/src/theme/extensions/app_button_theme.dart';
+import 'package:flutter_design_system/src/components/button/app_button_theme.dart';
 import 'package:flutter_design_system/src/ui_showcase/app_cards_screen.dart';
 import 'package:flutter_design_system/src/ui_showcase/buttons_screen.dart';
 import 'package:flutter_design_system/src/ui_showcase/app_scaffold_screen.dart';
