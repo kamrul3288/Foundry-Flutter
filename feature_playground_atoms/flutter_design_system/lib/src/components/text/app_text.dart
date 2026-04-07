@@ -1,9 +1,7 @@
 // ignore_for_file: unused_element_parameter, unused_element
-
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/src/components/text/app_text_weight.dart';
-import 'package:flutter_design_system/src/theme/extensions/app_typography_theme.dart';
-import 'package:flutter_design_system/src/foundation/app_typography_tokens.dart';
+import 'package:flutter_design_system/src/components/typography/typography.dart';
 
 class AppText extends StatelessWidget {
   final String text;
@@ -12,16 +10,41 @@ class AppText extends StatelessWidget {
   final int? maxLines;
   final bool? softWrap;
   final TextOverflow? overflow;
-  final AppTypographyVariant variant;
+  final AppTypographyIntent intent;
   final AppTextWeight? textWeight;
-  final bool inheritColor;
 
-  const AppText._(this.text, {super.key, required this.variant, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight, this.inheritColor = false});
+  const AppText._(
+    this.text, {
+    super.key,
+    required this.intent,
+    this.color,
+    this.textAlign,
+    this.maxLines,
+    this.softWrap,
+    this.overflow,
+    this.textWeight,
+  });
 
   @override
   Widget build(BuildContext context) {
     final typography = Theme.of(context).extension<AppTypographyTheme>()!;
-    final baseStyle = typography.getVariant(variant);
+    final intentStyle = typography.byIntent(intent);
+    final defaultStyle = DefaultTextStyle.of(context).style;
+
+    // Start from the ambient DefaultTextStyle (so parent colors propagate),
+    // then layer the variant's typographic properties on top — but DON'T
+    // overwrite color unless our variant explicitly defines one AND no
+    // parent has provided one.
+    final merged = defaultStyle.merge(
+      intentStyle.copyWith(
+        // Strip color from variant unless we want it to win over parent.
+        color: null,
+        fontWeight: textWeight?.fontWeight ?? intentStyle.fontWeight,
+      ),
+    );
+
+    // Explicit color param always wins.
+    final finalStyle = color != null ? merged.copyWith(color: color) : merged;
 
     return Text(
       text,
@@ -29,32 +52,43 @@ class AppText extends StatelessWidget {
       maxLines: maxLines,
       softWrap: softWrap,
       overflow: overflow,
-      style: baseStyle.copyWith(
-        color: color ?? (inheritColor ? DefaultTextStyle.of(context).style.color : baseStyle.color),
-        fontWeight: textWeight?.fontWeight ?? baseStyle.fontWeight,
-      ),
+      style: finalStyle,
     );
   }
 
-  const AppText.h1(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight, this.inheritColor = false}) : variant = AppTypographyVariant.h1;
+  const AppText.displayLarge(this.text, {super.key, this.color, this.textWeight, this.textAlign, this.maxLines, this.softWrap, this.overflow}) : intent = AppTypographyIntent.displayLarge;
 
-  const AppText.h2(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight, this.inheritColor = false}) : variant = AppTypographyVariant.h2;
+  const AppText.displayMedium(this.text, {super.key, this.color, this.textWeight, this.textAlign, this.maxLines, this.softWrap, this.overflow}) : intent = AppTypographyIntent.displayMedium;
 
-  const AppText.h3(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight, this.inheritColor = false}) : variant = AppTypographyVariant.h3;
+  const AppText.displaySmall(this.text, {super.key, this.color, this.textWeight, this.textAlign, this.maxLines, this.softWrap, this.overflow}) : intent = AppTypographyIntent.displaySmall;
 
-  const AppText.titleLarge(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight, this.inheritColor = false}) : variant = AppTypographyVariant.titleLarge;
+  const AppText.headlineLarge(this.text, {super.key, this.color, this.textWeight, this.textAlign, this.maxLines, this.softWrap, this.overflow}) : intent = AppTypographyIntent.headlineLarge;
 
-  const AppText.titleMedium(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight, this.inheritColor = false}) : variant = AppTypographyVariant.titleMedium;
+  const AppText.headlineMedium(this.text, {super.key, this.color, this.textWeight, this.textAlign, this.maxLines, this.softWrap, this.overflow}) : intent = AppTypographyIntent.headlineMedium;
 
-  const AppText.titleSmall(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight, this.inheritColor = false}) : variant = AppTypographyVariant.titleSmall;
+  const AppText.headlineSmall(this.text, {super.key, this.color, this.textWeight, this.textAlign, this.maxLines, this.softWrap, this.overflow}) : intent = AppTypographyIntent.headlineSmall;
 
-  const AppText.bodyLarge(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight, this.inheritColor = false}) : variant = AppTypographyVariant.bodyLarge;
+  const AppText.titleLarge(this.text, {super.key, this.color, this.textWeight, this.textAlign, this.maxLines, this.softWrap, this.overflow}) : intent = AppTypographyIntent.titleLarge;
 
-  const AppText.bodyMedium(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight, this.inheritColor = false}) : variant = AppTypographyVariant.bodyMedium;
+  const AppText.titleMedium(this.text, {super.key, this.color, this.textWeight, this.textAlign, this.maxLines, this.softWrap, this.overflow}) : intent = AppTypographyIntent.titleMedium;
 
-  const AppText.bodySmall(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight, this.inheritColor = false}) : variant = AppTypographyVariant.bodySmall;
+  const AppText.titleSmall(this.text, {super.key, this.color, this.textWeight, this.textAlign, this.maxLines, this.softWrap, this.overflow}) : intent = AppTypographyIntent.titleSmall;
 
-  const AppText.caption(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight, this.inheritColor = false}) : variant = AppTypographyVariant.caption;
+  const AppText.bodyLarge(this.text, {super.key, this.color, this.textWeight, this.textAlign, this.maxLines, this.softWrap, this.overflow}) : intent = AppTypographyIntent.bodyLarge;
 
-  const AppText.captionSmall(this.text, {super.key, this.color, this.textAlign, this.maxLines, this.softWrap, this.overflow, this.textWeight, this.inheritColor = false}) : variant = AppTypographyVariant.captionSmall;
+  const AppText.bodyMedium(this.text, {super.key, this.color, this.textWeight, this.textAlign, this.maxLines, this.softWrap, this.overflow}) : intent = AppTypographyIntent.bodyMedium;
+
+  const AppText.bodySmall(this.text, {super.key, this.color, this.textWeight, this.textAlign, this.maxLines, this.softWrap, this.overflow}) : intent = AppTypographyIntent.bodySmall;
+
+  const AppText.labelLarge(this.text, {super.key, this.color, this.textWeight, this.textAlign, this.maxLines, this.softWrap, this.overflow}) : intent = AppTypographyIntent.labelLarge;
+
+  const AppText.labelMedium(this.text, {super.key, this.color, this.textWeight, this.textAlign, this.maxLines, this.softWrap, this.overflow}) : intent = AppTypographyIntent.labelMedium;
+
+  const AppText.labelSmall(this.text, {super.key, this.color, this.textWeight, this.textAlign, this.maxLines, this.softWrap, this.overflow}) : intent = AppTypographyIntent.labelSmall;
+
+  const AppText.captionLarge(this.text, {super.key, this.color, this.textWeight, this.textAlign, this.maxLines, this.softWrap, this.overflow}) : intent = AppTypographyIntent.captionLarge;
+
+  const AppText.captionMedium(this.text, {super.key, this.color, this.textWeight, this.textAlign, this.maxLines, this.softWrap, this.overflow}) : intent = AppTypographyIntent.captionMedium;
+
+  const AppText.captionSmall(this.text, {super.key, this.color, this.textWeight, this.textAlign, this.maxLines, this.softWrap, this.overflow}) : intent = AppTypographyIntent.captionSmall;
 }

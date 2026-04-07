@@ -16,12 +16,22 @@ class TextsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildSection(
+              title: "Display Text",
+              description: "Main headers for hierarchical layout structure.",
+              children: [
+                const AppText.displayLarge('Display Large'),
+                const AppText.displayMedium('Display Medium'),
+                const AppText.displaySmall('Display Small'),
+              ],
+            ),
+            const SizedBox(height: 24),
+            _buildSection(
               title: "Headers",
               description: "Main headers for hierarchical layout structure.",
               children: [
-                const AppText.h1('H1 - Heading 1'),
-                const AppText.h2('H2 - Heading 2'),
-                const AppText.h3('H3 - Heading 3'),
+                const AppText.headlineLarge('Headline Large'),
+                const AppText.headlineMedium('Headline Medium'),
+                const AppText.headlineSmall('Headline Small'),
               ],
             ),
             const SizedBox(height: 24),
@@ -44,13 +54,26 @@ class TextsScreen extends StatelessWidget {
                 const AppText.bodySmall('Body Small - Smaller description text.'),
               ],
             ),
+
+            const SizedBox(height: 24),
+            _buildSection(
+              title: "Label Text",
+              description: "Standard text styles for paragraphs and general content.",
+              children: [
+                const AppText.labelLarge('Label Large'),
+                const AppText.labelMedium('Label Medium'),
+                const AppText.labelSmall('Label Small'),
+              ],
+            ),
+
             const SizedBox(height: 24),
             _buildSection(
               title: "Captions",
               description: "Smallest text styles for hints and legal information.",
               children: [
-                const AppText.caption('Caption Text'),
-                const AppText.captionSmall('Caption Small Text'),
+                const AppText.captionLarge('Caption Large'),
+                const AppText.captionMedium('Caption Medium'),
+                const AppText.captionSmall('Caption Small'),
               ],
             ),
           ],
@@ -70,8 +93,7 @@ class TextsScreen extends StatelessWidget {
         AppText.titleMedium(title),
         AppText.bodySmall(description, color: Colors.grey),
         const SizedBox(height: 16),
-        ...children.expand((element) => [element, const SizedBox(height: 8)]).toList()
-          ..removeLast(),
+        ...children.expand((element) => [element, const SizedBox(height: 8)]).toList()..removeLast(),
       ],
     );
   }
