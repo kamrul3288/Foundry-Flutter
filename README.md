@@ -134,9 +134,3 @@ We have configured several Melos wrapper scripts located in `pubspec.yaml` to st
 2. **Localization First**: Raw strings should be kept to a minimum in presentation codes. Leverage `.arb` translations.
 3. **No Direct Package Dependency Abuse**: If package `A` needs something from package `B`, ensure the interaction boundary passes strictly through interfaces (`foundry_core` or explicit bridges).
 4. **Responsive UI**: Apply responsive sizing (e.g., `flutter_screenutil`) through the robust design system components (`feature_playground_atoms/flutter_design_system`).
-
----
-
-<div align="center">
-  <i>Built with ✨ & robust dependencies by the <b>Foundry Flutter</b> team.</i>
-</div>
