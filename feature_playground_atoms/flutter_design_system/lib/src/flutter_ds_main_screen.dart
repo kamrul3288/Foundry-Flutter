@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/src/components/card/app_card_theme.dart';
 import 'package:flutter_design_system/src/components/inputfiled/app_input_field_theme.dart';
-import 'package:flutter_design_system/src/theme/extensions/app_scaffold_theme.dart';
+import 'package:flutter_design_system/src/components/scaffold/app_scaffold_theme.dart';
 import 'package:flutter_design_system/src/components/tag/app_tag_theme.dart';
+import 'package:flutter_design_system/src/components/topbar/app_topbar_theme.dart';
 import 'package:flutter_design_system/src/components/typography/app_typography_theme.dart';
 import 'package:flutter_design_system/src/theme/app_color_scheme.dart';
 import 'package:flutter_design_system/src/components/button/app_button_theme.dart';
@@ -43,6 +44,7 @@ class FlutterDsMainScreen extends StatelessWidget {
           AppInputFieldTheme.light(),
           AppTagTheme.light(),
           AppCardTheme.light(),
+          AppTopBarTheme.light(),
           AppScaffoldTheme.light(),
         ],
       ),

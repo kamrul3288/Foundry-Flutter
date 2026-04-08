@@ -9,11 +9,11 @@ final class AppCardTheme extends ThemeExtension<AppCardTheme> {
   });
 
   AppCardVariantSet byTone(AppCardTone tone) => switch (tone) {
-    AppCardTone.neutral => neutral,
+    AppCardTone.warning => neutral,
   };
 
   double defaultElevationFor(AppCardTone tone) => switch (tone) {
-    AppCardTone.neutral => 0,
+    AppCardTone.warning => 0,
   };
 
   factory AppCardTheme.light() => AppCardTheme(

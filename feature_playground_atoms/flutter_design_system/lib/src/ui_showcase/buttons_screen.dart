@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/src/components/button/button.dart';
-import 'package:flutter_design_system/src/components/structure/app_scaffold.dart';
-import 'package:flutter_design_system/src/components/structure/app_topbar.dart';
+import 'package:flutter_design_system/src/components/scaffold/app_scaffold.dart';
+import 'package:flutter_design_system/src/components/topbar/app_topbar.dart';
 import 'package:flutter_design_system/src/components/text/app_text.dart';
 
 class ButtonsScreen extends StatelessWidget {
