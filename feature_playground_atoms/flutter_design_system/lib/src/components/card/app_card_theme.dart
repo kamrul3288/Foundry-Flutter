@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/src/components/card/card.dart';
+import 'package:flutter_design_system/src/tokens/app_colors.dart';
+import 'package:flutter_design_system/src/tokens/app_elevation.dart';
 
 final class AppCardTheme extends ThemeExtension<AppCardTheme> {
   final AppCardVariantSet neutral;
@@ -13,13 +15,13 @@ final class AppCardTheme extends ThemeExtension<AppCardTheme> {
   };
 
   double defaultElevationFor(AppCardTone tone) => switch (tone) {
-    AppCardTone.warning => 0,
+    AppCardTone.warning => AppElevations.flat,
   };
 
   factory AppCardTheme.light() => AppCardTheme(
     neutral: AppCardVariantSet.standard(
-      surface: Colors.yellow,
-      border: Colors.yellow,
+      surface: AppColors.warning300,
+      border: AppColors.warning300,
     ),
   );
 

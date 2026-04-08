@@ -18,7 +18,7 @@ final class AppButtonTheme extends ThemeExtension<AppButtonTheme> {
   factory AppButtonTheme.light() => AppButtonTheme(
     brand: AppButtonVariantSet.standard(
       solid: AppColors.brand500,
-      onSolid: Colors.white,
+      onSolid: AppColors.white,
     ),
   );
 

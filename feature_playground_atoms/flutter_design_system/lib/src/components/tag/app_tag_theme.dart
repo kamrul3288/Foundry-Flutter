@@ -14,8 +14,8 @@ final class AppTagTheme extends ThemeExtension<AppTagTheme> {
   };
 
   factory AppTagTheme.light() => AppTagTheme(
-    brand: AppTagVariantSet.standard(solid: AppColors.brand500, onSolid: Colors.white),
-    info: AppTagVariantSet.standard(solid: AppColors.neutral200, onSolid: Colors.black),
+    brand: AppTagVariantSet.standard(solid: AppColors.brand500, onSolid: AppColors.white),
+    info: AppTagVariantSet.standard(solid: AppColors.neutral200, onSolid: AppColors.black),
   );
 
   // Note: Not fully implemented because currently I do not need dark mode, but the scope is kept.

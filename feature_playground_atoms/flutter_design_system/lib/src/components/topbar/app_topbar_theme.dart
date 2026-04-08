@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/src/tokens/app_colors.dart';
+import 'package:flutter_design_system/src/tokens/app_elevation.dart';
 
 final class AppTopBarTheme extends ThemeExtension<AppTopBarTheme> {
   final Color backgroundColor;
@@ -19,11 +20,11 @@ final class AppTopBarTheme extends ThemeExtension<AppTopBarTheme> {
   });
 
   factory AppTopBarTheme.light() => const AppTopBarTheme(
-    backgroundColor: Colors.white,
+    backgroundColor: AppColors.white,
     foregroundColor: AppColors.neutral900,
-    elevation: 0,
-    scrolledUnderElevation: 2,
-    surfaceTintColor: Colors.transparent,
+    elevation: AppElevations.flat,
+    scrolledUnderElevation: AppElevations.card,
+    surfaceTintColor: AppColors.transparent,
   );
 
   // Note: Not fully implemented because currently I do not need dark mode, but the scope is kept.

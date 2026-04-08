@@ -3,6 +3,7 @@ import 'package:flutter_design_system/src/components/card/card.dart';
 import 'package:flutter_design_system/src/components/scaffold/app_scaffold.dart';
 import 'package:flutter_design_system/src/components/topbar/app_topbar.dart';
 import 'package:flutter_design_system/src/components/text/app_text.dart';
+import 'package:flutter_design_system/src/tokens/app_colors.dart';
 
 class AppCardsScreen extends StatelessWidget {
   const AppCardsScreen({super.key});
@@ -116,7 +117,7 @@ class AppCardsScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         AppText.titleMedium(title),
-        AppText.bodySmall(description, color: Colors.grey),
+        AppText.bodySmall(description, color: AppColors.neutral500),
         const SizedBox(height: 16),
         ...children,
       ],

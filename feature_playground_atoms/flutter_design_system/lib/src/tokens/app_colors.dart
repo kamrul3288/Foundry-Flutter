@@ -5,6 +5,7 @@ final class AppColors {
 
   static const white = Color(0xFFFFFFFF);
   static const black = Color(0xFF000000);
+  static const transparent = Color(0x00000000);
 
   static const neutral50 = Color(0xFFF9FAFB);
   static const neutral100 = Color(0xFFF2F4F7);

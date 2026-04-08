@@ -14,7 +14,7 @@ final class AppScaffoldTheme extends ThemeExtension<AppScaffoldTheme> {
   factory AppScaffoldTheme.light() => AppScaffoldTheme(
     backgroundColor: AppColors.neutral50,
     overlayStyle: SystemUiOverlayStyle.dark.copyWith(
-      statusBarColor: Colors.transparent,
+      statusBarColor: AppColors.transparent,
       systemNavigationBarColor: AppColors.neutral50,
     ),
   );

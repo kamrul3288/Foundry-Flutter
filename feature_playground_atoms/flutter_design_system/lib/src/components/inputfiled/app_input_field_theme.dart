@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/src/components/inputfiled/inputfield.dart';
 import 'package:flutter_design_system/src/tokens/app_colors.dart';
+import 'package:flutter_design_system/src/tokens/app_border_width.dart';
 
 final class AppInputFieldTheme extends ThemeExtension<AppInputFieldTheme> {
   final AppInputFieldColors colors;
@@ -9,8 +10,8 @@ final class AppInputFieldTheme extends ThemeExtension<AppInputFieldTheme> {
 
   const AppInputFieldTheme({
     required this.colors,
-    this.focusedBorderWidth = 2.0,
-    this.defaultBorderWidth = 1.0,
+    this.focusedBorderWidth = AppBorderWidths.thick,
+    this.defaultBorderWidth = AppBorderWidths.thin,
   });
 
   factory AppInputFieldTheme.light() => AppInputFieldTheme(
