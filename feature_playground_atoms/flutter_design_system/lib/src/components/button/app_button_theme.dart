@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/src/components/button/app_button_color.dart';
 import 'package:flutter_design_system/src/components/button/app_button_intent.dart';
-import 'package:flutter_design_system/src/foundation/app_colors.dart';
+import 'package:flutter_design_system/src/tokens/app_colors.dart';
 
 final class AppButtonTheme extends ThemeExtension<AppButtonTheme> {
   final AppButtonVariantSet brand;
@@ -17,7 +17,7 @@ final class AppButtonTheme extends ThemeExtension<AppButtonTheme> {
 
   factory AppButtonTheme.light() => AppButtonTheme(
     brand: AppButtonVariantSet.standard(
-      solid: AppColors.purple500,
+      solid: AppColors.brand500,
       onSolid: Colors.white,
     ),
   );

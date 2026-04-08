@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/src/components/tag/tag.dart';
-import 'package:flutter_design_system/src/foundation/app_colors.dart';
+import 'package:flutter_design_system/src/tokens/app_colors.dart';
 
 final class AppTagTheme extends ThemeExtension<AppTagTheme> {
   final AppTagVariantSet brand;
@@ -14,8 +14,8 @@ final class AppTagTheme extends ThemeExtension<AppTagTheme> {
   };
 
   factory AppTagTheme.light() => AppTagTheme(
-    brand: AppTagVariantSet.standard(solid: AppColors.purple500, onSolid: Colors.white),
-    info: AppTagVariantSet.standard(solid: AppColors.gray200, onSolid: Colors.black),
+    brand: AppTagVariantSet.standard(solid: AppColors.brand500, onSolid: Colors.white),
+    info: AppTagVariantSet.standard(solid: AppColors.neutral200, onSolid: Colors.black),
   );
 
   // Note: Not fully implemented because currently I do not need dark mode, but the scope is kept.

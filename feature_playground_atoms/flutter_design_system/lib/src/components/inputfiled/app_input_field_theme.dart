@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/src/components/inputfiled/inputfield.dart';
-import 'package:flutter_design_system/src/foundation/app_colors.dart';
+import 'package:flutter_design_system/src/tokens/app_colors.dart';
 
 final class AppInputFieldTheme extends ThemeExtension<AppInputFieldTheme> {
   final AppInputFieldColors colors;
@@ -15,28 +15,28 @@ final class AppInputFieldTheme extends ThemeExtension<AppInputFieldTheme> {
 
   factory AppInputFieldTheme.light() => AppInputFieldTheme(
     colors: AppInputFieldColors(
-      fill: AppColors.gray100,
-      fillDisabled: AppColors.gray100,
-      borderDefault: AppColors.gray300,
-      borderHover: AppColors.gray400,
-      borderFocused: AppColors.purple500,
-      borderError: AppColors.red500,
-      borderErrorFocused: AppColors.red600,
-      borderDisabled: AppColors.gray200,
-      text: AppColors.gray900,
-      textDisabled: AppColors.gray400,
-      placeholder: AppColors.gray400,
-      label: AppColors.gray700,
-      labelFocused: AppColors.purple500,
-      labelError: AppColors.red500,
-      labelDisabled: AppColors.gray400,
-      helper: AppColors.gray600,
-      helperError: AppColors.red500,
-      icon: AppColors.gray500,
-      iconFocused: AppColors.purple500,
-      iconError: AppColors.red500,
-      iconDisabled: AppColors.gray300,
-      cursor: AppColors.purple500,
+      fill: AppColors.neutral100,
+      fillDisabled: AppColors.neutral100,
+      borderDefault: AppColors.neutral300,
+      borderHover: AppColors.neutral400,
+      borderFocused: AppColors.brand500,
+      borderError: AppColors.error500,
+      borderErrorFocused: AppColors.error600,
+      borderDisabled: AppColors.neutral200,
+      text: AppColors.neutral900,
+      textDisabled: AppColors.neutral400,
+      placeholder: AppColors.neutral400,
+      label: AppColors.neutral700,
+      labelFocused: AppColors.brand500,
+      labelError: AppColors.error500,
+      labelDisabled: AppColors.neutral400,
+      helper: AppColors.neutral600,
+      helperError: AppColors.error500,
+      icon: AppColors.neutral500,
+      iconFocused: AppColors.brand500,
+      iconError: AppColors.error500,
+      iconDisabled: AppColors.neutral300,
+      cursor: AppColors.brand500,
     ),
   );
 
@@ -61,32 +61,3 @@ final class AppInputFieldTheme extends ThemeExtension<AppInputFieldTheme> {
   @override
   ThemeExtension<AppInputFieldTheme> lerp(covariant ThemeExtension<AppInputFieldTheme>? other, double t) => this;
 }
-
-// class AppInputTheme extends ThemeExtension<AppInputTheme> {
-//   final AppInputColor primary;
-
-//   const AppInputTheme._({required this.primary});
-
-//   factory AppInputTheme.light() => AppInputTheme._(
-//     primary: AppInputColor.standard(
-//       fillColor: Colors.white,
-//       activeBorder: AppColors.purple500,
-//       inactiveBorder: AppColors.gray200,
-//       textColor: AppColors.gray900,
-//       labelColor: AppColors.gray600,
-//     ),
-//   );
-
-//   factory AppInputTheme.dark() => AppInputTheme.light();
-
-//   AppInputColor resolve(AppInputRole role) => switch (role) {
-//     AppInputRole.primary => primary,
-//   };
-
-//   @override
-//   ThemeExtension<AppInputTheme> copyWith() => this;
-//   @override
-//   ThemeExtension<AppInputTheme> lerp(ThemeExtension<AppInputTheme>? other, double t) => this;
-// }
-
-// enum AppInputRole { primary }

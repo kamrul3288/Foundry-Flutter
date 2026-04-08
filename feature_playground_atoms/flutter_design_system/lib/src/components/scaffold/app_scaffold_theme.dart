@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_design_system/src/foundation/app_colors.dart';
+import 'package:flutter_design_system/src/tokens/app_colors.dart';
 
 final class AppScaffoldTheme extends ThemeExtension<AppScaffoldTheme> {
   final Color backgroundColor;
@@ -12,10 +12,10 @@ final class AppScaffoldTheme extends ThemeExtension<AppScaffoldTheme> {
   });
 
   factory AppScaffoldTheme.light() => AppScaffoldTheme(
-    backgroundColor: AppColors.gray50,
+    backgroundColor: AppColors.neutral50,
     overlayStyle: SystemUiOverlayStyle.dark.copyWith(
       statusBarColor: Colors.transparent,
-      systemNavigationBarColor: AppColors.gray50,
+      systemNavigationBarColor: AppColors.neutral50,
     ),
   );
 

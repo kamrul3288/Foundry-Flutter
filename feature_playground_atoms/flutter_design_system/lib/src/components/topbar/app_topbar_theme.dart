@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_design_system/src/foundation/app_colors.dart';
+import 'package:flutter_design_system/src/tokens/app_colors.dart';
 
 final class AppTopBarTheme extends ThemeExtension<AppTopBarTheme> {
   final Color backgroundColor;
@@ -20,7 +20,7 @@ final class AppTopBarTheme extends ThemeExtension<AppTopBarTheme> {
 
   factory AppTopBarTheme.light() => const AppTopBarTheme(
     backgroundColor: Colors.white,
-    foregroundColor: AppColors.gray900,
+    foregroundColor: AppColors.neutral900,
     elevation: 0,
     scrolledUnderElevation: 2,
     surfaceTintColor: Colors.transparent,
