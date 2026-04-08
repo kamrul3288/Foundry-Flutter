@@ -11,7 +11,7 @@ class AppIconButton extends StatelessWidget {
   const AppIconButton(
     this.icon, {
     super.key,
-    this.intent = const AppButtonIntent.primary(),
+    this.intent = const AppButtonIntent.brand(),
     required this.onPressed,
     this.isLoading = false,
     this.padding = const EdgeInsets.all(4),

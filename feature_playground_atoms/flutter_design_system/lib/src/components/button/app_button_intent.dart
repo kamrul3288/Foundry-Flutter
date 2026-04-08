@@ -3,7 +3,7 @@ import 'package:flutter_design_system/src/components/button/button.dart';
 sealed class AppButtonIntent {
   const AppButtonIntent();
 
-  const factory AppButtonIntent.primary() = AppButtonIntentBrand._;
+  const factory AppButtonIntent.brand() = AppButtonIntentBrand._;
   const factory AppButtonIntent.custom(AppButtonVariantSet varients) = AppButtonIntentCustom._;
 }
 

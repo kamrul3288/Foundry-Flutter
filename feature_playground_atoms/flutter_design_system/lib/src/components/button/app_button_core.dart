@@ -8,7 +8,7 @@ class AppButtonCore extends StatelessWidget {
     required this.child,
     required this.variant,
     required this.onPressed,
-    this.intent = const AppButtonIntent.primary(),
+    this.intent = const AppButtonIntent.brand(),
     this.height = AppButtonHeight.md,
     this.shape = AppButtonShape.rounded,
     this.isLoading = false,
