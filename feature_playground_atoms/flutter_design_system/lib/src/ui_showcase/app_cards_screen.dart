@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_design_system/src/components/cards/app_card.dart';
+import 'package:flutter_design_system/src/components/card/card.dart';
 import 'package:flutter_design_system/src/components/structure/app_scaffold.dart';
 import 'package:flutter_design_system/src/components/structure/app_topbar.dart';
 import 'package:flutter_design_system/src/components/text/app_text.dart';
