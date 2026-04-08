@@ -26,8 +26,10 @@ final class AppTopBarTheme extends ThemeExtension<AppTopBarTheme> {
     surfaceTintColor: Colors.transparent,
   );
 
+  // Note: Not fully implemented because currently I do not need dark mode, but the scope is kept.
   factory AppTopBarTheme.dark() => AppTopBarTheme.light();
 
+  // Note: Not fully implemented because currently I do not need mutability, but the scope is kept.
   @override
   ThemeExtension<AppTopBarTheme> copyWith({
     Color? backgroundColor,
@@ -47,6 +49,7 @@ final class AppTopBarTheme extends ThemeExtension<AppTopBarTheme> {
     );
   }
 
+  // Note: Not fully implemented because currently I do not need smoothness, but the scope is kept.
   @override
   ThemeExtension<AppTopBarTheme> lerp(covariant ThemeExtension<AppTopBarTheme>? other, double t) => this;
 }

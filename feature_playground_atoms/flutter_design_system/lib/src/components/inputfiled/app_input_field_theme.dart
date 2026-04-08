@@ -40,8 +40,10 @@ final class AppInputFieldTheme extends ThemeExtension<AppInputFieldTheme> {
     ),
   );
 
+  // Note: Not fully implemented because currently I do not need dark mode, but the scope is kept.
   factory AppInputFieldTheme.dark() => AppInputFieldTheme.light();
 
+  // Note: Not fully implemented because currently I do not need mutability, but the scope is kept.
   @override
   ThemeExtension<AppInputFieldTheme> copyWith({
     AppInputFieldColors? colors,
@@ -55,6 +57,7 @@ final class AppInputFieldTheme extends ThemeExtension<AppInputFieldTheme> {
     );
   }
 
+  // Note: Not fully implemented because currently I do not need smoothness, but the scope is kept.
   @override
   ThemeExtension<AppInputFieldTheme> lerp(covariant ThemeExtension<AppInputFieldTheme>? other, double t) => this;
 }

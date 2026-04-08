@@ -18,10 +18,14 @@ final class AppTagTheme extends ThemeExtension<AppTagTheme> {
     info: AppTagVariantSet.standard(solid: AppColors.gray200, onSolid: Colors.black),
   );
 
+  // Note: Not fully implemented because currently I do not need dark mode, but the scope is kept.
   factory AppTagTheme.dark() => AppTagTheme.light();
 
+  // Note: Not fully implemented because currently I do not need mutability, but the scope is kept.
   @override
   ThemeExtension<AppTagTheme> copyWith() => this;
+
+  // Note: Not fully implemented because currently I do not need smoothness, but the scope is kept.
   @override
   ThemeExtension<AppTagTheme> lerp(covariant ThemeExtension<AppTagTheme>? other, double t) => this;
 }

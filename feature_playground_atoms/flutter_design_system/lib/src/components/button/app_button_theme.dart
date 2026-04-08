@@ -22,14 +22,14 @@ final class AppButtonTheme extends ThemeExtension<AppButtonTheme> {
     ),
   );
 
-  //if you need dark mode, implement this method
+  // Note: Not fully implemented because currently I do not need dark mode, but the scope is kept.
   factory AppButtonTheme.dark() => AppButtonTheme.light();
 
-  //if you need to copy with new values, implement this method
+  // Note: Not fully implemented because currently I do not need mutability, but the scope is kept.
   @override
   ThemeExtension<AppButtonTheme> copyWith() => this;
 
-  //if you need smooth transition between themes, implement this method
+  // Note: Not fully implemented because currently I do not need smoothness, but the scope is kept.
   @override
   ThemeExtension<AppButtonTheme> lerp(covariant ThemeExtension<AppButtonTheme>? other, double t) => this;
 }

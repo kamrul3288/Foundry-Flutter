@@ -19,8 +19,10 @@ final class AppScaffoldTheme extends ThemeExtension<AppScaffoldTheme> {
     ),
   );
 
+  // Note: Not fully implemented because currently I do not need dark mode, but the scope is kept.
   factory AppScaffoldTheme.dark() => AppScaffoldTheme.light();
 
+  // Note: Not fully implemented because currently I do not need mutability, but the scope is kept.
   @override
   ThemeExtension<AppScaffoldTheme> copyWith({
     Color? backgroundColor,
@@ -32,6 +34,7 @@ final class AppScaffoldTheme extends ThemeExtension<AppScaffoldTheme> {
     );
   }
 
+  // Note: Not fully implemented because currently I do not need smoothness, but the scope is kept.
   @override
   ThemeExtension<AppScaffoldTheme> lerp(covariant ThemeExtension<AppScaffoldTheme>? other, double t) => this;
 }

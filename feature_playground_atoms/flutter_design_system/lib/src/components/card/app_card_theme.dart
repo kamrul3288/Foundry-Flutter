@@ -23,11 +23,14 @@ final class AppCardTheme extends ThemeExtension<AppCardTheme> {
     ),
   );
 
+  // Note: Not fully implemented because currently I do not need dark mode, but the scope is kept.
   factory AppCardTheme.dark() => AppCardTheme.light();
 
+  // Note: Not fully implemented because currently I do not need mutability, but the scope is kept.
   @override
   ThemeExtension<AppCardTheme> copyWith() => this;
 
+  // Note: Not fully implemented because currently I do not need smoothness, but the scope is kept.
   @override
   ThemeExtension<AppCardTheme> lerp(covariant ThemeExtension<AppCardTheme>? other, double t) {
     return this;
