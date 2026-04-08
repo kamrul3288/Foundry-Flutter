@@ -32,7 +32,7 @@ class AppCard extends StatelessWidget {
 
   factory AppCard.rounded({
     required Widget child,
-    AppCardTone tone = AppCardTone.neutral,
+    AppCardTone tone = AppCardTone.warning,
     AppCardVariant variant = AppCardVariant.filled,
     AppCardCornerRadius cornerRadius = AppCardCornerRadius.md,
     AppCardCornerMode cornerMode = AppCardCornerMode.all,
@@ -61,7 +61,7 @@ class AppCard extends StatelessWidget {
 
   factory AppCard.pill({
     required Widget child,
-    AppCardTone tone = AppCardTone.neutral,
+    AppCardTone tone = AppCardTone.warning,
     AppCardVariant variant = AppCardVariant.filled,
     EdgeInsetsGeometry padding = const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
     double? elevation,
@@ -87,7 +87,7 @@ class AppCard extends StatelessWidget {
 
   factory AppCard.circle({
     required Widget child,
-    AppCardTone tone = AppCardTone.neutral,
+    AppCardTone tone = AppCardTone.warning,
     AppCardVariant variant = AppCardVariant.filled,
     EdgeInsetsGeometry padding = const EdgeInsets.all(16),
     double? size,

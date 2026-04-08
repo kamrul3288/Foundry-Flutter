@@ -1,4 +1,4 @@
-enum AppCardTone { neutral }
+enum AppCardTone { warning }
 
 enum AppCardVariant { filled, outline, filledOutline }
 
