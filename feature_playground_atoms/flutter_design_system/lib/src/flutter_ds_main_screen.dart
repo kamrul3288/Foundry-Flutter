@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/src/theme/extensions/app_card_theme.dart';
-import 'package:flutter_design_system/src/theme/extensions/app_input_theme.dart';
+import 'package:flutter_design_system/src/components/inputfiled/app_input_field_theme.dart';
 import 'package:flutter_design_system/src/theme/extensions/app_scaffold_theme.dart';
 import 'package:flutter_design_system/src/components/tag/app_tag_theme.dart';
 import 'package:flutter_design_system/src/components/typography/app_typography_theme.dart';
@@ -40,7 +40,7 @@ class FlutterDsMainScreen extends StatelessWidget {
           AppButtonTheme.light(),
           AppColorScheme.light(),
           AppTypographyTheme.standard(),
-          AppInputTheme.light(),
+          AppInputFieldTheme.light(),
           AppTagTheme.light(),
           AppCardTheme.light(),
           AppScaffoldTheme.light(),
