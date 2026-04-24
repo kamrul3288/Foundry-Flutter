@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/src/components/button/button.dart';
+import 'package:flutter_design_system/src/components/icon/app_icon.dart';
 import 'package:flutter_design_system/src/components/scaffold/app_scaffold.dart';
 import 'package:flutter_design_system/src/components/topbar/app_topbar.dart';
 import 'package:flutter_design_system/src/components/text/app_text.dart';
 import 'package:flutter_design_system/src/tokens/app_colors.dart';
+import 'package:flutter_svg/svg.dart';
 
 class ButtonsScreen extends StatelessWidget {
   const ButtonsScreen({super.key});
@@ -27,6 +29,12 @@ class ButtonsScreen extends StatelessWidget {
                       child: AppFilledButton.text(
                         "Filled",
                         onPressed: () {},
+                        style: AppFilledButtonStyle(
+                          leading: AppIcon(
+                            SvgPicture.asset("assets/icons/ic_check_promo.svg"),
+                            tint: true,
+                          ),
+                        ),
                       ),
                     ),
                     const SizedBox(width: 12),
