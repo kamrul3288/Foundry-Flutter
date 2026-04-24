@@ -19,6 +19,7 @@ class AppInputField extends StatefulWidget {
   final bool enabled;
   final bool readOnly;
   final bool obscureText;
+  final bool disableIconStateColor;
   final int? maxLength;
   final int? maxLines;
   final int? minLines;
@@ -48,6 +49,7 @@ class AppInputField extends StatefulWidget {
     this.enabled = true,
     this.readOnly = false,
     this.obscureText = false,
+    this.disableIconStateColor = false,
     this.maxLength,
     this.maxLines = 1,
     this.minLines,
@@ -91,6 +93,7 @@ class _AppInputFieldState extends State<AppInputField> {
   }
 
   bool get _hasError => widget.errorText != null && widget.errorText!.isNotEmpty;
+  bool get _isFilled => widget.variant == AppInputFieldVariant.filled || widget.variant == AppInputFieldVariant.outlieFilled;
 
   @override
   Widget build(BuildContext context) {
@@ -137,8 +140,16 @@ class _AppInputFieldState extends State<AppInputField> {
         prefix: widget.prefix,
         suffix: widget.suffix,
         prefixIcon: _wrapIcon(widget.prefixIcon, iconColor, spec.iconSize),
+        prefixIconConstraints: BoxConstraints(
+          minWidth: spec.iconSize,
+          minHeight: spec.iconSize,
+        ),
         suffixIcon: _wrapIcon(widget.suffixIcon, iconColor, spec.iconSize),
-        filled: widget.variant == AppInputFieldVariant.filled,
+        suffixIconConstraints: BoxConstraints(
+          minWidth: spec.iconSize,
+          minHeight: spec.iconSize,
+        ),
+        filled: _isFilled,
         fillColor: fillColor,
         isDense: widget.size == AppInputFieldSize.sm,
         contentPadding: spec.contentPadding,
@@ -164,12 +175,15 @@ class _AppInputFieldState extends State<AppInputField> {
     return _InputVisualState.defaultState;
   }
 
-  Color _iconColorFor(_InputVisualState state, AppInputFieldColors c) => switch (state) {
-    _InputVisualState.disabled => c.iconDisabled,
-    _InputVisualState.error => c.iconError,
-    _InputVisualState.focused => c.iconFocused,
-    _InputVisualState.defaultState => c.icon,
-  };
+  Color _iconColorFor(_InputVisualState state, AppInputFieldColors c) {
+    if (widget.disableIconStateColor) return c.icon;
+    return switch (state) {
+      _InputVisualState.disabled => c.iconDisabled,
+      _InputVisualState.error => c.iconError,
+      _InputVisualState.focused => c.iconFocused,
+      _InputVisualState.defaultState => c.icon,
+    };
+  }
 
   Color _textColorFor(_InputVisualState state, AppInputFieldColors c) => switch (state) {
     _InputVisualState.disabled => c.textDisabled,
@@ -194,9 +208,12 @@ class _AppInputFieldState extends State<AppInputField> {
 
   Widget? _wrapIcon(Widget? icon, Color color, double size) {
     if (icon == null) return null;
-    return IconTheme.merge(
-      data: IconThemeData(color: color, size: size),
-      child: icon,
+    return Padding(
+      padding: const EdgeInsets.only(left: 12, right: 4),
+      child: IconTheme.merge(
+        data: IconThemeData(color: color, size: size),
+        child: icon,
+      ),
     );
   }
 
@@ -204,9 +221,13 @@ class _AppInputFieldState extends State<AppInputField> {
     final side = BorderSide(color: color, width: width);
     return switch (widget.variant) {
       AppInputFieldVariant.underline => UnderlineInputBorder(borderSide: side),
-      AppInputFieldVariant.outline || AppInputFieldVariant.filled => OutlineInputBorder(
+      AppInputFieldVariant.outline || AppInputFieldVariant.outlieFilled => OutlineInputBorder(
         borderRadius: _radiusFor(spec),
         borderSide: side,
+      ),
+      AppInputFieldVariant.filled => OutlineInputBorder(
+        borderRadius: _radiusFor(spec),
+        borderSide: BorderSide.none,
       ),
     };
   }

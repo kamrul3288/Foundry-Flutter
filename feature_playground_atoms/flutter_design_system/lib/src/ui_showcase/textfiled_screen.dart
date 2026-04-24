@@ -5,6 +5,7 @@ import 'package:flutter_design_system/src/components/scaffold/app_scaffold.dart'
 import 'package:flutter_design_system/src/components/topbar/app_topbar.dart';
 import 'package:flutter_design_system/src/components/text/app_text.dart';
 import 'package:flutter_design_system/src/tokens/app_colors.dart';
+import 'package:flutter_svg/svg.dart';
 
 class TextFiledScreen extends StatelessWidget {
   const TextFiledScreen({super.key});
@@ -29,9 +30,16 @@ class TextFiledScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 12),
                 const AppInputField(
-                  label: 'Filled Variant',
-                  hint: 'Enter text here',
+                  hint: 'Filled Varient',
                   variant: AppInputFieldVariant.filled,
+                  prefixIcon: AppIcon(Icon(Icons.abc_outlined)),
+                  disableIconStateColor: true,
+                ),
+                const SizedBox(height: 12),
+                const AppInputField(
+                  label: 'Outline Filled Variant',
+                  hint: 'Enter text here',
+                  variant: AppInputFieldVariant.outlieFilled,
                 ),
                 const SizedBox(height: 12),
                 const AppInputField(
@@ -71,6 +79,16 @@ class TextFiledScreen extends StatelessWidget {
                   hint: 'Search...',
                   variant: AppInputFieldVariant.outline,
                   prefixIcon: AppIcon(Icon(Icons.search)),
+                ),
+                const SizedBox(height: 12),
+                AppInputField(
+                  label: 'With SVG Prefix Icon',
+                  hint: 'Search...',
+                  variant: AppInputFieldVariant.outline,
+                  prefixIcon: AppIcon(
+                    SvgPicture.asset('assets/icons/ic_alert_light.svg'),
+                    tint: false,
+                  ),
                 ),
                 const SizedBox(height: 12),
                 const AppInputField(
