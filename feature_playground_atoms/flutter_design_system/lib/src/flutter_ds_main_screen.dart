@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/src/components/card/app_card_theme.dart';
+import 'package:flutter_design_system/src/components/divider/app_divider_theme.dart';
 import 'package:flutter_design_system/src/components/inputfiled/app_input_field_theme.dart';
 import 'package:flutter_design_system/src/components/scaffold/app_scaffold_theme.dart';
 import 'package:flutter_design_system/src/components/tag/app_tag_theme.dart';
@@ -10,6 +11,7 @@ import 'package:flutter_design_system/src/components/button/app_button_theme.dar
 import 'package:flutter_design_system/src/ui_showcase/app_cards_screen.dart';
 import 'package:flutter_design_system/src/ui_showcase/buttons_screen.dart';
 import 'package:flutter_design_system/src/ui_showcase/app_scaffold_screen.dart';
+import 'package:flutter_design_system/src/ui_showcase/dividers_screen.dart';
 import 'package:flutter_design_system/src/ui_showcase/tags_screen.dart';
 import 'package:flutter_design_system/src/ui_showcase/textfiled_screen.dart';
 import 'package:flutter_design_system/src/ui_showcase/texts_screen.dart';
@@ -46,6 +48,7 @@ class FlutterDsMainScreen extends StatelessWidget {
           AppCardTheme.light(),
           AppTopBarTheme.light(),
           AppScaffoldTheme.light(),
+          AppDividerTheme.light(),
         ],
       ),
       home: Scaffold(
@@ -104,6 +107,12 @@ class _DesignSystemBody extends StatelessWidget {
         description: "Layout structure with integrated TopBar and Loading states.",
         icon: Icons.layers_rounded,
         screen: const AppScaffoldScreen(),
+      ),
+      ExampleItem(
+        title: "Dividers",
+        description: "Layout structure  solid, dot and dashed dividers.",
+        icon: Icons.line_axis,
+        screen: const DividersScreen(),
       ),
     ];
 
