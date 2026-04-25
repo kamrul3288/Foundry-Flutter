@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/src/components/card/app_card_theme.dart';
+import 'package:flutter_design_system/src/components/checkbox/checkbox.dart';
 import 'package:flutter_design_system/src/components/divider/app_divider_theme.dart';
 import 'package:flutter_design_system/src/components/inputfiled/app_input_field_theme.dart';
 import 'package:flutter_design_system/src/components/radio/radio.dart';
@@ -12,6 +13,7 @@ import 'package:flutter_design_system/src/components/button/app_button_theme.dar
 import 'package:flutter_design_system/src/ui_showcase/app_cards_screen.dart';
 import 'package:flutter_design_system/src/ui_showcase/buttons_screen.dart';
 import 'package:flutter_design_system/src/ui_showcase/app_scaffold_screen.dart';
+import 'package:flutter_design_system/src/ui_showcase/checkbox_screen.dart';
 import 'package:flutter_design_system/src/ui_showcase/dividers_screen.dart';
 import 'package:flutter_design_system/src/ui_showcase/radio_button_screen.dart';
 import 'package:flutter_design_system/src/ui_showcase/tags_screen.dart';
@@ -56,6 +58,7 @@ class FlutterDsMainScreen extends StatelessWidget {
           AppRadioGhostTheme.light(),
           AppRadioCardTheme.light(),
           AppRadioClassicTheme.light(),
+          AppCheckboxTheme.light(),
         ],
       ),
       home: Scaffold(
@@ -126,6 +129,12 @@ class _DesignSystemBody extends StatelessWidget {
         description: "Radio button for selecting a single option from a group.",
         icon: Icons.radio_button_checked,
         screen: const RadioButtonScreen(),
+      ),
+      ExampleItem(
+        title: "Checkbox",
+        description: "Checkbox for selecting multiple options from a group.",
+        icon: Icons.check_box,
+        screen: const CheckboxScreen(),
       ),
     ];
 
