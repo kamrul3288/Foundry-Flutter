@@ -36,7 +36,7 @@ class _RadioButtonScreenState extends State<RadioButtonScreen> {
               children: [
                 AppRadioOutlineGroup<String>(
                   value: selectedPayment,
-                  onChanged: (val) => setState(() => selectedPayment = val!),
+                  onChanged: (val) => setState(() => selectedPayment = val),
                   options: const [
                     AppRadioOption(value: 'card', label: 'Card', icon: Icon(Icons.credit_card)),
                     AppRadioOption(value: 'bank', label: 'Bank', icon: Icon(Icons.account_balance)),
@@ -52,7 +52,7 @@ class _RadioButtonScreenState extends State<RadioButtonScreen> {
               children: [
                 AppRadioFilledGroup<String>(
                   value: selectedSize,
-                  onChanged: (val) => setState(() => selectedSize = val!),
+                  onChanged: (val) => setState(() => selectedSize = val),
                   intent: AppRadioIntent.brand,
                   itemPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                   options: [
@@ -71,7 +71,7 @@ class _RadioButtonScreenState extends State<RadioButtonScreen> {
               children: [
                 AppRadioGhostGroup<String>(
                   value: activeFilter,
-                  onChanged: (val) => setState(() => activeFilter = val!),
+                  onChanged: (val) => setState(() => activeFilter = val),
                   options: const [
                     AppRadioOption(value: 'all', label: 'All'),
                     AppRadioOption(value: 'active', label: 'Active'),
@@ -87,7 +87,7 @@ class _RadioButtonScreenState extends State<RadioButtonScreen> {
               children: [
                 AppRadioCardGroup<String>(
                   value: selectedShipping,
-                  onChanged: (val) => setState(() => selectedShipping = val!),
+                  onChanged: (val) => setState(() => selectedShipping = val),
                   axis: AppRadioCardAxis.horizontal,
                   options: const [
                     AppRadioOption(
@@ -121,7 +121,7 @@ class _RadioButtonScreenState extends State<RadioButtonScreen> {
                 AppRadioClassicGroup<String>(
                   groupLabel: 'Shipping speed',
                   value: selectedShipping2,
-                  onChanged: (val) => setState(() => selectedShipping2 = val!),
+                  onChanged: (val) => setState(() => selectedShipping2 = val),
                   intent: AppRadioIntent.brand,
                   options: const [
                     AppRadioOption(
@@ -150,7 +150,7 @@ class _RadioButtonScreenState extends State<RadioButtonScreen> {
               children: [
                 AppRadioClassicGroup<String>(
                   value: selectedGender,
-                  onChanged: (val) => setState(() => selectedGender = val!),
+                  onChanged: (val) => setState(() => selectedGender = val),
                   direction: Axis.horizontal,
                   options: const [
                     AppRadioOption(value: 'Male', label: 'Male'),
